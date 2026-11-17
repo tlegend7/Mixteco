@@ -73,32 +73,30 @@ onMounted(load)
 
 <template>
   <div class="app-shell">
-    <header class="masthead">
-      <a href="#main" class="brand" aria-label="Mixteco, ir al contenido">
-        <img src="/favicon.svg" width="42" height="42" alt="" />
-        <span><strong>mixteco<span class="brand-dot">.</span></strong><small>OBSERVATORIO FENOLÓGICO</small></span>
-      </a>
-      <div class="institution"><span>Investigación colaborativa</span><strong>UTP <span>×</span> UVG</strong></div>
-    </header>
     <main id="main">
-      <section class="intro">
-        <div><p class="eyebrow"><span class="live-dot"></span> ESTUDIO EXPERIMENTAL · 2026</p><h1>Crecimiento del chile jalapeño bajo sarán</h1><p>Explora su desarrollo y compara los registros bajo distintas condiciones de sombra.</p></div>
-        <div class="crop-id"><span>Capsicum annuum L.</span><strong>Variedad Mixteco</strong><small>UVG Campus Sur · Guatemala</small></div>
-      </section>
+      <header class="intro">
+        <h1>Crecimiento del chile jalapeño bajo sarán</h1>
+        <p>Explora su desarrollo y compara los registros bajo distintas condiciones de sombra.</p>
+      </header>
 
       <div v-if="loading" class="state" role="status">Cargando registros experimentales…</div>
       <div v-else-if="error" class="state error" role="alert"><h2>No se pudieron cargar los registros</h2><p>{{ error }}</p><button class="primary" @click="load">Reintentar</button></div>
       <template v-else>
         <section class="study-strip" aria-label="Alcance de los datos">
-          <div><strong>04</strong><span>tratamientos experimentales</span></div>
-          <div><strong>10</strong><span>semanas de seguimiento</span></div>
-          <div><strong>40</strong><span>observaciones agregadas</span></div>
-          <div class="study-period"><span>PERÍODO DE OBSERVACIÓN</span><strong>20 ago. — 22 oct. 2026</strong></div>
+          <span class="study-chip">4 tratamientos</span>
+          <span class="study-chip">10 semanas</span>
+          <span class="study-chip">40 observaciones</span>
+          <span class="study-chip">20 ago. — 22 oct. 2026</span>
         </section>
 
         <div class="dashboard">
           <section class="data-panel panel" aria-labelledby="data-title">
             <div class="section-heading"><div><p class="eyebrow">01 / DATOS DEL CULTIVO</p><h2 id="data-title">Observa y compara</h2></div><span class="small-tag">Promedios</span></div>
+            <aside class="experiment-info" aria-label="Información del experimento">
+              <div class="experiment-meta"><a href="#main" aria-label="Mixteco, ir al contenido">Mixteco <span>· Observatorio fenológico</span></a><strong>UTP × UVG</strong></div>
+              <p><i>Capsicum annuum L.</i> · <strong>Variedad Mixteco</strong></p>
+              <p class="experiment-location"><span>UVG Campus Sur · Guatemala</span><small>Investigación colaborativa</small></p>
+            </aside>
             <fieldset class="treatment-filters"><legend>Tratamientos <span>Selecciona uno o varios</span></legend>
               <label v-for="t in treatments" :key="t.id" :class="['treatment-chip', { active: selected.includes(t.id) }]" :style="{ '--treatment': t.color }">
                 <input type="checkbox" :checked="selected.includes(t.id)" @change="toggle(t.id)" /><span class="treatment-dot"></span>{{ t.short }}

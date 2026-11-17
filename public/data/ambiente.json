@@ -1,0 +1,12 @@
+{
+  "source": "Copia de Preguntas_a_responder_respondido.docx",
+  "date": null,
+  "timeRange": "12:06–12:28 p. m.",
+  "note": "Lecturas independientes con termohigrómetros. El documento no especifica la fecha. No constituyen una serie semanal.",
+  "records": [
+    { "treatment": "rojo", "temperature": 32.4, "humidity": 72 },
+    { "treatment": "azul", "temperature": 33.0, "humidity": 73 },
+    { "treatment": "verde", "temperature": 33.2, "humidity": 72 },
+    { "treatment": "control", "temperature": 38.0, "humidity": 59 }
+  ]
+}

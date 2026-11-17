@@ -1,0 +1,16 @@
+node_modules/
+dist/
+output/
+.playwright-cli/
+references/contact-sheet.png
+.vercel/
+__pycache__/
+
+# Documentos Word y libros Excel: conservar solo localmente.
+*.[dD][oO][cC]
+*.[dD][oO][cC][xX]
+*.[dD][oO][cC][mM]
+*.[xX][lL][sS]
+*.[xX][lL][sS][xX]
+*.[xX][lL][sS][mM]
+*.[xX][lL][sS][bB]

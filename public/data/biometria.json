@@ -1,0 +1,537 @@
+{
+  "source": "Base de datos biometría chile jalapeño.xlsx",
+  "sheet": "Hoja1",
+  "sha256": "14c11545b0b44b79e5f57f1b46115acc823a1f2ed84d537f69a75b8a4f1a443c",
+  "aggregation": "Promedios por tratamiento y fecha; no son datos individuales.",
+  "units": {
+    "height": "cm",
+    "diameter": "mm",
+    "leaves": "hojas/planta",
+    "flowers": "flores/planta",
+    "fruits": "frutos/planta"
+  },
+  "weeks": [
+    {
+      "week": 1,
+      "date": "2026-08-20"
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27"
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03"
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10"
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17"
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24"
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01"
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08"
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15"
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22"
+    }
+  ],
+  "records": [
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "rojo",
+      "plants": 8,
+      "leaves": 3.43,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 9.14,
+      "diameter": 2.29,
+      "sourceRow": 4
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "azul",
+      "plants": 8,
+      "leaves": 3.25,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 8.75,
+      "diameter": 2.31,
+      "sourceRow": 5
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "verde",
+      "plants": 8,
+      "leaves": 3.85,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 8.92,
+      "diameter": 2.36,
+      "sourceRow": 6
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "control",
+      "plants": 8,
+      "leaves": 3.75,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 8.51,
+      "diameter": 2.22,
+      "sourceRow": 7
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "rojo",
+      "plants": 8,
+      "leaves": 4.25,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 11.0,
+      "diameter": 2.5,
+      "sourceRow": 9
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "azul",
+      "plants": 8,
+      "leaves": 4.38,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 10.44,
+      "diameter": 2.36,
+      "sourceRow": 10
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "verde",
+      "plants": 8,
+      "leaves": 3.63,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 9.38,
+      "diameter": 2.47,
+      "sourceRow": 11
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "control",
+      "plants": 8,
+      "leaves": 3.75,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 9.63,
+      "diameter": 2.41,
+      "sourceRow": 12
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "rojo",
+      "plants": 8,
+      "leaves": 5.38,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 10.63,
+      "diameter": 2.63,
+      "sourceRow": 14
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "azul",
+      "plants": 8,
+      "leaves": 7.43,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 11.57,
+      "diameter": 2.45,
+      "sourceRow": 15
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "verde",
+      "plants": 8,
+      "leaves": 6.25,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 10.69,
+      "diameter": 2.41,
+      "sourceRow": 16
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "control",
+      "plants": 8,
+      "leaves": 5.13,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 9.63,
+      "diameter": 2.47,
+      "sourceRow": 17
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "rojo",
+      "plants": 8,
+      "leaves": 7.51,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 11.69,
+      "diameter": 2.66,
+      "sourceRow": 19
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "azul",
+      "plants": 8,
+      "leaves": 9.28,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 13.29,
+      "diameter": 2.73,
+      "sourceRow": 20
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "verde",
+      "plants": 8,
+      "leaves": 8.44,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 11.97,
+      "diameter": 2.62,
+      "sourceRow": 21
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "control",
+      "plants": 8,
+      "leaves": 7.19,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 10.76,
+      "diameter": 2.57,
+      "sourceRow": 22
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "rojo",
+      "plants": 8,
+      "leaves": 9.63,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 12.75,
+      "diameter": 2.69,
+      "sourceRow": 24
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "azul",
+      "plants": 8,
+      "leaves": 11.13,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 15.0,
+      "diameter": 3.0,
+      "sourceRow": 25
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "verde",
+      "plants": 8,
+      "leaves": 10.63,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 13.25,
+      "diameter": 2.82,
+      "sourceRow": 26
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "control",
+      "plants": 8,
+      "leaves": 9.25,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 11.88,
+      "diameter": 2.66,
+      "sourceRow": 27
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "rojo",
+      "plants": 8,
+      "leaves": 14.75,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 17.38,
+      "diameter": 3.35,
+      "sourceRow": 29
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "azul",
+      "plants": 8,
+      "leaves": 15.38,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 20.0,
+      "diameter": 3.43,
+      "sourceRow": 30
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "verde",
+      "plants": 8,
+      "leaves": 12.5,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 17.5,
+      "diameter": 3.31,
+      "sourceRow": 31
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "control",
+      "plants": 8,
+      "leaves": 10.75,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 14.63,
+      "diameter": 3.06,
+      "sourceRow": 32
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "rojo",
+      "plants": 8,
+      "leaves": 12.0,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 17.88,
+      "diameter": 3.53,
+      "sourceRow": 34
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "azul",
+      "plants": 8,
+      "leaves": 13.25,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 17.38,
+      "diameter": 3.36,
+      "sourceRow": 35
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "verde",
+      "plants": 8,
+      "leaves": 14.75,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 18.13,
+      "diameter": 3.52,
+      "sourceRow": 36
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "control",
+      "plants": 8,
+      "leaves": 13.0,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 14.63,
+      "diameter": 3.19,
+      "sourceRow": 37
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "rojo",
+      "plants": 8,
+      "leaves": 22.13,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 20.63,
+      "diameter": 4.11,
+      "sourceRow": 39
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "azul",
+      "plants": 8,
+      "leaves": 27.13,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 26.5,
+      "diameter": 4.74,
+      "sourceRow": 40
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "verde",
+      "plants": 8,
+      "leaves": 18.88,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 21.63,
+      "diameter": 4.03,
+      "sourceRow": 41
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "control",
+      "plants": 8,
+      "leaves": 13.75,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 15.13,
+      "diameter": 3.38,
+      "sourceRow": 42
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "rojo",
+      "plants": 8,
+      "leaves": 25.63,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 22.13,
+      "diameter": 4.41,
+      "sourceRow": 44
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "azul",
+      "plants": 8,
+      "leaves": 37.63,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 26.75,
+      "diameter": 5.25,
+      "sourceRow": 45
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "verde",
+      "plants": 8,
+      "leaves": 28.38,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 21.0,
+      "diameter": 4.27,
+      "sourceRow": 46
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "control",
+      "plants": 6,
+      "leaves": 15.83,
+      "flowers": 0.0,
+      "fruits": 0.0,
+      "height": 19.33,
+      "diameter": 3.92,
+      "sourceRow": 47
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "rojo",
+      "plants": 8,
+      "leaves": 19.86,
+      "flowers": 0.43,
+      "fruits": 1.29,
+      "height": 19.86,
+      "diameter": 4.14,
+      "sourceRow": 49
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "azul",
+      "plants": 8,
+      "leaves": 45.88,
+      "flowers": 0.88,
+      "fruits": 1.63,
+      "height": 27.88,
+      "diameter": 5.4,
+      "sourceRow": 50
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "verde",
+      "plants": 8,
+      "leaves": 23.25,
+      "flowers": 0.13,
+      "fruits": 1.25,
+      "height": 20.13,
+      "diameter": 4.39,
+      "sourceRow": 51
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "control",
+      "plants": 5,
+      "leaves": 15.0,
+      "flowers": 0.2,
+      "fruits": 1.4,
+      "height": 18.4,
+      "diameter": 4.14,
+      "sourceRow": 52
+    }
+  ]
+}

@@ -114,15 +114,16 @@ select { max-width: 60%; background: #f7f8f4; border: 1px solid var(--border); b
 .detail-metrics small { font-family: 'DM Sans', sans-serif; font-size: 9px; color: #647858; letter-spacing: 0; }
 .detail-metrics dd.missing-value { font-size: 12px; letter-spacing: 0; }
 .scene-caption { font-size: 9px; color: #67775b; line-height: 1.4; margin: 0; }
-.timeline { padding: 7px 0 0; border-top: 1px solid var(--border); }
+.timeline { padding: 7px 0 0; border-top: 1px solid var(--border); min-width: 0; }
 .timeline-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; gap: 10px; }
 .timeline-heading .eyebrow { display: none; }
 .timeline-heading h2 { font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0; font-weight: 550; }
 .selected-date { display: flex; align-items: center; gap: 8px; }
 .selected-date strong { color: #3d6031; font-size: 11px; font-weight: 650; }
 .selected-date span { font-size: 10px; color: var(--muted); }
-.week-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(44px, 1fr)); gap: 3px; }
-.week-buttons button { background: #f7f9f3; border: 1px solid #e5ebdc; border-radius: 4px; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 4px 2px; color: #647655; min-height: 34px; }
+.week-buttons { display: flex; gap: 3px; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; padding-inline: 4px; }
+.week-buttons button { flex: 1 0 46px; background: #f7f9f3; border: 1px solid #e5ebdc; border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 4px 2px; color: #647655; min-height: 34px; white-space: nowrap; }
+.week-buttons button:focus-visible { outline-offset: -3px; }
 .week-dot { display: none; }
 .week-buttons strong { font-size: 10px; font-weight: 500; }
 .week-buttons small { font-size: 9px; }
@@ -217,8 +218,8 @@ footer { padding: 12px 0 16px; border-top: 1px solid var(--border); display: fle
   .selected-date { gap: 6px; }
   .selected-date strong { font-size: 10px; }
   .selected-date span { font-size: 9px; }
-  .week-buttons { grid-template-columns: repeat(5, 1fr); gap: 5px; }
-  .week-buttons button { min-height: 38px; }
+  .week-buttons { gap: 5px; }
+  .week-buttons button { flex-basis: 60px; min-height: 44px; }
   .week-range { margin-block: 13px 5px; }
   .treatment-filters legend > span { font-size: 9px; }
   .treatment-chip { font-size: 11px; padding: 9px 10px; }
@@ -227,6 +228,7 @@ footer { padding: 12px 0 16px; border-top: 1px solid var(--border); display: fle
   footer { flex-direction: column; gap: 6px; line-height: 1.6; }
 }
 @media (pointer: coarse) {
+  .week-buttons button { min-height: 44px; min-width: 60px; }
   .mouse-help .desktop-help { display: none; }
   .touch-help { display: inline; }
 }

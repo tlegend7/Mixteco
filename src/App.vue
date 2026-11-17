@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { loadExperiment } from './services/data'
 import { treatments, metrics, format, formatSigned, dateLabel, recordsAt, differenceFromControl, weeklyMaximum } from './modules/experiment'
 import { usePlayback } from './modules/usePlayback'
@@ -17,6 +17,7 @@ const cameraRequest = ref(0)
 const focused = ref('azul')
 const inspection = ref(false)
 const sceneRef = ref(null)
+const weekButtons = ref(null)
 const weeks = computed(() => experiment.value?.biometry.weeks ?? [])
 const { playing, selectWeek, restart, toggle: togglePlayback } = usePlayback(week, weeks)
 const metric = computed(() => metrics.find(m => m.id === metricId.value))
@@ -72,6 +73,18 @@ function setView(id) {
   view.value = id
   cameraRequest.value++
 }
+function revealSelectedWeek() {
+  const strip = weekButtons.value
+  const button = strip?.querySelector('[aria-pressed="true"]')
+  if (!button) return
+  const bounds = strip.getBoundingClientRect(), selected = button.getBoundingClientRect()
+  // Scroll only the week strip; selecting or playing a week must not move the page.
+  if (selected.left < bounds.left) strip.scrollLeft += selected.left - bounds.left
+  else if (selected.right > bounds.left + strip.clientWidth) strip.scrollLeft += selected.right - bounds.left - strip.clientWidth
+}
+watch([week, weekButtons], revealSelectedWeek, { flush: 'post' })
+onMounted(() => window.addEventListener('resize', revealSelectedWeek))
+onBeforeUnmount(() => window.removeEventListener('resize', revealSelectedWeek))
 onMounted(load)
 </script>
 
@@ -145,7 +158,7 @@ onMounted(load)
             <p class="scene-caption">Plantas y distribución ilustrativas según los promedios disponibles. Sin altura o diámetro no se dibuja la planta. La ausencia de flores o frutos en el modelo no confirma su ausencia si faltan datos.</p>
             <section class="timeline" aria-labelledby="timeline-title">
               <div class="timeline-heading"><div class="playback-controls"><h2 id="timeline-title" class="sr-only">Evolución temporal</h2><button :aria-label="playing ? 'Pausar evolución' : 'Reproducir evolución'" :aria-pressed="playing" @click="togglePlayback">{{ playing ? 'Ⅱ Pausar' : '▷ Reproducir evolución' }}</button><button aria-label="Reiniciar evolución" title="Volver a la primera semana y pausar" @click="restart">↺</button></div><div class="selected-date" aria-live="polite"><strong>Semana {{ week }}</strong><span>{{ dateLabel(currentWeek.date) }}</span></div></div>
-              <div class="week-buttons" role="group" aria-label="Seleccionar semana de observación"><button v-for="w in weeks" :key="w.week" :aria-pressed="week === w.week" :class="{ active: week === w.week }" @click="selectWeek(w.week)"><span class="week-dot"></span><strong>Sem. {{ w.week }}</strong><small>{{ dateLabel(w.date, true) }}</small></button></div>
+              <div ref="weekButtons" class="week-buttons" role="group" aria-label="Seleccionar semana de observación"><button v-for="w in weeks" :key="w.week" :aria-pressed="week === w.week" :class="{ active: week === w.week }" @click="selectWeek(w.week)"><span class="week-dot"></span><strong>Sem. {{ w.week }}</strong><small>{{ dateLabel(w.date, true) }}</small></button></div>
               <label class="sr-only" for="week-range">Semana seleccionada</label><input id="week-range" class="week-range" type="range" :min="weeks[0].week" :max="weeks.at(-1).week" step="1" :value="week" @input="selectWeek($event.target.value)" :aria-valuetext="'Semana ' + week + ', ' + dateLabel(currentWeek.date)" />
             </section>
           </section>

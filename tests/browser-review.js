@@ -14,13 +14,20 @@ async (page) => {
   await page.getByRole('heading', { name: 'Observa y compara', exact: true }).waitFor()
   check(await page.locator('.scene-failure').count() === 0, 'WebGL no inició')
 
-  for (const [width, height] of [[1366, 768], [1440, 900], [1024, 768]]) {
+  for (const [width, height] of [[1280, 600], [1100, 650], [1366, 650], [1366, 768], [1440, 900], [1024, 768]]) {
     await page.setViewportSize({ width, height })
     await page.evaluate(() => scrollTo(0, 0))
     const timeline = await page.locator('.timeline').boundingBox()
+    await page.locator('.sample-note').scrollIntoViewIfNeeded()
     const comparison = await page.locator('.sample-note').boundingBox()
+    const panel = await page.locator('.data-panel').boundingBox()
+    const legend = await page.locator('.chart-footer').boundingBox()
+    const graph = await page.locator('.temporal-chart svg').boundingBox()
     check(timeline.y + timeline.height <= height, 'Línea temporal fuera del escritorio ' + width)
-    check(comparison.y + comparison.height <= height, 'Datos fuera del escritorio ' + width)
+    check(comparison.y + comparison.height <= panel.y + panel.height, 'La muestra no es accesible dentro del panel ' + width)
+    check(graph.y + graph.height <= legend.y + 1, 'La gráfica invade la leyenda ' + width)
+    check(legend.y + legend.height <= comparison.y + 1, 'La leyenda invade la nota de muestra ' + width)
+    check(await page.locator('.data-panel').evaluate(el => ['auto', 'scroll'].includes(getComputedStyle(el).overflowY)), 'El panel no contiene el desbordamiento')
   }
   await page.setViewportSize({ width: 1366, height: 768 })
   await reset()

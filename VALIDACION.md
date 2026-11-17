@@ -1,5 +1,21 @@
 # Implementación y comprobaciones
 
+## Fase 2 de exploración y visualización
+
+| Etapa | Archivos | Implementación y comprobación |
+| --- | --- | --- |
+| Inspección | src/App.vue, src/components/FieldScene.vue | Entrada desde parcela, barras y botones; acercamiento al tratamiento; cambio directo y regreso a general. Zoom manual persistente y centro acotado; las semanas no fuerzan la cámara. |
+| Reproducción | src/modules/usePlayback.js, src/App.vue | Semanas discretas, pausa, reinicio, fin automático, selección manual y limpieza del temporizador. Ritmo de 2 s, o 3.2 s con movimiento reducido. |
+| Comparación | src/modules/experiment.js, src/components/TemporalChart.vue | Diferencias con control, denominador cero, máximo seleccionado y empates. Puntos con ficha de tratamiento, fecha, semana, variable, valor y unidad; flechas, tacto y selector nativo. |
+| Modelos | src/modules/cropModel.js, src/assets/style.css | Follaje curvado, ramificaciones, flores orientadas y frutos diferenciados. Recursos compartidos e instancias conservados. Interfaz compacta y ayudas legibles durante el acercamiento. |
+| Verificación | tests/comparison.test.js, tests/playback.test.js, tests/browser-phase2.js | Diez pruebas Node aprobadas; regresión de cámara y seis anchos aprobada. Recorrido completo observado en navegador: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, con parada final. |
+
+Las diferencias firmadas representan tratamiento menos control. Los porcentajes se calculan únicamente con referencia distinta de cero. El resumen considera los filtros activos y no ofrece explicaciones agronómicas, causalidad ni significancia estadística.
+
+Los dos JSON experimentales permanecen idénticos a main. Las comprobaciones de navegador cubren entrada y cambio de inspección, retorno a general, persistencia del zoom, pausa manual, reinicio, movimiento reducido y consulta de gráfico mediante mouse, teclado, tacto y selector. No se detectaron excepciones JavaScript.
+
+La configuración de Vercel desactiva la publicación automática de esta rama de trabajo. La fase se entrega mediante PR sin integrarla ni desplegarla. Tacto y tamaños móviles se probaron con emulación de Chromium; no se dispone de evidencia en dispositivos físicos. El aviso de tamaño del paquete de Three.js permanece documentado en la revisión anterior.
+
 ## Revisión del dashboard y navegación libre
 
 Cambios:

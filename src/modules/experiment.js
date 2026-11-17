@@ -44,3 +44,18 @@ export function validateData(data) {
 export function recordsAt(records, week, ids) {
   return records.filter(r => r.week === week && ids.includes(r.treatment))
 }
+
+export function differenceFromControl(record, control, variable) {
+  const absolute = record[variable] - control[variable]
+  return { absolute, percent: control[variable] === 0 ? null : absolute / control[variable] * 100 }
+}
+
+export function weeklyMaximum(records, variable = 'height') {
+  if (!records.length) return null
+  const value = Math.max(...records.map(record => record[variable]))
+  return { value, treatments: records.filter(record => record[variable] === value).map(record => record.treatment) }
+}
+
+export const formatSigned = value => new Intl.NumberFormat('es-PA', {
+  minimumFractionDigits: 2, maximumFractionDigits: 2, signDisplay: 'exceptZero',
+}).format(value)

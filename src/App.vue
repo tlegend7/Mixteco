@@ -1,7 +1,8 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { loadExperiment } from './services/data'
-import { treatments, metrics, format, dateLabel, recordsAt } from './modules/experiment'
+import { treatments, metrics, format, formatSigned, dateLabel, recordsAt, differenceFromControl, weeklyMaximum } from './modules/experiment'
+import { usePlayback } from './modules/usePlayback'
 import TemporalChart from './components/TemporalChart.vue'
 import FieldScene from './components/FieldScene.vue'
 
@@ -14,7 +15,10 @@ const metricId = ref('height')
 const view = ref('frontal')
 const cameraRequest = ref(0)
 const focused = ref('azul')
+const inspection = ref(false)
 const sceneRef = ref(null)
+const weeks = computed(() => experiment.value?.biometry.weeks ?? [])
+const { playing, selectWeek, restart, toggle: togglePlayback } = usePlayback(week, weeks)
 const metric = computed(() => metrics.find(m => m.id === metricId.value))
 const currentWeek = computed(() => experiment.value.biometry.weeks.find(w => w.week === week.value))
 const current = computed(() => recordsAt(experiment.value.biometry.records, week.value, selected.value))
@@ -23,6 +27,17 @@ const focusRecord = computed(() => allCurrent.value.find(r => r.treatment === fo
 const focusTreatment = computed(() => treatments.find(t => t.id === focused.value))
 const maximum = computed(() => Math.max(1, ...current.value.map(r => r[metricId.value])))
 const evaluated = computed(() => current.value.reduce((sum, r) => sum + r.plants, 0))
+const control = computed(() => allCurrent.value.find(record => record.treatment === 'control'))
+const differences = computed(() => current.value.filter(record => record.treatment !== 'control').map(record => ({
+  ...treatments.find(t => t.id === record.treatment),
+  ...differenceFromControl(record, control.value, metricId.value),
+})))
+const weeklySummary = computed(() => {
+  const maximum = weeklyMaximum(current.value)
+  if (!maximum) return ''
+  const names = maximum.treatments.map(id => treatments.find(t => t.id === id).short).join(' y ')
+  return (maximum.treatments.length > 1 ? 'Mayor altura compartida: ' : 'Mayor altura: ') + names + ', ' + format(maximum.value) + ' cm.'
+})
 
 async function load() {
   loading.value = true
@@ -33,11 +48,21 @@ async function load() {
 }
 function toggle(id) {
   selected.value = selected.value.includes(id) ? selected.value.filter(x => x !== id) : [...selected.value, id]
-  if (selected.value.length && !selected.value.includes(focused.value)) focused.value = selected.value[0]
+  if (selected.value.length && !selected.value.includes(focused.value)) {
+    focused.value = selected.value[0]
+    if (inspection.value) cameraRequest.value++
+  }
 }
 function inspect(id) {
   focused.value = id
   if (!selected.value.includes(id)) selected.value = [...selected.value, id]
+  inspection.value = true
+  if (view.value === 'libre') view.value = 'frontal'
+  cameraRequest.value++
+}
+function showGeneral() {
+  inspection.value = false
+  setView('frontal')
 }
 function setView(id) {
   view.value = id
@@ -87,19 +112,26 @@ onMounted(load)
                 <span>{{ t.short }}</span><span class="bar-track"><span :style="{ width: (current.find(r => r.treatment === t.id)[metricId] / maximum * 100) + '%', background: t.color }"></span></span><strong>{{ format(current.find(r => r.treatment === t.id)[metricId]) }}</strong>
               </button>
             </div>
+            <p v-if="weeklySummary" class="weekly-summary" :title="'Entre los tratamientos seleccionados, semana ' + week">{{ weeklySummary }} <span>Entre seleccionados.</span></p>
+            <details class="control-comparison">
+              <summary>Comparar con control <span>{{ format(control[metricId]) }} {{ metric.unit }}</span></summary>
+              <table v-if="differences.length"><caption class="sr-only">Diferencias respecto al grupo sin sarán en semana {{ week }}</caption><thead><tr><th>Tratamiento</th><th>Δ {{ metric.unit }}</th><th>Δ %</th></tr></thead><tbody><tr v-for="difference in differences" :key="difference.id"><th scope="row">{{ difference.short }}</th><td>{{ formatSigned(difference.absolute) }}</td><td>{{ difference.percent === null ? 'No definido' : formatSigned(difference.percent) + ' %' }}</td></tr></tbody></table>
+              <p v-else>Selecciona un tratamiento distinto del control para comparar.</p>
+              <p>Tratamiento − control, usando los registros originales aunque el control esté oculto. Porcentaje no definido si el control vale cero. Comparación descriptiva, sin inferencia de causalidad ni significancia estadística.</p>
+            </details>
             <div class="chart-heading"><h3>Evolución temporal</h3><span>{{ metric.unit }}</span></div>
-            <TemporalChart :records="experiment.biometry.records" :weeks="experiment.biometry.weeks" :selected="selected" :week="week" :metric="metric" @select-week="week = $event" />
+            <TemporalChart :records="experiment.biometry.records" :weeks="weeks" :selected="selected" :week="week" :metric="metric" @select-week="selectWeek" />
             <div class="sample-note"><span class="sample-symbol">n</span><p><strong>{{ evaluated }} plantas evaluadas</strong> en los tratamientos seleccionados esta semana.<br>Los valores representan promedios por tratamiento.</p></div>
           </section>
 
           <section class="scene-panel panel" aria-labelledby="scene-title">
-            <div class="section-heading"><div><p class="eyebrow">02 / EXPLORACIÓN ESPACIAL</p><h2 id="scene-title">El experimento, en perspectiva</h2></div><span class="small-tag green">Vista ilustrativa</span></div>
+            <div class="section-heading"><div><p class="eyebrow">02 / EXPLORACIÓN ESPACIAL</p><h2 id="scene-title">{{ inspection ? 'Explorar · ' + focusTreatment.label : 'El experimento, en perspectiva' }}</h2></div><button v-if="inspection" class="general-view" aria-label="Volver a vista general" @click="showGeneral">← Vista general</button><span v-else class="small-tag green">Vista general · Ilustrativa</span></div>
             <div class="scene-toolbar"><div class="view-tabs" role="group" aria-label="Perspectiva de cámara">
               <button v-for="v in [{ id: 'frontal', label: 'Frontal' }, { id: 'lateral', label: 'Lateral' }, { id: 'superior', label: 'Superior' }]" :key="v.id" :class="{ active: view === v.id }" :aria-pressed="view === v.id" @click="setView(v.id)">{{ v.label }}</button>
             </div><span class="camera-status" aria-live="polite">{{ view === 'superior' ? 'Superior · cubiertas ocultas' : view === 'libre' ? 'Exploración libre' : 'Cubiertas visibles' }}</span>
               <div class="camera-actions" role="group" aria-label="Acercamiento y encuadre"><button @click="sceneRef?.zoomBy(1.2)" aria-label="Acercar escenario" title="Acercar">+</button><button @click="sceneRef?.zoomBy(1 / 1.2)" aria-label="Alejar escenario" title="Alejar">−</button><button class="reset-camera" @click="setView('frontal')" aria-label="Restablecer encuadre">↺ <span>Restablecer</span></button></div>
             </div>
-            <FieldScene ref="sceneRef" :records="allCurrent" :selected="selected" :focused="focused" :view="view" :camera-request="cameraRequest" @inspect="inspect" @free-view="view = 'libre'" @reset="setView('frontal')" />
+            <FieldScene ref="sceneRef" :records="allCurrent" :selected="selected" :focused="focused" :inspection="inspection" :view="view" :camera-request="cameraRequest" @inspect="inspect" @free-view="view = 'libre'" @reset="setView('frontal')" />
             <div class="plot-selectors" aria-label="Examinar tratamiento">
               <button v-for="t in treatments" :key="t.id" :aria-pressed="focused === t.id" :class="{ focused: focused === t.id }" @click="inspect(t.id)"><span class="treatment-dot" :style="{ background: t.color }"></span>{{ t.label }}</button>
             </div>
@@ -110,9 +142,9 @@ onMounted(load)
             <div v-else class="empty">Selecciona una parcela para consultar su ficha.</div>
             <p class="scene-caption">Distribución esquemática. Las plantas representan promedios; su número y posición son ilustrativos. Sol y sombras sin modelado físico.</p>
             <section class="timeline" aria-labelledby="timeline-title">
-              <div class="timeline-heading"><div><p class="eyebrow">03 / SEGUIMIENTO TEMPORAL</p><h2 id="timeline-title">Una semana a la vez</h2></div><div class="selected-date" aria-live="polite"><strong>Semana {{ week }}</strong><span>{{ dateLabel(currentWeek.date) }}</span></div></div>
-              <div class="week-buttons" role="group" aria-label="Seleccionar semana de observación"><button v-for="w in experiment.biometry.weeks" :key="w.week" :aria-pressed="week === w.week" :class="{ active: week === w.week }" @click="week = w.week"><span class="week-dot"></span><strong>Sem. {{ w.week }}</strong><small>{{ dateLabel(w.date, true) }}</small></button></div>
-              <label class="sr-only" for="week-range">Semana seleccionada</label><input id="week-range" class="week-range" type="range" min="1" max="10" step="1" v-model.number="week" :aria-valuetext="'Semana ' + week + ', ' + dateLabel(currentWeek.date)" />
+              <div class="timeline-heading"><div class="playback-controls"><h2 id="timeline-title" class="sr-only">Evolución temporal</h2><button :aria-label="playing ? 'Pausar evolución' : 'Reproducir evolución'" :aria-pressed="playing" @click="togglePlayback">{{ playing ? 'Ⅱ Pausar' : '▷ Reproducir evolución' }}</button><button aria-label="Reiniciar evolución" title="Volver a la primera semana y pausar" @click="restart">↺</button></div><div class="selected-date" aria-live="polite"><strong>Semana {{ week }}</strong><span>{{ dateLabel(currentWeek.date) }}</span></div></div>
+              <div class="week-buttons" role="group" aria-label="Seleccionar semana de observación"><button v-for="w in weeks" :key="w.week" :aria-pressed="week === w.week" :class="{ active: week === w.week }" @click="selectWeek(w.week)"><span class="week-dot"></span><strong>Sem. {{ w.week }}</strong><small>{{ dateLabel(w.date, true) }}</small></button></div>
+              <label class="sr-only" for="week-range">Semana seleccionada</label><input id="week-range" class="week-range" type="range" min="1" max="10" step="1" :value="week" @input="selectWeek($event.target.value)" :aria-valuetext="'Semana ' + week + ', ' + dateLabel(currentWeek.date)" />
             </section>
           </section>
         </div>

@@ -37,4 +37,4 @@ La comparación visual usa una copia aislada de `c3a5f562` en `output/approved-h
 
 Capturas locales de las ocho resoluciones: `output/playwright/layout-<ancho>x<alto>.png`. Referencias aprobadas: `output/playwright/approved-c3a5f56-<ancho>.png` (1440, 1024 y 390). Para repetir la revisión, abrir el servidor local con Playwright CLI y ejecutar `run-code --filename tests/browser-layout.js`.
 
-No se probaron dispositivos físicos. La rama permanece local, sin push, merge a main ni publicación en Vercel, conforme a la instrucción de esta tarea.
+No se probaron dispositivos físicos.

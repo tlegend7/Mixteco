@@ -10,22 +10,22 @@ function setup(t, reduced = false) {
   globalThis.window = { matchMedia: () => motion }
   t.mock.timers.enable({ apis: ['setInterval'] })
   const scope = effectScope()
-  const week = ref(10), weeks = ref(Array.from({ length: 10 }, (_, i) => ({ week: i + 1 })))
+  const week = ref(13), weeks = ref(Array.from({ length: 13 }, (_, i) => ({ week: i + 1 })))
   const playback = scope.run(() => usePlayback(week, weeks))
   t.after(() => { scope.stop(); globalThis.window = previous })
   return { week, playback, scope, motion, listeners }
 }
-test('play traverses only the ten observed weeks and stops at the last', t => {
+test('play traverses only the thirteen observed weeks and stops at the last', t => {
   const { week, playback } = setup(t)
   playback.toggle()
   assert.equal(week.value, 1)
-  for (let next = 2; next <= 10; next++) {
+  for (let next = 2; next <= 13; next++) {
     t.mock.timers.tick(2000)
     assert.equal(week.value, next)
   }
   assert.equal(playback.playing.value, false)
   t.mock.timers.tick(20000)
-  assert.equal(week.value, 10)
+  assert.equal(week.value, 13)
 })
 test('pause, manual selection, restart and scope disposal stop the timer', t => {
   const { week, playback, scope, listeners } = setup(t)

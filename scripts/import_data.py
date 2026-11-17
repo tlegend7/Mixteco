@@ -1,82 +1,119 @@
-"""Convert the source XLSX without third-party packages or changing measurements."""
+"""Import measured samples from the audited, normalized XLSX using Python's stdlib."""
+from argparse import ArgumentParser
+from collections import defaultdict
+from datetime import datetime, timedelta
 from pathlib import Path
 from zipfile import ZipFile
 from xml.etree import ElementTree as ET
-from datetime import datetime
 import hashlib
 import json
+import math
 import re
-import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 NS = {"s": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
-SOURCE = ROOT / "Base de datos biometría chile jalapeño.xlsx"
-TREATMENTS = {"rojo": "rojo", "azul": "azul", "verde": "verde", "sin sarán": "control"}
-FIELDS = ["plants", "leaves", "flowers", "fruits", "height", "diameter"]
+TREATMENTS = {"Color Rojo": "rojo", "Color Azul": "azul", "Color Verde": "verde", "Sin Saran": "control"}
+FIELDS = {"leaves": "E", "height": "F", "diameter": "G", "flowers": "H", "fruits": "I"}
 
 
-def convert():
-    with ZipFile(SOURCE) as archive:
+def convert(source):
+    normalization = json.loads((ROOT / "docs/data-normalization.json").read_text(encoding="utf-8"))
+    digest = hashlib.sha256(source.read_bytes()).hexdigest()
+    if digest != normalization["normalizedSha256"]:
+        raise ValueError("El Excel no coincide con la copia normalizada auditada. Revise la procedencia antes de importar.")
+    observations, groups = [], defaultdict(list)
+    with ZipFile(source) as archive:
         strings = []
         if "xl/sharedStrings.xml" in archive.namelist():
             strings = ["".join(n.itertext()) for n in ET.fromstring(archive.read("xl/sharedStrings.xml"))]
+        # Progresión contains estimates; only Hoja1 contains the measured samples.
         sheet = ET.fromstring(archive.read("xl/worksheets/sheet1.xml"))
-        records, weeks = [], []
-        week, date = None, None
         for row in sheet.findall(".//s:sheetData/s:row", NS):
             cells = {}
             for cell in row.findall("s:c", NS):
                 if cell.find("s:f", NS) is not None:
-                    raise ValueError("Se requiere revisar las fórmulas antes de importar.")
+                    raise ValueError("Fórmula inesperada en Hoja1: " + cell.get("r"))
                 value = cell.find("s:v", NS)
-                if cell.get("t") == "inlineStr":
+                kind = cell.get("t")
+                if kind == "inlineStr":
                     text = "".join(cell.find("s:is", NS).itertext())
                 elif value is None:
                     continue
-                elif cell.get("t") == "s":
+                elif kind == "s":
                     text = strings[int(value.text)]
+                elif kind in (None, "n"):
+                    text = float(value.text)
                 else:
-                    text = value.text
+                    raise ValueError("Tipo de celda no válido: " + cell.get("r"))
                 cells[re.sub(r"\d", "", cell.get("r"))] = text
-            if "A" in cells:
-                match = re.search(r"SEM-(\d+)\s+(\d{1,2}/\d{1,2}/\d{4})", cells["A"])
-                if match:
-                    week = int(match[1])
-                    date = datetime.strptime(match[2], "%d/%m/%Y").date().isoformat()
-                    weeks.append({"week": week, "date": date})
-            if "C" not in cells or cells["C"].strip().lower() not in TREATMENTS:
+            sample = re.fullmatch(r"Muestra\s+(\d+)", str(cells.get("A", "")).strip())
+            if not sample:
                 continue
-            if week is None:
-                raise ValueError("Medición sin semana.")
-            values = [float(cells[col]) for col in ["B", "D", "E", "F", "G", "H"]]
-            if not all(v >= 0 for v in values) or not values[0].is_integer() or values[0] < 1:
-                raise ValueError("Valor no válido en la fila " + row.get("r"))
-            values[0] = int(values[0])
-            records.append({
-                "week": week, "date": date, "treatment": TREATMENTS[cells["C"].strip().lower()],
-                **dict(zip(FIELDS, values)),
-                "sourceRow": int(row.get("r")),
-            })
-    assert len(records) == 40 and len(weeks) == 10
-    assert len({(r["week"], r["treatment"]) for r in records}) == 40
-    assert [r["plants"] for r in records if r["treatment"] == "control"] == [8]*8 + [6, 5]
-    assert weeks[0]["date"] == "2026-08-20" and weeks[-1]["date"] == "2026-10-22"
+            week_match = re.fullmatch(r"Semana\s+(\d+)", str(cells.get("B", "")).strip())
+            if not week_match:
+                raise ValueError("Muestra sin semana: " + row.get("r"))
+            week = int(week_match[1])
+            date = datetime(1899, 12, 30) + timedelta(days=cells["C"])
+            if week < 1 or date != datetime(2026, 8, 20) + timedelta(weeks=week-1):
+                raise ValueError("Fecha incoherente en C" + row.get("r"))
+            treatment = TREATMENTS[cells["D"].strip()]
+            record = {"week": week, "date": date.date().isoformat(), "treatment": treatment,
+                      "sample": int(sample[1]), "sourceRow": int(row.get("r")), "missing": {}}
+            for field, column in FIELDS.items():
+                value = cells.get(column)
+                if value is None or isinstance(value, str) and not value.strip():
+                    record[field] = None
+                    record["missing"][field] = "blank"
+                elif isinstance(value, str) and value.strip().upper() == "N/A":
+                    record[field] = None
+                    record["missing"][field] = "N/A"
+                elif not isinstance(value, (int, float)) or not math.isfinite(value) or value < 0:
+                    raise ValueError("Medida no válida en " + column + row.get("r"))
+                else:
+                    if field in ("leaves", "flowers", "fruits") and not float(value).is_integer():
+                        raise ValueError("Conteo no entero en " + column + row.get("r"))
+                    record[field] = int(value) if float(value).is_integer() else value
+            observations.append(record)
+            groups[week, treatment].append(record)
+    weeks = sorted({r["week"] for r in observations})
+    if not weeks or weeks != list(range(1, len(weeks)+1)) or len(groups) != len(weeks)*4:
+        raise ValueError("Faltan semanas o tratamientos.")
+    records = []
+    for week in weeks:
+        for treatment in TREATMENTS.values():
+            samples = groups[week, treatment]
+            if sorted(r["sample"] for r in samples) != list(range(1, 9)):
+                raise ValueError("Muestras duplicadas o incompletas.")
+            record = {"week": week, "date": samples[0]["date"], "treatment": treatment,
+                      "plants": sum(any(r[f] is not None for f in FIELDS) for r in samples),
+                      "sampleSlots": len(samples), "sampleCounts": {},
+                      "sourceRows": [r["sourceRow"] for r in samples]}
+            for field in FIELDS:
+                values = [r[field] for r in samples if r[field] is not None]
+                record[field] = sum(values)/len(values) if values else None
+                record["sampleCounts"][field] = len(values)
+            records.append(record)
     return {
-        "source": SOURCE.name, "sheet": "Hoja1",
-        "sha256": hashlib.sha256(SOURCE.read_bytes()).hexdigest(),
-        "aggregation": "Promedios por tratamiento y fecha; no son datos individuales.",
+        "source": source.name, "sheet": "Hoja1", "sha256": digest,
+        "aggregation": "Muestras independientes por tratamiento y semana. Media de valores numéricos disponibles con n por variable; vacíos y N/A no son cero. Se excluyen las estimaciones de Progresión.",
         "units": {"height": "cm", "diameter": "mm", "leaves": "hojas/planta", "flowers": "flores/planta", "fruits": "frutos/planta"},
-        "weeks": weeks, "records": records,
+        "normalization": normalization,
+        "weeks": [{"week": w, "date": next(r["date"] for r in records if r["week"] == w)} for w in weeks],
+        "records": records, "observations": observations,
     }
 
 
 if __name__ == "__main__":
-    content = json.dumps(convert(), ensure_ascii=False, indent=2) + "\n"
+    parser = ArgumentParser(description=__doc__)
+    parser.add_argument("source", type=Path, help="Ruta al Excel normalizado auditado")
+    parser.add_argument("--check", action="store_true", help="Comparar sin sobrescribir el JSON")
+    args = parser.parse_args()
+    content = json.dumps(convert(args.source), ensure_ascii=False, indent=2, allow_nan=False) + "\n"
     target = ROOT / "public/data/biometria.json"
-    if "--check" in sys.argv:
-        assert target.read_text(encoding="utf-8") == content, "El JSON difiere del Excel."
-        print("40 registros comprobados contra el Excel. Valores y procedencia coinciden.")
+    if args.check:
+        if target.read_text(encoding="utf-8") != content:
+            raise ValueError("El JSON difiere del Excel.")
+        print("JSON comprobado contra el Excel normalizado; valores y procedencia coinciden.")
     else:
-        target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(content, encoding="utf-8")
-        print("Importados 40 registros y 10 semanas; fuente original intacta.")
+        print("Importacion completa; fuente original intacta.")

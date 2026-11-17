@@ -14,11 +14,13 @@ Requiere Node.js 22.12 o superior.
 
 ## Datos
 
-La fuente original es `Base de datos biometría chile jalapeño.xlsx`, hoja Hoja1. El archivo no se modifica. Hay **40 registros en total**, cuatro tratamientos por cada una de diez semanas (20 de agosto a 22 de octubre de 2026). Cada registro contiene promedios por tratamiento, cantidad evaluada y fila de origen.
+La fuente actual es `datos_new.xlsx`, hoja Hoja1, conservada intacta. Su copia `datos_new_normalizado.xlsx` corrige 33 fechas y convierte 6 medidas de texto a número, sin cambiar unidades. Hay **52 resúmenes de 13 semanas** (20 de agosto a 12 de noviembre de 2026), derivados de 416 espacios de muestra; 400 contienen alguna medición. `docs/data-normalization.json` registra las correcciones, huellas SHA-256 y dos valores pendientes de confirmar (G376: 20 mm; I464: 20 frutos), conservados en los cálculos.
 
-Los documentos de Word y libros de Excel se conservan solo localmente y están excluidos por `.gitignore`. El repositorio incluye los JSON necesarios para ejecutar, probar y compilar la aplicación. Para regenerarlos o compararlos con el Excel, coloca el archivo original en la raíz del proyecto.
+Los documentos de Word y libros de Excel se conservan solo localmente y están excluidos por `.gitignore`. El repositorio incluye los JSON necesarios para ejecutar, probar y compilar la aplicación.
 
-`python scripts/import_data.py` regenera `public/data/biometria.json` con la biblioteca estándar de Python 3. `python scripts/import_data.py --check` compara todos los valores exportados con el Excel y verifica su huella SHA-256. El importador rechaza fórmulas y datos incompletos para evitar copiar resultados obsoletos.
+`python scripts/import_data.py "ruta/datos_new_normalizado.xlsx"` regenera `public/data/biometria.json` con la biblioteca estándar de Python 3. Añadir `--check` compara el JSON sin sobrescribirlo. El importador exige la huella de la copia auditada y valida calendario, tratamientos y muestras; futuras fuentes requieren revisar su auditoría antes de importarlas. La copia de esta actualización está en `outputs/01a1e769-datos/datos_new_normalizado.xlsx`.
+
+El JSON conserva las observaciones individuales, filas Excel y motivos de ausencia (`blank` o `N/A`), además de las medias sin redondear y el tamaño de muestra de cada variable. Los ausentes son `null`, nunca ceros. Las medias excluyen solo los ausentes de la variable correspondiente: por ejemplo, el control de semana 12 tiene n=4 en altura y n=3 en diámetro. Las muestras de cada semana son independientes; no representan seguimiento de la misma planta. La hoja Progresión contiene tendencias estimadas y no se importa como medición. Las gráficas dejan huecos cuando faltan valores y la interfaz muestra «Sin datos».
 
 `public/data/ambiente.json` transcribe las cuatro lecturas del cuestionario de Guatemala: 32.4/33.0/33.2/38.0 °C y 72/73/72/59 % HR. Su fecha no está especificada, solo el intervalo 12:06–12:28 p. m. Se presentan por separado de la serie semanal.
 
@@ -27,7 +29,7 @@ El cuestionario es anterior al Excel: sus referencias a ausencia de flores, frut
 ## Interfaz
 
 - Selección múltiple de tratamientos, incluyendo estado sin selección.
-- Altura, diámetro, hojas, flores y frutos: comparación semanal y gráfica de diez semanas.
+- Altura, diámetro, hojas, flores y frutos: comparación semanal y gráfica de trece semanas.
 - Fichas con las cinco medidas y tamaño de muestra.
 - Línea temporal mediante botones accesibles y deslizador con teclado.
 - Escenario con seis plantas ilustrativas por área, sarán en tres colores y control descubierto.
@@ -43,10 +45,10 @@ El cuestionario es anterior al Excel: sus referencias a ausencia de flores, frut
 
 - Seleccionar una parcela, una barra o un botón de tratamiento abre **Explorar tratamiento**. El encuadre se acerca al área elegida y conserva rotación, zoom, desplazamiento y las tres perspectivas. **Vista general** recupera el conjunto, respetando los filtros activos. Se puede cambiar de tratamiento directamente.
 - El acercamiento modifica el encuadre ortográfico, manteniendo la cámara fuera de las estructuras. El centro de navegación se limita a 0.85 unidades ilustrativas alrededor del tratamiento durante la inspección. Las semanas y variables no provocan nuevos encuadres.
-- **Reproducir evolución** avanza por las observaciones, cada 2 segundos o 3.2 segundos con movimiento reducido. Continúa desde la semana actual; desde la última vuelve a la primera. Se detiene al llegar a la semana 10.
+- **Reproducir evolución** avanza por las observaciones, cada 2 segundos o 3.2 segundos con movimiento reducido. Continúa desde la semana actual; desde la última vuelve a la primera. Se detiene al llegar a la última semana disponible (13 en esta fuente).
 - **Pausar** conserva la semana actual. **Reiniciar** vuelve a la primera y pausa. Elegir una semana con botones, deslizador o puntos del gráfico también pausa. Cambiar la preferencia de movimiento reducido pausa la reproducción. Al cerrar la vista se libera el temporizador.
 - Los puntos de la gráfica muestran tratamiento, semana, fecha, variable, valor y unidad. Se consultan con mouse, tacto o teclado: Tab entra al gráfico, flechas cambian de punto, Enter/espacio seleccionan la semana y Escape cierra la ficha. **Consultar punto** ofrece un selector nativo, incluidos los puntos coincidentes.
-- **Comparar con control** calcula tratamiento menos control en unidades originales y como porcentaje del control, aunque este esté oculto por el filtro. Si el control es cero, muestra **No definido**. No se guardan valores calculados como nuevas mediciones.
+- **Comparar con control** calcula tratamiento menos control en unidades originales y como porcentaje del control, aunque este esté oculto por el filtro. Si el control es cero, muestra **No definido**; si falta alguna media, muestra **Sin datos**. No se guardan valores calculados como nuevas mediciones.
 - El resumen identifica la mayor altura entre los tratamientos seleccionados en la semana actual, incluyendo empates. Es descriptivo: no atribuye causalidad ni significancia estadística.
 
 Las hojas tienen una curvatura ligera, los frutos una silueta suavemente curvada y las flores mayor contraste para la inspección cercana. Se conservan geometrías compartidas, instancias y la escala de altura de los datos originales.
@@ -73,9 +75,9 @@ El montaje real descrito tiene cinco camellones y 300 plantas iniciales. La dist
 
 ## Verificar
 
-`npm test` comprueba integridad, filtrado, valores particulares y rechazo de registros inválidos. Ejecutar también `python scripts/import_data.py --check` y `npm run build`.
+`npm test` comprueba integridad, filtrado, valores particulares y rechazo de registros inválidos. Ejecutar también `python scripts/import_data.py "ruta/datos_new_normalizado.xlsx" --check` y `npm run build`.
 
-Las diez pruebas incluyen integridad, modelos compartidos, diferencias respecto al control, empates y reproducción con reloj simulado (pausa, final, limpieza y movimiento reducido). Para repetir las comprobaciones de navegador, iniciar el servidor local y ejecutar:
+Las doce pruebas incluyen integridad y recálculo de todas las medias, ausentes y ceros, denominadores por variable, modelos compartidos, diferencias respecto al control, empates y reproducción con reloj simulado (pausa, final, limpieza y movimiento reducido). Para repetir las comprobaciones de navegador, iniciar el servidor local y ejecutar:
 
 ```sh
 npx --yes --package @playwright/cli playwright-cli -s=mixteco open http://127.0.0.1:5173/
@@ -85,9 +87,9 @@ npx --yes --package @playwright/cli playwright-cli -s=mixteco run-code --filenam
 
 El guion comprueba zoom persistente y sus límites, rotación, desplazamiento, clic frente a arrastre, restauración, movimiento reducido, teclado, gestos táctiles emulados, filtros y seis anchos de pantalla. Las capturas de la revisión se conservan en `docs/screenshots/`.
 
-El segundo guion verifica inspección, cambio de tratamiento, regreso a general, reproducción completa de las semanas 1–10, pausa manual, diferencias respecto al control y fichas con mouse, teclado, tacto y selector. Las comprobaciones de tacto utilizan emulación de Chromium; no equivalen a probar dispositivos físicos.
+El segundo guion verifica inspección, cambio de tratamiento, regreso a general, reproducción completa de las semanas 1–13, pausa manual, diferencias respecto al control y fichas con mouse, teclado, tacto y selector. Las comprobaciones de tacto utilizan emulación de Chromium; no equivalen a probar dispositivos físicos.
 
-Para la revisión manual: recorrer semanas 1 y 10; seleccionar cada variable; desactivar y reactivar tratamientos; comprobar flores/frutos en semana 10; revisar las tres cámaras y selección por parcela; usar teclado y pantalla móvil. En el control revisar n=6 y n=5 en semanas 9 y 10.
+Para la revisión manual: recorrer semanas 1, 10, 12 y 13; seleccionar cada variable; desactivar y reactivar tratamientos; comprobar flores/frutos ausentes antes de semana 10 y ceros medidos en semana 12; revisar las tres cámaras y selección por parcela. Comprobar los tamaños de muestra por variable en control de semana 12 y verde de semana 13.
 
 ## Vercel
 

@@ -13,7 +13,7 @@ export const metrics = [
   { id: 'fruits', label: 'Frutos', unit: 'frutos/planta', description: 'Promedio de frutos' },
 ]
 
-export const format = (value, digits = 2) => new Intl.NumberFormat('es-PA', {
+export const format = (value, digits = 2) => !Number.isFinite(value) ? 'Sin datos' : new Intl.NumberFormat('es-PA', {
   minimumFractionDigits: digits, maximumFractionDigits: digits,
 }).format(value)
 
@@ -22,17 +22,22 @@ export function dateLabel(date, short = false) {
 }
 
 export function validateData(data) {
-  if (!Array.isArray(data?.records) || !Array.isArray(data?.weeks) || !data.weeks.length) throw new Error('El archivo de biometría no tiene una estructura válida.')
+  if (!Array.isArray(data?.records) || !Array.isArray(data?.observations) || !data.observations.length || !Array.isArray(data?.weeks) || !data.weeks.length) throw new Error('El archivo de biometría no tiene una estructura válida.')
   const dates = new Map()
   for (const w of data.weeks) {
-    if (!Number.isInteger(w.week) || dates.has(w.week) || !/^\d{4}-\d{2}-\d{2}$/.test(w.date) || Number.isNaN(Date.parse(w.date))) throw new Error('Las semanas o fechas no son válidas.')
+    if (w.week !== dates.size + 1 || dates.has(w.week) || !/^\d{4}-\d{2}-\d{2}$/.test(w.date) || Number.isNaN(Date.parse(w.date))) throw new Error('Las semanas o fechas no son válidas.')
     dates.set(w.week, w.date)
   }
   const keys = new Set()
   for (const r of data.records) {
     const key = r.week + ':' + r.treatment
     if (keys.has(key) || !treatments.some(t => t.id === r.treatment) || dates.get(r.week) !== r.date ||
-      !Number.isInteger(r.plants) || r.plants < 1 || metrics.some(m => typeof r[m.id] !== 'number' || !Number.isFinite(r[m.id]) || r[m.id] < 0)) {
+      !Number.isInteger(r.plants) || r.plants < 0 || !Number.isInteger(r.sampleSlots) || r.sampleSlots < r.plants ||
+      !Array.isArray(r.sourceRows) || r.sourceRows.length !== r.sampleSlots || metrics.some(m => {
+        const n = r.sampleCounts?.[m.id], value = r[m.id]
+        return !Number.isInteger(n) || n < 0 || n > r.plants ||
+          (n === 0 ? value !== null : !Number.isFinite(value) || value < 0)
+      })) {
       throw new Error('Hay observaciones duplicadas, incompletas o no válidas.')
     }
     keys.add(key)
@@ -46,16 +51,18 @@ export function recordsAt(records, week, ids) {
 }
 
 export function differenceFromControl(record, control, variable) {
+  if (!Number.isFinite(record?.[variable]) || !Number.isFinite(control?.[variable])) return { absolute: null, percent: null }
   const absolute = record[variable] - control[variable]
   return { absolute, percent: control[variable] === 0 ? null : absolute / control[variable] * 100 }
 }
 
 export function weeklyMaximum(records, variable = 'height') {
-  if (!records.length) return null
-  const value = Math.max(...records.map(record => record[variable]))
-  return { value, treatments: records.filter(record => record[variable] === value).map(record => record.treatment) }
+  const measured = records.filter(record => Number.isFinite(record[variable]))
+  if (!measured.length) return null
+  const value = Math.max(...measured.map(record => record[variable]))
+  return { value, treatments: measured.filter(record => record[variable] === value).map(record => record.treatment) }
 }
 
-export const formatSigned = value => new Intl.NumberFormat('es-PA', {
+export const formatSigned = value => !Number.isFinite(value) ? 'Sin datos' : new Intl.NumberFormat('es-PA', {
   minimumFractionDigits: 2, maximumFractionDigits: 2, signDisplay: 'exceptZero',
 }).format(value)

@@ -1,0 +1,334 @@
+{
+  "source": "datos_new.xlsx",
+  "sourceSha256": "754dbf8f5900f973c0c15dedc9af38e99aeca074ea29c9ee936da43c5e71f356",
+  "normalizedWorkbook": "datos_new_normalizado.xlsx",
+  "normalizedSha256": "eef6aba579718dfc75ed522a29c810ff7a5feb7d13b7eea0589955f5880a13c1",
+  "corrections": [
+    {
+      "cell": "C78",
+      "kind": "date",
+      "before": 46237.0,
+      "after": 46268.0,
+      "beforeDisplay": "2026-08-03",
+      "afterDisplay": "2026-09-03"
+    },
+    {
+      "cell": "C255",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C256",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C257",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C258",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C259",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C260",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C261",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C262",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C264",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C265",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C266",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C267",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C268",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C269",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C270",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C271",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C273",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C274",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C275",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C276",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C277",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C278",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C279",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C280",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C282",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C283",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C284",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C285",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C286",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C287",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C288",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "C289",
+      "kind": "date",
+      "before": 265083.0,
+      "after": 46303.0,
+      "beforeDisplay": "2625-10-08",
+      "afterDisplay": "2026-10-08"
+    },
+    {
+      "cell": "F324",
+      "kind": "numeric",
+      "before": "21 cm",
+      "after": 21.0,
+      "beforeDisplay": "21 cm",
+      "afterDisplay": 21.0
+    },
+    {
+      "cell": "G324",
+      "kind": "numeric",
+      "before": "4.00 mm",
+      "after": 4.0,
+      "beforeDisplay": "4.00 mm",
+      "afterDisplay": 4.0
+    },
+    {
+      "cell": "F325",
+      "kind": "numeric",
+      "before": "22cm",
+      "after": 22.0,
+      "beforeDisplay": "22cm",
+      "afterDisplay": 22.0
+    },
+    {
+      "cell": "G325",
+      "kind": "numeric",
+      "before": "4.32 mm",
+      "after": 4.32,
+      "beforeDisplay": "4.32 mm",
+      "afterDisplay": 4.32
+    },
+    {
+      "cell": "F334",
+      "kind": "numeric",
+      "before": "21 cm",
+      "after": 21.0,
+      "beforeDisplay": "21 cm",
+      "afterDisplay": 21.0
+    },
+    {
+      "cell": "G334",
+      "kind": "numeric",
+      "before": "4.00 mm ",
+      "after": 4.0,
+      "beforeDisplay": "4.00 mm ",
+      "afterDisplay": 4.0
+    }
+  ],
+  "pendingSourceConfirmation": [
+    {
+      "cell": "G376",
+      "variable": "diameter",
+      "value": 20,
+      "unit": "mm"
+    },
+    {
+      "cell": "I464",
+      "variable": "fruits",
+      "value": 20,
+      "unit": "count"
+    }
+  ]
+}

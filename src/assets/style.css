@@ -65,7 +65,7 @@ select { max-width: 60%; background: #f7f8f4; border: 1px solid var(--border); b
 .bar-row { display: flex; align-items: center; gap: 9px; width: 100%; background: transparent; border: 1px solid transparent; padding: 5px 3px; border-radius: 5px; text-align: left; }
 .bar-row:hover, .bar-row[aria-pressed=true] { background: #f4f7ee; border-color: #e4eadc; }
 .bar-row > span:first-child { width: 43px; font-size: 11px; color: #5e6c54; }
-.bar-row > strong { font-size: 12px; width: 41px; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+.bar-row > strong { font-size: 12px; min-width: 41px; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
 .bar-track { height: 8px; flex: 1; background: #edf1e6; border-radius: 3px; overflow: hidden; }
 .bar-track > span { display: block; height: 100%; border-radius: 3px; transition: width .25s ease; }
 .temporal-chart { position: relative; margin-top: 7px; flex: 1 0 auto; min-height: 140px; display: flex; flex-direction: column; justify-content: center; }
@@ -112,6 +112,7 @@ select { max-width: 60%; background: #f7f8f4; border: 1px solid var(--border); b
 .detail-metrics dt { font-size: 10px; color: #617552; margin-bottom: 2px; }
 .detail-metrics dd { display: flex; align-items: baseline; gap: 4px; margin: 0; font-size: 20px; font-family: 'Manrope', sans-serif; font-weight: 550; letter-spacing: -.5px; }
 .detail-metrics small { font-family: 'DM Sans', sans-serif; font-size: 9px; color: #647858; letter-spacing: 0; }
+.detail-metrics dd.missing-value { font-size: 12px; letter-spacing: 0; }
 .scene-caption { font-size: 9px; color: #67775b; line-height: 1.4; margin: 0; }
 .timeline { padding: 7px 0 0; border-top: 1px solid var(--border); }
 .timeline-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; gap: 10px; }
@@ -120,7 +121,7 @@ select { max-width: 60%; background: #f7f8f4; border: 1px solid var(--border); b
 .selected-date { display: flex; align-items: center; gap: 8px; }
 .selected-date strong { color: #3d6031; font-size: 11px; font-weight: 650; }
 .selected-date span { font-size: 10px; color: var(--muted); }
-.week-buttons { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; }
+.week-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(44px, 1fr)); gap: 3px; }
 .week-buttons button { background: #f7f9f3; border: 1px solid #e5ebdc; border-radius: 4px; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 4px 2px; color: #647655; min-height: 34px; }
 .week-dot { display: none; }
 .week-buttons strong { font-size: 10px; font-weight: 500; }

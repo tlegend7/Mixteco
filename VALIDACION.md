@@ -1,5 +1,14 @@
 # Implementación y comprobaciones
 
+## Actualización de datos — 17 de noviembre de 2026
+
+- Integrada la copia auditada de `datos_new.xlsx`: 13 semanas, 52 medias por tratamiento/semana, 416 espacios de muestra y 400 muestras con datos. Se preservan los originales; Word y Excel continúan excluidos de Git.
+- Cada media usa su propio n; `null` conserva ausentes y el JSON diferencia celdas vacías de N/A. Los ceros medidos se mantienen. El control de semana 12 tiene 4 alturas y 3 diámetros; verde de semana 13 tiene 7 alturas.
+- La importación con `--check` coincide con el Excel normalizado y verifica su SHA-256. El registro de 33 fechas y 6 conversiones de texto a número está en `docs/data-normalization.json`. Los valores de G376 (20 mm) e I464 (20 frutos) permanecen pendientes de confirmación y se señalan en la interfaz.
+- Aprobadas las 12 pruebas Node: integridad, recálculo de todas las medias, valores ausentes, ceros, distintos denominadores, comparaciones, modelos 3D y reproducción. Build de producción correcto; permanece el aviso de tamaño del paquete de Three.js.
+- Ambos guiones de navegador aprobados. Se observó la secuencia completa 1–13 con parada final, sin excepciones JavaScript. Verificadas cámara, selección, filtros, tooltips y tacto emulado; tamaños de 320, 390, 768, 1024, 1366 y 1440 px y escritorios de poca altura, sin solapamiento entre gráfica, leyenda y nota de muestra. Capturas locales en `output/playwright/`.
+- No se verificaron dispositivos físicos ni se confirmaron con la fuente los dos valores señalados. Las estimaciones de Progresión no se importan como mediciones. Las secciones siguientes documentan revisiones anteriores a esta actualización.
+
 ## Fase 2 de exploración y visualización
 
 | Etapa | Archivos | Implementación y comprobación |

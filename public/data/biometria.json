@@ -1,14 +1,348 @@
 {
-  "source": "Base de datos biometría chile jalapeño.xlsx",
+  "source": "datos_new_normalizado.xlsx",
   "sheet": "Hoja1",
-  "sha256": "14c11545b0b44b79e5f57f1b46115acc823a1f2ed84d537f69a75b8a4f1a443c",
-  "aggregation": "Promedios por tratamiento y fecha; no son datos individuales.",
+  "sha256": "eef6aba579718dfc75ed522a29c810ff7a5feb7d13b7eea0589955f5880a13c1",
+  "aggregation": "Muestras independientes por tratamiento y semana. Media de valores numéricos disponibles con n por variable; vacíos y N/A no son cero. Se excluyen las estimaciones de Progresión.",
   "units": {
     "height": "cm",
     "diameter": "mm",
     "leaves": "hojas/planta",
     "flowers": "flores/planta",
     "fruits": "frutos/planta"
+  },
+  "normalization": {
+    "source": "datos_new.xlsx",
+    "sourceSha256": "754dbf8f5900f973c0c15dedc9af38e99aeca074ea29c9ee936da43c5e71f356",
+    "normalizedWorkbook": "datos_new_normalizado.xlsx",
+    "normalizedSha256": "eef6aba579718dfc75ed522a29c810ff7a5feb7d13b7eea0589955f5880a13c1",
+    "corrections": [
+      {
+        "cell": "C78",
+        "kind": "date",
+        "before": 46237.0,
+        "after": 46268.0,
+        "beforeDisplay": "2026-08-03",
+        "afterDisplay": "2026-09-03"
+      },
+      {
+        "cell": "C255",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C256",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C257",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C258",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C259",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C260",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C261",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C262",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C264",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C265",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C266",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C267",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C268",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C269",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C270",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C271",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C273",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C274",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C275",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C276",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C277",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C278",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C279",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C280",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C282",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C283",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C284",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C285",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C286",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C287",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C288",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "C289",
+        "kind": "date",
+        "before": 265083.0,
+        "after": 46303.0,
+        "beforeDisplay": "2625-10-08",
+        "afterDisplay": "2026-10-08"
+      },
+      {
+        "cell": "F324",
+        "kind": "numeric",
+        "before": "21 cm",
+        "after": 21.0,
+        "beforeDisplay": "21 cm",
+        "afterDisplay": 21.0
+      },
+      {
+        "cell": "G324",
+        "kind": "numeric",
+        "before": "4.00 mm",
+        "after": 4.0,
+        "beforeDisplay": "4.00 mm",
+        "afterDisplay": 4.0
+      },
+      {
+        "cell": "F325",
+        "kind": "numeric",
+        "before": "22cm",
+        "after": 22.0,
+        "beforeDisplay": "22cm",
+        "afterDisplay": 22.0
+      },
+      {
+        "cell": "G325",
+        "kind": "numeric",
+        "before": "4.32 mm",
+        "after": 4.32,
+        "beforeDisplay": "4.32 mm",
+        "afterDisplay": 4.32
+      },
+      {
+        "cell": "F334",
+        "kind": "numeric",
+        "before": "21 cm",
+        "after": 21.0,
+        "beforeDisplay": "21 cm",
+        "afterDisplay": 21.0
+      },
+      {
+        "cell": "G334",
+        "kind": "numeric",
+        "before": "4.00 mm ",
+        "after": 4.0,
+        "beforeDisplay": "4.00 mm ",
+        "afterDisplay": 4.0
+      }
+    ],
+    "pendingSourceConfirmation": [
+      {
+        "cell": "G376",
+        "variable": "diameter",
+        "value": 20,
+        "unit": "mm"
+      },
+      {
+        "cell": "I464",
+        "variable": "fruits",
+        "value": 20,
+        "unit": "count"
+      }
+    ]
   },
   "weeks": [
     {
@@ -50,6 +384,18 @@
     {
       "week": 10,
       "date": "2026-10-22"
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29"
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05"
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12"
     }
   ],
   "records": [
@@ -58,480 +404,7929 @@
       "date": "2026-08-20",
       "treatment": "rojo",
       "plants": 8,
-      "leaves": 3.43,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 9.14,
-      "diameter": 2.29,
-      "sourceRow": 4
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "leaves": 3.375,
+      "height": 9.125,
+      "diameter": 2.25,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 1,
       "date": "2026-08-20",
       "treatment": "azul",
       "plants": 8,
-      "leaves": 3.25,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 8.75,
-      "diameter": 2.31,
-      "sourceRow": 5
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "leaves": 3.375,
+      "height": 8.375,
+      "diameter": 2.3275,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 1,
       "date": "2026-08-20",
       "treatment": "verde",
       "plants": 8,
-      "leaves": 3.85,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 8.92,
-      "diameter": 2.36,
-      "sourceRow": 6
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "leaves": 3.5,
+      "height": 9.5,
+      "diameter": 2.395,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 1,
       "date": "2026-08-20",
       "treatment": "control",
       "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37
+      ],
       "leaves": 3.75,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 8.51,
-      "diameter": 2.22,
-      "sourceRow": 7
+      "height": 8.4225,
+      "diameter": 2.22125,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 2,
       "date": "2026-08-27",
       "treatment": "rojo",
       "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
       "leaves": 4.25,
-      "flowers": 0.0,
-      "fruits": 0.0,
       "height": 11.0,
-      "diameter": 2.5,
-      "sourceRow": 9
+      "diameter": 2.4975,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 2,
       "date": "2026-08-27",
       "treatment": "azul",
       "plants": 8,
-      "leaves": 4.38,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 10.44,
-      "diameter": 2.36,
-      "sourceRow": 10
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "leaves": 4.375,
+      "height": 10.4375,
+      "diameter": 2.355,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 2,
       "date": "2026-08-27",
       "treatment": "verde",
       "plants": 8,
-      "leaves": 3.63,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 9.38,
-      "diameter": 2.47,
-      "sourceRow": 11
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64
+      ],
+      "leaves": 3.625,
+      "height": 11.0,
+      "diameter": 2.4375,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 2,
       "date": "2026-08-27",
       "treatment": "control",
       "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73
+      ],
       "leaves": 3.75,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 9.63,
-      "diameter": 2.41,
-      "sourceRow": 12
+      "height": 12.1875,
+      "diameter": 2.59125,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 3,
       "date": "2026-09-03",
       "treatment": "rojo",
       "plants": 8,
-      "leaves": 5.38,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 10.63,
-      "diameter": 2.63,
-      "sourceRow": 14
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82
+      ],
+      "leaves": 5.5,
+      "height": 12.8125,
+      "diameter": 2.77875,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 3,
       "date": "2026-09-03",
       "treatment": "azul",
       "plants": 8,
-      "leaves": 7.43,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 11.57,
-      "diameter": 2.45,
-      "sourceRow": 15
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91
+      ],
+      "leaves": 7.25,
+      "height": 11.8125,
+      "diameter": 2.47875,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 3,
       "date": "2026-09-03",
       "treatment": "verde",
       "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100
+      ],
       "leaves": 6.25,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 10.69,
-      "diameter": 2.41,
-      "sourceRow": 16
+      "height": 10.6875,
+      "diameter": 2.43375,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 3,
       "date": "2026-09-03",
       "treatment": "control",
       "plants": 8,
-      "leaves": 5.13,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 9.63,
-      "diameter": 2.47,
-      "sourceRow": 17
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109
+      ],
+      "leaves": 5.125,
+      "height": 9.875,
+      "diameter": 2.4725,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 4,
       "date": "2026-09-10",
       "treatment": "rojo",
       "plants": 8,
-      "leaves": 7.51,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 11.69,
-      "diameter": 2.66,
-      "sourceRow": 19
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118
+      ],
+      "leaves": 7.75,
+      "height": 11.9375,
+      "diameter": 2.5925,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 4,
       "date": "2026-09-10",
       "treatment": "azul",
       "plants": 8,
-      "leaves": 9.28,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 13.29,
-      "diameter": 2.73,
-      "sourceRow": 20
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127
+      ],
+      "leaves": 8.875,
+      "height": 13.5,
+      "diameter": 2.7675,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 4,
       "date": "2026-09-10",
       "treatment": "verde",
       "plants": 8,
-      "leaves": 8.44,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 11.97,
-      "diameter": 2.62,
-      "sourceRow": 21
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136
+      ],
+      "leaves": 8.375,
+      "height": 11.5,
+      "diameter": 2.6575,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 4,
       "date": "2026-09-10",
       "treatment": "control",
       "plants": 8,
-      "leaves": 7.19,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 10.76,
-      "diameter": 2.57,
-      "sourceRow": 22
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145
+      ],
+      "leaves": 5.5,
+      "height": 10.375,
+      "diameter": 2.6062499999999997,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 5,
       "date": "2026-09-17",
       "treatment": "rojo",
       "plants": 8,
-      "leaves": 9.63,
-      "flowers": 0.0,
-      "fruits": 0.0,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154
+      ],
+      "leaves": 9.625,
       "height": 12.75,
-      "diameter": 2.69,
-      "sourceRow": 24
+      "diameter": 2.685,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 5,
       "date": "2026-09-17",
       "treatment": "azul",
       "plants": 8,
-      "leaves": 11.13,
-      "flowers": 0.0,
-      "fruits": 0.0,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163
+      ],
+      "leaves": 11.125,
       "height": 15.0,
-      "diameter": 3.0,
-      "sourceRow": 25
+      "diameter": 2.995,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 5,
       "date": "2026-09-17",
       "treatment": "verde",
       "plants": 8,
-      "leaves": 10.63,
-      "flowers": 0.0,
-      "fruits": 0.0,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172
+      ],
+      "leaves": 10.625,
       "height": 13.25,
-      "diameter": 2.82,
-      "sourceRow": 26
+      "diameter": 2.82125,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 5,
       "date": "2026-09-17",
       "treatment": "control",
       "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181
+      ],
       "leaves": 9.25,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 11.88,
-      "diameter": 2.66,
-      "sourceRow": 27
+      "height": 11.875,
+      "diameter": 2.65625,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 6,
       "date": "2026-09-24",
       "treatment": "rojo",
       "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190
+      ],
       "leaves": 14.75,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 17.38,
-      "diameter": 3.35,
-      "sourceRow": 29
+      "height": 17.375,
+      "diameter": 3.3475,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 6,
       "date": "2026-09-24",
       "treatment": "azul",
       "plants": 8,
-      "leaves": 15.38,
-      "flowers": 0.0,
-      "fruits": 0.0,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199
+      ],
+      "leaves": 15.375,
       "height": 20.0,
-      "diameter": 3.43,
-      "sourceRow": 30
+      "diameter": 3.43125,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 6,
       "date": "2026-09-24",
       "treatment": "verde",
       "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208
+      ],
       "leaves": 12.5,
-      "flowers": 0.0,
-      "fruits": 0.0,
       "height": 17.5,
       "diameter": 3.31,
-      "sourceRow": 31
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 6,
       "date": "2026-09-24",
       "treatment": "control",
       "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217
+      ],
       "leaves": 10.75,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 14.63,
-      "diameter": 3.06,
-      "sourceRow": 32
+      "height": 14.625,
+      "diameter": 3.0575,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 7,
       "date": "2026-10-01",
       "treatment": "rojo",
       "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226
+      ],
       "leaves": 12.0,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 17.88,
-      "diameter": 3.53,
-      "sourceRow": 34
+      "height": 17.875,
+      "diameter": 3.53375,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 7,
       "date": "2026-10-01",
       "treatment": "azul",
       "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235
+      ],
       "leaves": 13.25,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 17.38,
-      "diameter": 3.36,
-      "sourceRow": 35
+      "height": 17.375,
+      "diameter": 3.3575,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 7,
       "date": "2026-10-01",
       "treatment": "verde",
       "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244
+      ],
       "leaves": 14.75,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 18.13,
-      "diameter": 3.52,
-      "sourceRow": 36
+      "height": 18.125,
+      "diameter": 3.52375,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 7,
       "date": "2026-10-01",
       "treatment": "control",
       "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253
+      ],
       "leaves": 13.0,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 14.63,
-      "diameter": 3.19,
-      "sourceRow": 37
+      "height": 14.625,
+      "diameter": 3.18875,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 8,
       "date": "2026-10-08",
       "treatment": "rojo",
       "plants": 8,
-      "leaves": 22.13,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 20.63,
-      "diameter": 4.11,
-      "sourceRow": 39
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        255,
+        256,
+        257,
+        258,
+        259,
+        260,
+        261,
+        262
+      ],
+      "leaves": 22.125,
+      "height": 20.625,
+      "diameter": 4.10625,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 8,
       "date": "2026-10-08",
       "treatment": "azul",
       "plants": 8,
-      "leaves": 27.13,
-      "flowers": 0.0,
-      "fruits": 0.0,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        264,
+        265,
+        266,
+        267,
+        268,
+        269,
+        270,
+        271
+      ],
+      "leaves": 27.125,
       "height": 26.5,
-      "diameter": 4.74,
-      "sourceRow": 40
+      "diameter": 4.736249999999999,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 8,
       "date": "2026-10-08",
       "treatment": "verde",
       "plants": 8,
-      "leaves": 18.88,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 21.63,
-      "diameter": 4.03,
-      "sourceRow": 41
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        273,
+        274,
+        275,
+        276,
+        277,
+        278,
+        279,
+        280
+      ],
+      "leaves": 18.875,
+      "height": 21.625,
+      "diameter": 4.029999999999999,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 8,
       "date": "2026-10-08",
       "treatment": "control",
       "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        282,
+        283,
+        284,
+        285,
+        286,
+        287,
+        288,
+        289
+      ],
       "leaves": 13.75,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 15.13,
-      "diameter": 3.38,
-      "sourceRow": 42
+      "height": 15.125,
+      "diameter": 3.3762499999999998,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 9,
       "date": "2026-10-15",
       "treatment": "rojo",
       "plants": 8,
-      "leaves": 25.63,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 22.13,
-      "diameter": 4.41,
-      "sourceRow": 44
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        291,
+        292,
+        293,
+        294,
+        295,
+        296,
+        297,
+        298
+      ],
+      "leaves": 25.625,
+      "height": 22.125,
+      "diameter": 4.40875,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 9,
       "date": "2026-10-15",
       "treatment": "azul",
       "plants": 8,
-      "leaves": 37.63,
-      "flowers": 0.0,
-      "fruits": 0.0,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        300,
+        301,
+        302,
+        303,
+        304,
+        305,
+        306,
+        307
+      ],
+      "leaves": 37.625,
       "height": 26.75,
-      "diameter": 5.25,
-      "sourceRow": 45
+      "diameter": 5.25375,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 9,
       "date": "2026-10-15",
       "treatment": "verde",
       "plants": 8,
-      "leaves": 28.38,
-      "flowers": 0.0,
-      "fruits": 0.0,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        309,
+        310,
+        311,
+        312,
+        313,
+        314,
+        315,
+        316
+      ],
+      "leaves": 28.375,
       "height": 21.0,
-      "diameter": 4.27,
-      "sourceRow": 46
+      "diameter": 4.27125,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 9,
       "date": "2026-10-15",
       "treatment": "control",
-      "plants": 6,
-      "leaves": 15.83,
-      "flowers": 0.0,
-      "fruits": 0.0,
-      "height": 19.33,
-      "diameter": 3.92,
-      "sourceRow": 47
+      "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 0,
+        "fruits": 0
+      },
+      "sourceRows": [
+        318,
+        319,
+        320,
+        321,
+        322,
+        323,
+        324,
+        325
+      ],
+      "leaves": 15.5,
+      "height": 19.875,
+      "diameter": 3.9825,
+      "flowers": null,
+      "fruits": null
     },
     {
       "week": 10,
       "date": "2026-10-22",
       "treatment": "rojo",
       "plants": 8,
-      "leaves": 19.86,
-      "flowers": 0.43,
-      "fruits": 1.29,
-      "height": 19.86,
-      "diameter": 4.14,
-      "sourceRow": 49
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 3,
+        "fruits": 6
+      },
+      "sourceRows": [
+        327,
+        328,
+        329,
+        330,
+        331,
+        332,
+        333,
+        334
+      ],
+      "leaves": 19.75,
+      "height": 20.0,
+      "diameter": 4.11875,
+      "flowers": 1.0,
+      "fruits": 1.5
     },
     {
       "week": 10,
       "date": "2026-10-22",
       "treatment": "azul",
       "plants": 8,
-      "leaves": 45.88,
-      "flowers": 0.88,
-      "fruits": 1.63,
-      "height": 27.88,
-      "diameter": 5.4,
-      "sourceRow": 50
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 4,
+        "fruits": 6
+      },
+      "sourceRows": [
+        336,
+        337,
+        338,
+        339,
+        340,
+        341,
+        342,
+        343
+      ],
+      "leaves": 45.875,
+      "height": 27.875,
+      "diameter": 5.4025,
+      "flowers": 1.75,
+      "fruits": 2.1666666666666665
     },
     {
       "week": 10,
       "date": "2026-10-22",
       "treatment": "verde",
       "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 1,
+        "fruits": 7
+      },
+      "sourceRows": [
+        345,
+        346,
+        347,
+        348,
+        349,
+        350,
+        351,
+        352
+      ],
       "leaves": 23.25,
-      "flowers": 0.13,
-      "fruits": 1.25,
-      "height": 20.13,
-      "diameter": 4.39,
-      "sourceRow": 51
+      "height": 20.125,
+      "diameter": 4.39125,
+      "flowers": 1.0,
+      "fruits": 1.4285714285714286
     },
     {
       "week": 10,
       "date": "2026-10-22",
       "treatment": "control",
       "plants": 5,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 5,
+        "height": 5,
+        "diameter": 5,
+        "flowers": 1,
+        "fruits": 5
+      },
+      "sourceRows": [
+        354,
+        355,
+        356,
+        357,
+        358,
+        359,
+        360,
+        361
+      ],
       "leaves": 15.0,
-      "flowers": 0.2,
-      "fruits": 1.4,
       "height": 18.4,
+      "diameter": 4.136,
+      "flowers": 1.0,
+      "fruits": 1.4
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "rojo",
+      "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 7,
+        "fruits": 8
+      },
+      "sourceRows": [
+        363,
+        364,
+        365,
+        366,
+        367,
+        368,
+        369,
+        370
+      ],
+      "leaves": 30.0,
+      "height": 22.5,
+      "diameter": 4.47125,
+      "flowers": 0.14285714285714285,
+      "fruits": 0.5
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "azul",
+      "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 8,
+        "fruits": 8
+      },
+      "sourceRows": [
+        372,
+        373,
+        374,
+        375,
+        376,
+        377,
+        378,
+        379
+      ],
+      "leaves": 47.5,
+      "height": 30.0375,
+      "diameter": 8.2675,
+      "flowers": 1.0,
+      "fruits": 0.875
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "verde",
+      "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 8,
+        "fruits": 8
+      },
+      "sourceRows": [
+        381,
+        382,
+        383,
+        384,
+        385,
+        386,
+        387,
+        388
+      ],
+      "leaves": 21.625,
+      "height": 21.125,
+      "diameter": 4.3975,
+      "flowers": 0.25,
+      "fruits": 0.625
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "control",
+      "plants": 4,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 4,
+        "height": 4,
+        "diameter": 4,
+        "flowers": 4,
+        "fruits": 4
+      },
+      "sourceRows": [
+        390,
+        391,
+        392,
+        393,
+        394,
+        395,
+        396,
+        397
+      ],
+      "leaves": 18.5,
+      "height": 21.0,
+      "diameter": 4.65,
+      "flowers": 0.25,
+      "fruits": 1.25
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "rojo",
+      "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 8,
+        "fruits": 8
+      },
+      "sourceRows": [
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407
+      ],
+      "leaves": 33.375,
+      "height": 24.625,
+      "diameter": 4.77625,
+      "flowers": 0.625,
+      "fruits": 0.75
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "azul",
+      "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 8,
+        "fruits": 8
+      },
+      "sourceRows": [
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        415,
+        416
+      ],
+      "leaves": 45.0,
+      "height": 29.625,
+      "diameter": 5.83625,
+      "flowers": 0.5,
+      "fruits": 2.5
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "verde",
+      "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 8,
+        "fruits": 8
+      },
+      "sourceRows": [
+        418,
+        419,
+        420,
+        421,
+        422,
+        423,
+        424,
+        425
+      ],
+      "leaves": 20.875,
+      "height": 21.0,
+      "diameter": 4.453749999999999,
+      "flowers": 0.0,
+      "fruits": 1.0
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "control",
+      "plants": 4,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 4,
+        "height": 4,
+        "diameter": 3,
+        "flowers": 4,
+        "fruits": 4
+      },
+      "sourceRows": [
+        427,
+        428,
+        429,
+        430,
+        431,
+        432,
+        433,
+        434
+      ],
+      "leaves": 19.75,
+      "height": 22.0,
+      "diameter": 4.1499999999999995,
+      "flowers": 0.5,
+      "fruits": 1.25
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "rojo",
+      "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 8,
+        "fruits": 8
+      },
+      "sourceRows": [
+        436,
+        437,
+        438,
+        439,
+        440,
+        441,
+        442,
+        443
+      ],
+      "leaves": 28.25,
+      "height": 25.375,
+      "diameter": 4.5975,
+      "flowers": 0.5,
+      "fruits": 1.375
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "azul",
+      "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 8,
+        "diameter": 8,
+        "flowers": 8,
+        "fruits": 8
+      },
+      "sourceRows": [
+        445,
+        446,
+        447,
+        448,
+        449,
+        450,
+        451,
+        452
+      ],
+      "leaves": 61.0,
+      "height": 31.375,
+      "diameter": 5.84875,
+      "flowers": 1.0,
+      "fruits": 1.25
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "verde",
+      "plants": 8,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 8,
+        "height": 7,
+        "diameter": 8,
+        "flowers": 8,
+        "fruits": 8
+      },
+      "sourceRows": [
+        454,
+        455,
+        456,
+        457,
+        458,
+        459,
+        460,
+        461
+      ],
+      "leaves": 32.625,
+      "height": 22.571428571428573,
+      "diameter": 4.01625,
+      "flowers": 0.25,
+      "fruits": 1.25
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "control",
+      "plants": 3,
+      "sampleSlots": 8,
+      "sampleCounts": {
+        "leaves": 3,
+        "height": 3,
+        "diameter": 3,
+        "flowers": 3,
+        "fruits": 3
+      },
+      "sourceRows": [
+        463,
+        464,
+        465,
+        466,
+        467,
+        468,
+        469,
+        470
+      ],
+      "leaves": 25.666666666666668,
+      "height": 21.0,
+      "diameter": 4.13,
+      "flowers": 0.3333333333333333,
+      "fruits": 7.666666666666667
+    }
+  ],
+  "observations": [
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "rojo",
+      "sample": 1,
+      "sourceRow": 3,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 9,
+      "diameter": 2.39,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "rojo",
+      "sample": 2,
+      "sourceRow": 4,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 9.5,
+      "diameter": 2.13,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "rojo",
+      "sample": 3,
+      "sourceRow": 5,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 7,
+      "diameter": 2.34,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "rojo",
+      "sample": 4,
+      "sourceRow": 6,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 8.5,
+      "diameter": 2.32,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "rojo",
+      "sample": 5,
+      "sourceRow": 7,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 10,
+      "diameter": 1.82,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "rojo",
+      "sample": 6,
+      "sourceRow": 8,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 10,
+      "diameter": 2.49,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "rojo",
+      "sample": 7,
+      "sourceRow": 9,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 10,
+      "diameter": 2.51,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "rojo",
+      "sample": 8,
+      "sourceRow": 10,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 9,
+      "diameter": 2,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "azul",
+      "sample": 1,
+      "sourceRow": 12,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 11,
+      "diameter": 2.36,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "azul",
+      "sample": 2,
+      "sourceRow": 13,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 6,
+      "diameter": 2.12,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "azul",
+      "sample": 3,
+      "sourceRow": 14,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 8,
+      "diameter": 2.3,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "azul",
+      "sample": 4,
+      "sourceRow": 15,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 10,
+      "diameter": 2.15,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "azul",
+      "sample": 5,
+      "sourceRow": 16,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 8,
+      "diameter": 2.46,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "azul",
+      "sample": 6,
+      "sourceRow": 17,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 7,
+      "diameter": 2.7,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "azul",
+      "sample": 7,
+      "sourceRow": 18,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 10,
+      "diameter": 2.21,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "azul",
+      "sample": 8,
+      "sourceRow": 19,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 7,
+      "diameter": 2.32,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "verde",
+      "sample": 1,
+      "sourceRow": 21,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 12,
+      "diameter": 2.42,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "verde",
+      "sample": 2,
+      "sourceRow": 22,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 8,
+      "diameter": 2.2,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "verde",
+      "sample": 3,
+      "sourceRow": 23,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 10,
+      "diameter": 2.36,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "verde",
+      "sample": 4,
+      "sourceRow": 24,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 9.5,
+      "diameter": 2.25,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "verde",
+      "sample": 5,
+      "sourceRow": 25,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 8.5,
+      "diameter": 2.55,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "verde",
+      "sample": 6,
+      "sourceRow": 26,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 8,
+      "diameter": 2.72,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "verde",
+      "sample": 7,
+      "sourceRow": 27,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 11.5,
+      "diameter": 2.3,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "verde",
+      "sample": 8,
+      "sourceRow": 28,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 8.5,
+      "diameter": 2.36,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "control",
+      "sample": 1,
+      "sourceRow": 30,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 8.5,
+      "diameter": 2.72,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "control",
+      "sample": 2,
+      "sourceRow": 31,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 8.9,
+      "diameter": 2.1,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "control",
+      "sample": 3,
+      "sourceRow": 32,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 7.9,
+      "diameter": 2.07,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "control",
+      "sample": 4,
+      "sourceRow": 33,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 6.5,
+      "diameter": 2.65,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "control",
+      "sample": 5,
+      "sourceRow": 34,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 7.5,
+      "diameter": 2.4,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "control",
+      "sample": 6,
+      "sourceRow": 35,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 7.5,
+      "diameter": 1.92,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "control",
+      "sample": 7,
+      "sourceRow": 36,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 10.5,
+      "diameter": 1.99,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 1,
+      "date": "2026-08-20",
+      "treatment": "control",
+      "sample": 8,
+      "sourceRow": 37,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 10.08,
+      "diameter": 1.92,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "rojo",
+      "sample": 1,
+      "sourceRow": 39,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 12,
+      "diameter": 2.83,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "rojo",
+      "sample": 2,
+      "sourceRow": 40,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 11,
+      "diameter": 2.82,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "rojo",
+      "sample": 3,
+      "sourceRow": 41,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 12,
+      "diameter": 2.37,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "rojo",
+      "sample": 4,
+      "sourceRow": 42,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 11,
+      "diameter": 2.41,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "rojo",
+      "sample": 5,
+      "sourceRow": 43,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 10,
+      "diameter": 2.24,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "rojo",
+      "sample": 6,
+      "sourceRow": 44,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 12,
+      "diameter": 3.01,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "rojo",
+      "sample": 7,
+      "sourceRow": 45,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 10,
+      "diameter": 2.05,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "rojo",
+      "sample": 8,
+      "sourceRow": 46,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 10,
+      "diameter": 2.25,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "azul",
+      "sample": 1,
+      "sourceRow": 48,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 10,
+      "diameter": 2.35,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "azul",
+      "sample": 2,
+      "sourceRow": 49,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 9,
+      "diameter": 2.24,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "azul",
+      "sample": 3,
+      "sourceRow": 50,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 11,
+      "diameter": 2.38,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "azul",
+      "sample": 4,
+      "sourceRow": 51,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 11,
+      "diameter": 2.61,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "azul",
+      "sample": 5,
+      "sourceRow": 52,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 10,
+      "diameter": 2.37,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "azul",
+      "sample": 6,
+      "sourceRow": 53,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 9,
+      "diameter": 2,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "azul",
+      "sample": 7,
+      "sourceRow": 54,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 12.5,
+      "diameter": 2.55,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "azul",
+      "sample": 8,
+      "sourceRow": 55,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 11,
+      "diameter": 2.34,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "verde",
+      "sample": 1,
+      "sourceRow": 57,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 10,
+      "diameter": 2.37,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "verde",
+      "sample": 2,
+      "sourceRow": 58,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 10,
+      "diameter": 2.24,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "verde",
+      "sample": 3,
+      "sourceRow": 59,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 11,
+      "diameter": 2.3,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "verde",
+      "sample": 4,
+      "sourceRow": 60,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 11,
+      "diameter": 2.5,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "verde",
+      "sample": 5,
+      "sourceRow": 61,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 11,
+      "diameter": 2.42,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "verde",
+      "sample": 6,
+      "sourceRow": 62,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 10,
+      "diameter": 2.63,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "verde",
+      "sample": 7,
+      "sourceRow": 63,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 13,
+      "diameter": 2.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "verde",
+      "sample": 8,
+      "sourceRow": 64,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 2,
+      "height": 12,
+      "diameter": 2.44,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "control",
+      "sample": 1,
+      "sourceRow": 66,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 11.5,
+      "diameter": 2.47,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "control",
+      "sample": 2,
+      "sourceRow": 67,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 12,
+      "diameter": 2.35,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "control",
+      "sample": 3,
+      "sourceRow": 68,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 12,
+      "diameter": 2.54,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "control",
+      "sample": 4,
+      "sourceRow": 69,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 12.5,
+      "diameter": 2.86,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "control",
+      "sample": 5,
+      "sourceRow": 70,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 12,
+      "diameter": 2.62,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "control",
+      "sample": 6,
+      "sourceRow": 71,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 11,
+      "diameter": 2.73,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "control",
+      "sample": 7,
+      "sourceRow": 72,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 13.5,
+      "diameter": 2.62,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 2,
+      "date": "2026-08-27",
+      "treatment": "control",
+      "sample": 8,
+      "sourceRow": 73,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 13,
+      "diameter": 2.54,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "rojo",
+      "sample": 1,
+      "sourceRow": 75,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 3,
+      "height": 12,
+      "diameter": 2.95,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "rojo",
+      "sample": 2,
+      "sourceRow": 76,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 6,
+      "height": 12.5,
+      "diameter": 2.63,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "rojo",
+      "sample": 3,
+      "sourceRow": 77,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 13,
+      "diameter": 2.88,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "rojo",
+      "sample": 4,
+      "sourceRow": 78,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 13.5,
+      "diameter": 2.89,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "rojo",
+      "sample": 5,
+      "sourceRow": 79,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 13,
+      "diameter": 2.77,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "rojo",
+      "sample": 6,
+      "sourceRow": 80,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 6,
+      "height": 12,
+      "diameter": 2.82,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "rojo",
+      "sample": 7,
+      "sourceRow": 81,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 13.5,
+      "diameter": 2.69,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "rojo",
+      "sample": 8,
+      "sourceRow": 82,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 13,
+      "diameter": 2.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "azul",
+      "sample": 1,
+      "sourceRow": 84,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 10,
+      "diameter": 2.51,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "azul",
+      "sample": 2,
+      "sourceRow": 85,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 13,
+      "diameter": 2.33,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "azul",
+      "sample": 3,
+      "sourceRow": 86,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 12,
+      "diameter": 2.4,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "azul",
+      "sample": 4,
+      "sourceRow": 87,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 6,
+      "height": 13,
+      "diameter": 2.3,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "azul",
+      "sample": 5,
+      "sourceRow": 88,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 12,
+      "diameter": 2.53,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "azul",
+      "sample": 6,
+      "sourceRow": 89,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 11,
+      "diameter": 2.3,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "azul",
+      "sample": 7,
+      "sourceRow": 90,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 11.5,
+      "diameter": 2.81,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "azul",
+      "sample": 8,
+      "sourceRow": 91,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 6,
+      "height": 12,
+      "diameter": 2.65,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "verde",
+      "sample": 1,
+      "sourceRow": 93,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 14,
+      "diameter": 2.3,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "verde",
+      "sample": 2,
+      "sourceRow": 94,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 6,
+      "height": 12,
+      "diameter": 2.31,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "verde",
+      "sample": 3,
+      "sourceRow": 95,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 10,
+      "diameter": 2.31,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "verde",
+      "sample": 4,
+      "sourceRow": 96,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 9.5,
+      "diameter": 2.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "verde",
+      "sample": 5,
+      "sourceRow": 97,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 10,
+      "diameter": 2.48,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "verde",
+      "sample": 6,
+      "sourceRow": 98,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 9,
+      "diameter": 2.55,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "verde",
+      "sample": 7,
+      "sourceRow": 99,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 11,
+      "diameter": 2.55,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "verde",
+      "sample": 8,
+      "sourceRow": 100,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 6,
+      "height": 10,
+      "diameter": 2.37,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "control",
+      "sample": 1,
+      "sourceRow": 102,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 9,
+      "diameter": 2.79,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "control",
+      "sample": 2,
+      "sourceRow": 103,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 9,
+      "diameter": 2.4,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "control",
+      "sample": 3,
+      "sourceRow": 104,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 10,
+      "diameter": 2.36,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "control",
+      "sample": 4,
+      "sourceRow": 105,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 10,
+      "diameter": 2.69,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "control",
+      "sample": 5,
+      "sourceRow": 106,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 6,
+      "height": 10,
+      "diameter": 2.2,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "control",
+      "sample": 6,
+      "sourceRow": 107,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 10,
+      "diameter": 2.7,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "control",
+      "sample": 7,
+      "sourceRow": 108,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 11,
+      "diameter": 2.39,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 3,
+      "date": "2026-09-03",
+      "treatment": "control",
+      "sample": 8,
+      "sourceRow": 109,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 10,
+      "diameter": 2.25,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "rojo",
+      "sample": 1,
+      "sourceRow": 111,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 10,
+      "diameter": 2.88,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "rojo",
+      "sample": 2,
+      "sourceRow": 112,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 13,
+      "diameter": 2.83,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "rojo",
+      "sample": 3,
+      "sourceRow": 113,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 12,
+      "diameter": 2.65,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "rojo",
+      "sample": 4,
+      "sourceRow": 114,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 12,
+      "diameter": 2.59,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "rojo",
+      "sample": 5,
+      "sourceRow": 115,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 12,
+      "diameter": 2.26,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "rojo",
+      "sample": 6,
+      "sourceRow": 116,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 13,
+      "diameter": 2.68,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "rojo",
+      "sample": 7,
+      "sourceRow": 117,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 12.5,
+      "diameter": 2.59,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "rojo",
+      "sample": 8,
+      "sourceRow": 118,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 11,
+      "diameter": 2.26,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "azul",
+      "sample": 1,
+      "sourceRow": 120,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 11,
+      "diameter": 2.69,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "azul",
+      "sample": 2,
+      "sourceRow": 121,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 14,
+      "diameter": 2.74,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "azul",
+      "sample": 3,
+      "sourceRow": 122,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 12,
+      "diameter": 2.62,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "azul",
+      "sample": 4,
+      "sourceRow": 123,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 14,
+      "diameter": 2.69,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "azul",
+      "sample": 5,
+      "sourceRow": 124,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 13,
+      "diameter": 2.71,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "azul",
+      "sample": 6,
+      "sourceRow": 125,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 14,
+      "diameter": 2.64,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "azul",
+      "sample": 7,
+      "sourceRow": 126,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 11,
+      "height": 14,
+      "diameter": 3.03,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "azul",
+      "sample": 8,
+      "sourceRow": 127,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 16,
+      "diameter": 3.02,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "verde",
+      "sample": 1,
+      "sourceRow": 129,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 14,
+      "diameter": 2.93,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "verde",
+      "sample": 2,
+      "sourceRow": 130,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 12,
+      "diameter": 2.55,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "verde",
+      "sample": 3,
+      "sourceRow": 131,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 12,
+      "diameter": 2.56,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "verde",
+      "sample": 4,
+      "sourceRow": 132,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 11,
+      "diameter": 2.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "verde",
+      "sample": 5,
+      "sourceRow": 133,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 10,
+      "diameter": 2.2,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "verde",
+      "sample": 6,
+      "sourceRow": 134,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 11,
+      "diameter": 2.46,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "verde",
+      "sample": 7,
+      "sourceRow": 135,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 11,
+      "diameter": 2.87,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "verde",
+      "sample": 8,
+      "sourceRow": 136,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 11,
+      "diameter": 3.09,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "control",
+      "sample": 1,
+      "sourceRow": 138,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 11,
+      "diameter": 2.76,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "control",
+      "sample": 2,
+      "sourceRow": 139,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 10,
+      "diameter": 2.26,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "control",
+      "sample": 3,
+      "sourceRow": 140,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 12,
+      "diameter": 2.76,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "control",
+      "sample": 4,
+      "sourceRow": 141,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 9,
+      "diameter": 2.27,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "control",
+      "sample": 5,
+      "sourceRow": 142,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 10,
+      "diameter": 2.42,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "control",
+      "sample": 6,
+      "sourceRow": 143,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 10,
+      "diameter": 2.88,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "control",
+      "sample": 7,
+      "sourceRow": 144,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 4,
+      "height": 10,
+      "diameter": 2.82,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 4,
+      "date": "2026-09-10",
+      "treatment": "control",
+      "sample": 8,
+      "sourceRow": 145,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 6,
+      "height": 11,
+      "diameter": 2.68,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "rojo",
+      "sample": 1,
+      "sourceRow": 147,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 13,
+      "height": 14,
+      "diameter": 3.23,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "rojo",
+      "sample": 2,
+      "sourceRow": 148,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 6,
+      "height": 12,
+      "diameter": 2.41,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "rojo",
+      "sample": 3,
+      "sourceRow": 149,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 10,
+      "diameter": 2.93,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "rojo",
+      "sample": 4,
+      "sourceRow": 150,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 12,
+      "diameter": 2.4,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "rojo",
+      "sample": 5,
+      "sourceRow": 151,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 13,
+      "diameter": 2.5,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "rojo",
+      "sample": 6,
+      "sourceRow": 152,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 12,
+      "height": 14,
+      "diameter": 2.64,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "rojo",
+      "sample": 7,
+      "sourceRow": 153,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 13,
+      "diameter": 2.57,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "rojo",
+      "sample": 8,
+      "sourceRow": 154,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 14,
+      "diameter": 2.8,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "azul",
+      "sample": 1,
+      "sourceRow": 156,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 12,
+      "height": 17,
+      "diameter": 2.9,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "azul",
+      "sample": 2,
+      "sourceRow": 157,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 12,
+      "height": 15,
+      "diameter": 3.06,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "azul",
+      "sample": 3,
+      "sourceRow": 158,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 14,
+      "diameter": 2.64,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "azul",
+      "sample": 4,
+      "sourceRow": 159,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 12,
+      "diameter": 2.78,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "azul",
+      "sample": 5,
+      "sourceRow": 160,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 11,
+      "height": 14,
+      "diameter": 2.9,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "azul",
+      "sample": 6,
+      "sourceRow": 161,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 14,
+      "diameter": 3.5,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "azul",
+      "sample": 7,
+      "sourceRow": 162,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 14,
+      "height": 19,
+      "diameter": 3.18,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "azul",
+      "sample": 8,
+      "sourceRow": 163,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 15,
+      "height": 15,
+      "diameter": 3,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "verde",
+      "sample": 1,
+      "sourceRow": 165,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 11,
+      "height": 15,
+      "diameter": 2.8,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "verde",
+      "sample": 2,
+      "sourceRow": 166,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 11,
+      "height": 13,
+      "diameter": 2.5,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "verde",
+      "sample": 3,
+      "sourceRow": 167,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 14,
+      "diameter": 2.74,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "verde",
+      "sample": 4,
+      "sourceRow": 168,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 14,
+      "height": 13,
+      "diameter": 2.67,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "verde",
+      "sample": 5,
+      "sourceRow": 169,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 6,
+      "height": 12,
+      "diameter": 2.82,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "verde",
+      "sample": 6,
+      "sourceRow": 170,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 11,
+      "diameter": 2.35,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "verde",
+      "sample": 7,
+      "sourceRow": 171,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 17,
+      "height": 13,
+      "diameter": 3.46,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "verde",
+      "sample": 8,
+      "sourceRow": 172,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 15,
+      "diameter": 3.23,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "control",
+      "sample": 1,
+      "sourceRow": 174,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 12,
+      "diameter": 2.8,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "control",
+      "sample": 2,
+      "sourceRow": 175,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 9,
+      "diameter": 2.2,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "control",
+      "sample": 3,
+      "sourceRow": 176,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 12,
+      "diameter": 2.73,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "control",
+      "sample": 4,
+      "sourceRow": 177,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 12,
+      "diameter": 2.5,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "control",
+      "sample": 5,
+      "sourceRow": 178,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 14,
+      "height": 15,
+      "diameter": 3.13,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "control",
+      "sample": 6,
+      "sourceRow": 179,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 13,
+      "diameter": 2.8,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "control",
+      "sample": 7,
+      "sourceRow": 180,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 7,
+      "height": 11,
+      "diameter": 2.49,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 5,
+      "date": "2026-09-17",
+      "treatment": "control",
+      "sample": 8,
+      "sourceRow": 181,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 6,
+      "height": 11,
+      "diameter": 2.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "rojo",
+      "sample": 1,
+      "sourceRow": 183,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 19,
+      "height": 19,
+      "diameter": 4,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "rojo",
+      "sample": 2,
+      "sourceRow": 184,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 14,
+      "height": 17,
+      "diameter": 3.3,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "rojo",
+      "sample": 3,
+      "sourceRow": 185,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 17,
+      "height": 16,
+      "diameter": 3.14,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "rojo",
+      "sample": 4,
+      "sourceRow": 186,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 17,
+      "height": 18,
+      "diameter": 3.38,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "rojo",
+      "sample": 5,
+      "sourceRow": 187,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 11,
+      "height": 17,
+      "diameter": 4.12,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "rojo",
+      "sample": 6,
+      "sourceRow": 188,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 14,
+      "height": 17,
+      "diameter": 2.7,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "rojo",
+      "sample": 7,
+      "sourceRow": 189,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 16,
+      "height": 20,
+      "diameter": 3.24,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "rojo",
+      "sample": 8,
+      "sourceRow": 190,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 15,
+      "diameter": 2.9,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "azul",
+      "sample": 1,
+      "sourceRow": 192,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 15,
+      "height": 24,
+      "diameter": 4.2,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "azul",
+      "sample": 2,
+      "sourceRow": 193,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 15,
+      "height": 19,
+      "diameter": 3.85,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "azul",
+      "sample": 3,
+      "sourceRow": 194,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 21,
+      "height": 24,
+      "diameter": 3.97,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "azul",
+      "sample": 4,
+      "sourceRow": 195,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 13,
+      "height": 15,
+      "diameter": 3,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "azul",
+      "sample": 5,
+      "sourceRow": 196,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 13,
+      "height": 21,
+      "diameter": 2.8,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "azul",
+      "sample": 6,
+      "sourceRow": 197,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 17,
+      "diameter": 2.9,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "azul",
+      "sample": 7,
+      "sourceRow": 198,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 12,
+      "height": 17,
+      "diameter": 2.95,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "azul",
+      "sample": 8,
+      "sourceRow": 199,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 24,
+      "height": 23,
+      "diameter": 3.78,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "verde",
+      "sample": 1,
+      "sourceRow": 201,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 15,
+      "diameter": 3.15,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "verde",
+      "sample": 2,
+      "sourceRow": 202,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 12,
+      "height": 20,
+      "diameter": 3.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "verde",
+      "sample": 3,
+      "sourceRow": 203,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 19,
+      "height": 18,
+      "diameter": 3.64,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "verde",
+      "sample": 4,
+      "sourceRow": 204,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 16,
+      "diameter": 3.19,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "verde",
+      "sample": 5,
+      "sourceRow": 205,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 14,
+      "height": 17,
+      "diameter": 3.8,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "verde",
+      "sample": 6,
+      "sourceRow": 206,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 12,
+      "height": 17,
+      "diameter": 3.12,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "verde",
+      "sample": 7,
+      "sourceRow": 207,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 12,
+      "height": 19,
+      "diameter": 2.98,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "verde",
+      "sample": 8,
+      "sourceRow": 208,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 12,
+      "height": 18,
+      "diameter": 3,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "control",
+      "sample": 1,
+      "sourceRow": 210,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 12,
+      "height": 17,
+      "diameter": 2.8,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "control",
+      "sample": 2,
+      "sourceRow": 211,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 15,
+      "diameter": 2.9,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "control",
+      "sample": 3,
+      "sourceRow": 212,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 12,
+      "height": 15,
+      "diameter": 3.53,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "control",
+      "sample": 4,
+      "sourceRow": 213,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 19,
+      "height": 16,
+      "diameter": 3.77,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "control",
+      "sample": 5,
+      "sourceRow": 214,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 12,
+      "diameter": 2.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "control",
+      "sample": 6,
+      "sourceRow": 215,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 13,
+      "height": 18,
+      "diameter": 3.56,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "control",
+      "sample": 7,
+      "sourceRow": 216,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 12,
+      "diameter": 2.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 6,
+      "date": "2026-09-24",
+      "treatment": "control",
+      "sample": 8,
+      "sourceRow": 217,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 12,
+      "diameter": 2.7,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "rojo",
+      "sample": 1,
+      "sourceRow": 219,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 15,
+      "height": 20,
+      "diameter": 3.86,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "rojo",
+      "sample": 2,
+      "sourceRow": 220,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 13,
+      "height": 20,
+      "diameter": 3.9,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "rojo",
+      "sample": 3,
+      "sourceRow": 221,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 11,
+      "height": 18,
+      "diameter": 3.66,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "rojo",
+      "sample": 4,
+      "sourceRow": 222,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 12,
+      "height": 20,
+      "diameter": 3.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "rojo",
+      "sample": 5,
+      "sourceRow": 223,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 18,
+      "height": 20,
+      "diameter": 3.65,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "rojo",
+      "sample": 6,
+      "sourceRow": 224,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 14,
+      "diameter": 2.93,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "rojo",
+      "sample": 7,
+      "sourceRow": 225,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 15,
+      "diameter": 3.3,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "rojo",
+      "sample": 8,
+      "sourceRow": 226,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 16,
+      "diameter": 3.37,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "azul",
+      "sample": 1,
+      "sourceRow": 228,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 14,
+      "diameter": 3.8,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "azul",
+      "sample": 2,
+      "sourceRow": 229,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 13,
+      "height": 12,
+      "diameter": 3,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "azul",
+      "sample": 3,
+      "sourceRow": 230,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 13,
+      "height": 15,
+      "diameter": 3.22,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "azul",
+      "sample": 4,
+      "sourceRow": 231,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 15,
+      "diameter": 2.4,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "azul",
+      "sample": 5,
+      "sourceRow": 232,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 11,
+      "height": 16,
+      "diameter": 3.26,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "azul",
+      "sample": 6,
+      "sourceRow": 233,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 15,
+      "diameter": 3.37,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "azul",
+      "sample": 7,
+      "sourceRow": 234,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 14,
+      "height": 24,
+      "diameter": 3.49,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "azul",
+      "sample": 8,
+      "sourceRow": 235,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 26,
+      "height": 28,
+      "diameter": 4.32,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "verde",
+      "sample": 1,
+      "sourceRow": 237,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 20,
+      "diameter": 3.25,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "verde",
+      "sample": 2,
+      "sourceRow": 238,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 14,
+      "diameter": 3.18,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "verde",
+      "sample": 3,
+      "sourceRow": 239,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 14,
+      "height": 23,
+      "diameter": 4.65,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "verde",
+      "sample": 4,
+      "sourceRow": 240,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 13,
+      "height": 16,
+      "diameter": 3.04,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "verde",
+      "sample": 5,
+      "sourceRow": 241,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 24,
+      "height": 19,
       "diameter": 4.14,
-      "sourceRow": 52
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "verde",
+      "sample": 6,
+      "sourceRow": 242,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 16,
+      "height": 19,
+      "diameter": 3.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "verde",
+      "sample": 7,
+      "sourceRow": 243,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 17,
+      "height": 15,
+      "diameter": 3.17,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "verde",
+      "sample": 8,
+      "sourceRow": 244,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 14,
+      "height": 19,
+      "diameter": 3.16,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "control",
+      "sample": 1,
+      "sourceRow": 246,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 19,
+      "height": 18,
+      "diameter": 3.75,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "control",
+      "sample": 2,
+      "sourceRow": 247,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 12,
+      "height": 14,
+      "diameter": 2.97,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "control",
+      "sample": 3,
+      "sourceRow": 248,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 15,
+      "height": 18,
+      "diameter": 3.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "control",
+      "sample": 4,
+      "sourceRow": 249,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 18,
+      "height": 20,
+      "diameter": 4.03,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "control",
+      "sample": 5,
+      "sourceRow": 250,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 10,
+      "diameter": 2.8,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "control",
+      "sample": 6,
+      "sourceRow": 251,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 19,
+      "height": 18,
+      "diameter": 3.02,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "control",
+      "sample": 7,
+      "sourceRow": 252,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 9,
+      "diameter": 2.74,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 7,
+      "date": "2026-10-01",
+      "treatment": "control",
+      "sample": 8,
+      "sourceRow": 253,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 8,
+      "height": 10,
+      "diameter": 2.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "rojo",
+      "sample": 1,
+      "sourceRow": 255,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 24,
+      "height": 22,
+      "diameter": 4.25,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "rojo",
+      "sample": 2,
+      "sourceRow": 256,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 24,
+      "height": 23,
+      "diameter": 3.9,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "rojo",
+      "sample": 3,
+      "sourceRow": 257,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 14,
+      "height": 15,
+      "diameter": 3.75,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "rojo",
+      "sample": 4,
+      "sourceRow": 258,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 25,
+      "height": 22,
+      "diameter": 4.35,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "rojo",
+      "sample": 5,
+      "sourceRow": 259,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 26,
+      "height": 23,
+      "diameter": 4.9,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "rojo",
+      "sample": 6,
+      "sourceRow": 260,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 23,
+      "height": 18,
+      "diameter": 3.7,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "rojo",
+      "sample": 7,
+      "sourceRow": 261,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 25,
+      "height": 23,
+      "diameter": 4.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "rojo",
+      "sample": 8,
+      "sourceRow": 262,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 16,
+      "height": 19,
+      "diameter": 3.4,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "azul",
+      "sample": 1,
+      "sourceRow": 264,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 27,
+      "height": 25,
+      "diameter": 4.5,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "azul",
+      "sample": 2,
+      "sourceRow": 265,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 26,
+      "height": 21,
+      "diameter": 3.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "azul",
+      "sample": 3,
+      "sourceRow": 266,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 31,
+      "height": 31,
+      "diameter": 5.15,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "azul",
+      "sample": 4,
+      "sourceRow": 267,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 36,
+      "height": 32,
+      "diameter": 5.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "azul",
+      "sample": 5,
+      "sourceRow": 268,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 12,
+      "height": 19,
+      "diameter": 4.55,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "azul",
+      "sample": 6,
+      "sourceRow": 269,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 22,
+      "height": 24,
+      "diameter": 3.65,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "azul",
+      "sample": 7,
+      "sourceRow": 270,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 37,
+      "height": 30,
+      "diameter": 6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "azul",
+      "sample": 8,
+      "sourceRow": 271,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 26,
+      "height": 30,
+      "diameter": 4.84,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "verde",
+      "sample": 1,
+      "sourceRow": 273,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 20,
+      "height": 22,
+      "diameter": 4,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "verde",
+      "sample": 2,
+      "sourceRow": 274,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 19,
+      "height": 23,
+      "diameter": 3.45,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "verde",
+      "sample": 3,
+      "sourceRow": 275,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 21,
+      "height": 23,
+      "diameter": 3.7,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "verde",
+      "sample": 4,
+      "sourceRow": 276,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 18,
+      "height": 20,
+      "diameter": 3.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "verde",
+      "sample": 5,
+      "sourceRow": 277,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 16,
+      "height": 19,
+      "diameter": 3.64,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "verde",
+      "sample": 6,
+      "sourceRow": 278,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 27,
+      "height": 25,
+      "diameter": 4.95,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "verde",
+      "sample": 7,
+      "sourceRow": 279,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 17,
+      "height": 16,
+      "diameter": 3.9,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "verde",
+      "sample": 8,
+      "sourceRow": 280,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 13,
+      "height": 25,
+      "diameter": 5,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "control",
+      "sample": 1,
+      "sourceRow": 282,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 6,
+      "height": 9,
+      "diameter": 2.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "control",
+      "sample": 2,
+      "sourceRow": 283,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 5,
+      "height": 9,
+      "diameter": 2.9,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "control",
+      "sample": 3,
+      "sourceRow": 284,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 15,
+      "height": 18,
+      "diameter": 3.79,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "control",
+      "sample": 4,
+      "sourceRow": 285,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 9,
+      "height": 10,
+      "diameter": 2.69,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "control",
+      "sample": 5,
+      "sourceRow": 286,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 10,
+      "height": 12,
+      "diameter": 3.06,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "control",
+      "sample": 6,
+      "sourceRow": 287,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 22,
+      "height": 21,
+      "diameter": 3.77,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "control",
+      "sample": 7,
+      "sourceRow": 288,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 18,
+      "height": 20,
+      "diameter": 3.9,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 8,
+      "date": "2026-10-08",
+      "treatment": "control",
+      "sample": 8,
+      "sourceRow": 289,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 25,
+      "height": 22,
+      "diameter": 4.3,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "rojo",
+      "sample": 1,
+      "sourceRow": 291,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 14,
+      "height": 23,
+      "diameter": 4.57,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "rojo",
+      "sample": 2,
+      "sourceRow": 292,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 24,
+      "height": 23,
+      "diameter": 4.55,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "rojo",
+      "sample": 3,
+      "sourceRow": 293,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 32,
+      "height": 23,
+      "diameter": 4.65,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "rojo",
+      "sample": 4,
+      "sourceRow": 294,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 38,
+      "height": 24,
+      "diameter": 5.24,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "rojo",
+      "sample": 5,
+      "sourceRow": 295,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 23,
+      "height": 20,
+      "diameter": 3.9,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "rojo",
+      "sample": 6,
+      "sourceRow": 296,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 25,
+      "height": 19,
+      "diameter": 4.27,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "rojo",
+      "sample": 7,
+      "sourceRow": 297,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 32,
+      "height": 26,
+      "diameter": 4.65,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "rojo",
+      "sample": 8,
+      "sourceRow": 298,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 17,
+      "height": 19,
+      "diameter": 3.44,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "azul",
+      "sample": 1,
+      "sourceRow": 300,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 19,
+      "height": 16,
+      "diameter": 3.63,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "azul",
+      "sample": 2,
+      "sourceRow": 301,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 18,
+      "height": 18,
+      "diameter": 3.24,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "azul",
+      "sample": 3,
+      "sourceRow": 302,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 25,
+      "height": 23,
+      "diameter": 5.46,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "azul",
+      "sample": 4,
+      "sourceRow": 303,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 41,
+      "height": 37,
+      "diameter": 4.37,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "azul",
+      "sample": 5,
+      "sourceRow": 304,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 66,
+      "height": 36,
+      "diameter": 7.22,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "azul",
+      "sample": 6,
+      "sourceRow": 305,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 61,
+      "height": 33,
+      "diameter": 7.09,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "azul",
+      "sample": 7,
+      "sourceRow": 306,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 39,
+      "height": 24,
+      "diameter": 5,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "azul",
+      "sample": 8,
+      "sourceRow": 307,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 32,
+      "height": 27,
+      "diameter": 6.02,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "verde",
+      "sample": 1,
+      "sourceRow": 309,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 88,
+      "height": 22,
+      "diameter": 5.06,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "verde",
+      "sample": 2,
+      "sourceRow": 310,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 24,
+      "height": 16,
+      "diameter": 3.55,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "verde",
+      "sample": 3,
+      "sourceRow": 311,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 16,
+      "height": 27,
+      "diameter": 4.85,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "verde",
+      "sample": 4,
+      "sourceRow": 312,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 18,
+      "height": 24,
+      "diameter": 4.7,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "verde",
+      "sample": 5,
+      "sourceRow": 313,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 20,
+      "height": 21,
+      "diameter": 4.21,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "verde",
+      "sample": 6,
+      "sourceRow": 314,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 26,
+      "height": 21,
+      "diameter": 4.09,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "verde",
+      "sample": 7,
+      "sourceRow": 315,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 18,
+      "height": 18,
+      "diameter": 4.06,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "verde",
+      "sample": 8,
+      "sourceRow": 316,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 17,
+      "height": 19,
+      "diameter": 3.65,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "control",
+      "sample": 1,
+      "sourceRow": 318,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 17,
+      "height": 20,
+      "diameter": 4.74,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "control",
+      "sample": 2,
+      "sourceRow": 319,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 18,
+      "height": 23,
+      "diameter": 4.26,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "control",
+      "sample": 3,
+      "sourceRow": 320,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 16,
+      "height": 22,
+      "diameter": 3.93,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "control",
+      "sample": 4,
+      "sourceRow": 321,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 16,
+      "height": 13,
+      "diameter": 3.64,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "control",
+      "sample": 5,
+      "sourceRow": 322,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 15,
+      "height": 23,
+      "diameter": 3.88,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "control",
+      "sample": 6,
+      "sourceRow": 323,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 13,
+      "height": 15,
+      "diameter": 3.09,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "control",
+      "sample": 7,
+      "sourceRow": 324,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 14,
+      "height": 21,
+      "diameter": 4,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 9,
+      "date": "2026-10-15",
+      "treatment": "control",
+      "sample": 8,
+      "sourceRow": 325,
+      "missing": {
+        "flowers": "N/A",
+        "fruits": "N/A"
+      },
+      "leaves": 15,
+      "height": 22,
+      "diameter": 4.32,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "rojo",
+      "sample": 1,
+      "sourceRow": 327,
+      "missing": {},
+      "leaves": 15,
+      "height": 24,
+      "diameter": 3.76,
+      "flowers": 1,
+      "fruits": 1
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "rojo",
+      "sample": 2,
+      "sourceRow": 328,
+      "missing": {},
+      "leaves": 23,
+      "height": 24,
+      "diameter": 4.54,
+      "flowers": 1,
+      "fruits": 1
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "rojo",
+      "sample": 3,
+      "sourceRow": 329,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 32,
+      "height": 24,
+      "diameter": 5.8,
+      "flowers": null,
+      "fruits": 1
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "rojo",
+      "sample": 4,
+      "sourceRow": 330,
+      "missing": {},
+      "leaves": 25,
+      "height": 22,
+      "diameter": 4.84,
+      "flowers": 1,
+      "fruits": 3
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "rojo",
+      "sample": 5,
+      "sourceRow": 331,
+      "missing": {
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": 10,
+      "height": 10,
+      "diameter": 2.76,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "rojo",
+      "sample": 6,
+      "sourceRow": 332,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 10,
+      "height": 13,
+      "diameter": 2.68,
+      "flowers": null,
+      "fruits": 1
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "rojo",
+      "sample": 7,
+      "sourceRow": 333,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 24,
+      "height": 22,
+      "diameter": 4.57,
+      "flowers": null,
+      "fruits": 2
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "rojo",
+      "sample": 8,
+      "sourceRow": 334,
+      "missing": {
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": 19,
+      "height": 21,
+      "diameter": 4,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "azul",
+      "sample": 1,
+      "sourceRow": 336,
+      "missing": {
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": 16,
+      "height": 14,
+      "diameter": 3.78,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "azul",
+      "sample": 2,
+      "sourceRow": 337,
+      "missing": {
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": 16,
+      "height": 10,
+      "diameter": 3.6,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "azul",
+      "sample": 3,
+      "sourceRow": 338,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 78,
+      "height": 26,
+      "diameter": 5.78,
+      "flowers": null,
+      "fruits": 2
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "azul",
+      "sample": 4,
+      "sourceRow": 339,
+      "missing": {},
+      "leaves": 26,
+      "height": 30,
+      "diameter": 6.5,
+      "flowers": 1,
+      "fruits": 2
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "azul",
+      "sample": 5,
+      "sourceRow": 340,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 46,
+      "height": 33,
+      "diameter": 4.85,
+      "flowers": null,
+      "fruits": 1
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "azul",
+      "sample": 6,
+      "sourceRow": 341,
+      "missing": {},
+      "leaves": 87,
+      "height": 45,
+      "diameter": 7.35,
+      "flowers": 3,
+      "fruits": 3
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "azul",
+      "sample": 7,
+      "sourceRow": 342,
+      "missing": {},
+      "leaves": 54,
+      "height": 40,
+      "diameter": 6.4,
+      "flowers": 2,
+      "fruits": 2
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "azul",
+      "sample": 8,
+      "sourceRow": 343,
+      "missing": {},
+      "leaves": 44,
+      "height": 25,
+      "diameter": 4.96,
+      "flowers": 1,
+      "fruits": 3
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "verde",
+      "sample": 1,
+      "sourceRow": 345,
+      "missing": {},
+      "leaves": 55,
+      "height": 23,
+      "diameter": 5.19,
+      "flowers": 1,
+      "fruits": 2
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "verde",
+      "sample": 2,
+      "sourceRow": 346,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 18,
+      "height": 17,
+      "diameter": 4.19,
+      "flowers": null,
+      "fruits": 1
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "verde",
+      "sample": 3,
+      "sourceRow": 347,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 16,
+      "height": 17,
+      "diameter": 5.34,
+      "flowers": null,
+      "fruits": 2
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "verde",
+      "sample": 4,
+      "sourceRow": 348,
+      "missing": {
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": 13,
+      "height": 15,
+      "diameter": 2.87,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "verde",
+      "sample": 5,
+      "sourceRow": 349,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 19,
+      "height": 18,
+      "diameter": 4.23,
+      "flowers": null,
+      "fruits": 1
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "verde",
+      "sample": 6,
+      "sourceRow": 350,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 23,
+      "height": 26,
+      "diameter": 4.41,
+      "flowers": null,
+      "fruits": 1
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "verde",
+      "sample": 7,
+      "sourceRow": 351,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 18,
+      "height": 23,
+      "diameter": 3.73,
+      "flowers": null,
+      "fruits": 2
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "verde",
+      "sample": 8,
+      "sourceRow": 352,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 24,
+      "height": 22,
+      "diameter": 5.17,
+      "flowers": null,
+      "fruits": 1
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "control",
+      "sample": 1,
+      "sourceRow": 354,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 26,
+      "height": 21,
+      "diameter": 5.11,
+      "flowers": null,
+      "fruits": 2
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "control",
+      "sample": 2,
+      "sourceRow": 355,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 18,
+      "height": 13,
+      "diameter": 3.57,
+      "flowers": null,
+      "fruits": 1
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "control",
+      "sample": 3,
+      "sourceRow": 356,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 2,
+      "height": 21,
+      "diameter": 4.2,
+      "flowers": null,
+      "fruits": 1
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "control",
+      "sample": 4,
+      "sourceRow": 357,
+      "missing": {},
+      "leaves": 21,
+      "height": 23,
+      "diameter": 4.63,
+      "flowers": 1,
+      "fruits": 2
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "control",
+      "sample": 5,
+      "sourceRow": 358,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 8,
+      "height": 14,
+      "diameter": 3.17,
+      "flowers": null,
+      "fruits": 1
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "control",
+      "sample": 6,
+      "sourceRow": 359,
+      "missing": {
+        "leaves": "N/A",
+        "height": "N/A",
+        "diameter": "N/A",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "control",
+      "sample": 7,
+      "sourceRow": 360,
+      "missing": {
+        "leaves": "N/A",
+        "height": "N/A",
+        "diameter": "N/A",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 10,
+      "date": "2026-10-22",
+      "treatment": "control",
+      "sample": 8,
+      "sourceRow": 361,
+      "missing": {
+        "leaves": "N/A",
+        "height": "N/A",
+        "diameter": "N/A",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "rojo",
+      "sample": 1,
+      "sourceRow": 363,
+      "missing": {},
+      "leaves": 32,
+      "height": 26,
+      "diameter": 4.8,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "rojo",
+      "sample": 2,
+      "sourceRow": 364,
+      "missing": {},
+      "leaves": 46,
+      "height": 23,
+      "diameter": 5.9,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "rojo",
+      "sample": 3,
+      "sourceRow": 365,
+      "missing": {},
+      "leaves": 44,
+      "height": 24,
+      "diameter": 5.2,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "rojo",
+      "sample": 4,
+      "sourceRow": 366,
+      "missing": {},
+      "leaves": 28,
+      "height": 21,
+      "diameter": 4.15,
+      "flowers": 1,
+      "fruits": 0
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "rojo",
+      "sample": 5,
+      "sourceRow": 367,
+      "missing": {},
+      "leaves": 24,
+      "height": 22,
+      "diameter": 4.9,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "rojo",
+      "sample": 6,
+      "sourceRow": 368,
+      "missing": {},
+      "leaves": 42,
+      "height": 37,
+      "diameter": 5.52,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "rojo",
+      "sample": 7,
+      "sourceRow": 369,
+      "missing": {
+        "flowers": "blank"
+      },
+      "leaves": 14,
+      "height": 15,
+      "diameter": 2.9,
+      "flowers": null,
+      "fruits": 2
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "rojo",
+      "sample": 8,
+      "sourceRow": 370,
+      "missing": {},
+      "leaves": 10,
+      "height": 12,
+      "diameter": 2.4,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "azul",
+      "sample": 1,
+      "sourceRow": 372,
+      "missing": {},
+      "leaves": 31,
+      "height": 26,
+      "diameter": 5.87,
+      "flowers": 2,
+      "fruits": 1
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "azul",
+      "sample": 2,
+      "sourceRow": 373,
+      "missing": {},
+      "leaves": 38,
+      "height": 34,
+      "diameter": 6.1,
+      "flowers": 2,
+      "fruits": 0
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "azul",
+      "sample": 3,
+      "sourceRow": 374,
+      "missing": {},
+      "leaves": 30,
+      "height": 31,
+      "diameter": 5.57,
+      "flowers": 2,
+      "fruits": 0
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "azul",
+      "sample": 4,
+      "sourceRow": 375,
+      "missing": {},
+      "leaves": 30,
+      "height": 29,
+      "diameter": 5.9,
+      "flowers": 1,
+      "fruits": 2
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "azul",
+      "sample": 5,
+      "sourceRow": 376,
+      "missing": {},
+      "leaves": 16,
+      "height": 3.3,
+      "diameter": 20,
+      "flowers": 1,
+      "fruits": 1
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "azul",
+      "sample": 6,
+      "sourceRow": 377,
+      "missing": {},
+      "leaves": 41,
+      "height": 22,
+      "diameter": 6.15,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "azul",
+      "sample": 7,
+      "sourceRow": 378,
+      "missing": {},
+      "leaves": 116,
+      "height": 50,
+      "diameter": 9.65,
+      "flowers": 0,
+      "fruits": 2
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "azul",
+      "sample": 8,
+      "sourceRow": 379,
+      "missing": {},
+      "leaves": 78,
+      "height": 45,
+      "diameter": 6.9,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "verde",
+      "sample": 1,
+      "sourceRow": 381,
+      "missing": {},
+      "leaves": 12,
+      "height": 18,
+      "diameter": 3.3,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "verde",
+      "sample": 2,
+      "sourceRow": 382,
+      "missing": {},
+      "leaves": 14,
+      "height": 26,
+      "diameter": 5.14,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "verde",
+      "sample": 3,
+      "sourceRow": 383,
+      "missing": {},
+      "leaves": 27,
+      "height": 18,
+      "diameter": 3.57,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "verde",
+      "sample": 4,
+      "sourceRow": 384,
+      "missing": {},
+      "leaves": 56,
+      "height": 30,
+      "diameter": 6.53,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "verde",
+      "sample": 5,
+      "sourceRow": 385,
+      "missing": {},
+      "leaves": 10,
+      "height": 13,
+      "diameter": 3.34,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "verde",
+      "sample": 6,
+      "sourceRow": 386,
+      "missing": {},
+      "leaves": 26,
+      "height": 20,
+      "diameter": 4.6,
+      "flowers": 1,
+      "fruits": 0
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "verde",
+      "sample": 7,
+      "sourceRow": 387,
+      "missing": {},
+      "leaves": 18,
+      "height": 23,
+      "diameter": 4.6,
+      "flowers": 1,
+      "fruits": 0
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "verde",
+      "sample": 8,
+      "sourceRow": 388,
+      "missing": {},
+      "leaves": 10,
+      "height": 21,
+      "diameter": 4.1,
+      "flowers": 0,
+      "fruits": 2
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "control",
+      "sample": 1,
+      "sourceRow": 390,
+      "missing": {},
+      "leaves": 28,
+      "height": 23,
+      "diameter": 4.57,
+      "flowers": 1,
+      "fruits": 1
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "control",
+      "sample": 2,
+      "sourceRow": 391,
+      "missing": {},
+      "leaves": 15,
+      "height": 15,
+      "diameter": 3.4,
+      "flowers": 0,
+      "fruits": 2
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "control",
+      "sample": 3,
+      "sourceRow": 392,
+      "missing": {},
+      "leaves": 16,
+      "height": 26,
+      "diameter": 5.16,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "control",
+      "sample": 4,
+      "sourceRow": 393,
+      "missing": {},
+      "leaves": 15,
+      "height": 20,
+      "diameter": 5.47,
+      "flowers": 0,
+      "fruits": 2
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "control",
+      "sample": 5,
+      "sourceRow": 394,
+      "missing": {
+        "leaves": "blank",
+        "height": "blank",
+        "diameter": "blank",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "control",
+      "sample": 6,
+      "sourceRow": 395,
+      "missing": {
+        "leaves": "blank",
+        "height": "blank",
+        "diameter": "blank",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "control",
+      "sample": 7,
+      "sourceRow": 396,
+      "missing": {
+        "leaves": "blank",
+        "height": "blank",
+        "diameter": "blank",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 11,
+      "date": "2026-10-29",
+      "treatment": "control",
+      "sample": 8,
+      "sourceRow": 397,
+      "missing": {
+        "leaves": "blank",
+        "height": "blank",
+        "diameter": "blank",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "rojo",
+      "sample": 1,
+      "sourceRow": 400,
+      "missing": {},
+      "leaves": 29,
+      "height": 29,
+      "diameter": 4.98,
+      "flowers": 2,
+      "fruits": 0
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "rojo",
+      "sample": 2,
+      "sourceRow": 401,
+      "missing": {},
+      "leaves": 33,
+      "height": 27,
+      "diameter": 4.89,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "rojo",
+      "sample": 3,
+      "sourceRow": 402,
+      "missing": {},
+      "leaves": 32,
+      "height": 25,
+      "diameter": 5.56,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "rojo",
+      "sample": 4,
+      "sourceRow": 403,
+      "missing": {},
+      "leaves": 33,
+      "height": 22,
+      "diameter": 4.55,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "rojo",
+      "sample": 5,
+      "sourceRow": 404,
+      "missing": {},
+      "leaves": 15,
+      "height": 23,
+      "diameter": 5.36,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "rojo",
+      "sample": 6,
+      "sourceRow": 405,
+      "missing": {},
+      "leaves": 21,
+      "height": 18,
+      "diameter": 3.33,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "rojo",
+      "sample": 7,
+      "sourceRow": 406,
+      "missing": {},
+      "leaves": 8,
+      "height": 16,
+      "diameter": 3.29,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "rojo",
+      "sample": 8,
+      "sourceRow": 407,
+      "missing": {},
+      "leaves": 96,
+      "height": 37,
+      "diameter": 6.25,
+      "flowers": 3,
+      "fruits": 3
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "azul",
+      "sample": 1,
+      "sourceRow": 409,
+      "missing": {},
+      "leaves": 55,
+      "height": 29,
+      "diameter": 6.78,
+      "flowers": 2,
+      "fruits": 3
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "azul",
+      "sample": 2,
+      "sourceRow": 410,
+      "missing": {},
+      "leaves": 59,
+      "height": 43,
+      "diameter": 7.79,
+      "flowers": 0,
+      "fruits": 5
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "azul",
+      "sample": 3,
+      "sourceRow": 411,
+      "missing": {},
+      "leaves": 128,
+      "height": 52,
+      "diameter": 9.98,
+      "flowers": 1,
+      "fruits": 8
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "azul",
+      "sample": 4,
+      "sourceRow": 412,
+      "missing": {},
+      "leaves": 32,
+      "height": 26,
+      "diameter": 5.5,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "azul",
+      "sample": 5,
+      "sourceRow": 413,
+      "missing": {},
+      "leaves": 31,
+      "height": 29,
+      "diameter": 5,
+      "flowers": 1,
+      "fruits": 2
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "azul",
+      "sample": 6,
+      "sourceRow": 414,
+      "missing": {},
+      "leaves": 17,
+      "height": 18,
+      "diameter": 3.78,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "azul",
+      "sample": 7,
+      "sourceRow": 415,
+      "missing": {},
+      "leaves": 23,
+      "height": 20,
+      "diameter": 3.86,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "azul",
+      "sample": 8,
+      "sourceRow": 416,
+      "missing": {},
+      "leaves": 15,
+      "height": 20,
+      "diameter": 4,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "verde",
+      "sample": 1,
+      "sourceRow": 418,
+      "missing": {},
+      "leaves": 21,
+      "height": 21,
+      "diameter": 3.93,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "verde",
+      "sample": 2,
+      "sourceRow": 419,
+      "missing": {},
+      "leaves": 40,
+      "height": 18,
+      "diameter": 5.78,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "verde",
+      "sample": 3,
+      "sourceRow": 420,
+      "missing": {},
+      "leaves": 17,
+      "height": 19,
+      "diameter": 3.8,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "verde",
+      "sample": 4,
+      "sourceRow": 421,
+      "missing": {},
+      "leaves": 9,
+      "height": 25,
+      "diameter": 5.35,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "verde",
+      "sample": 5,
+      "sourceRow": 422,
+      "missing": {},
+      "leaves": 17,
+      "height": 20,
+      "diameter": 4.1,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "verde",
+      "sample": 6,
+      "sourceRow": 423,
+      "missing": {},
+      "leaves": 17,
+      "height": 14,
+      "diameter": 3.6,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "verde",
+      "sample": 7,
+      "sourceRow": 424,
+      "missing": {},
+      "leaves": 21,
+      "height": 25,
+      "diameter": 4.8,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "verde",
+      "sample": 8,
+      "sourceRow": 425,
+      "missing": {},
+      "leaves": 25,
+      "height": 26,
+      "diameter": 4.27,
+      "flowers": 0,
+      "fruits": 4
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "control",
+      "sample": 1,
+      "sourceRow": 427,
+      "missing": {},
+      "leaves": 21,
+      "height": 16,
+      "diameter": 3.4,
+      "flowers": 2,
+      "fruits": 2
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "control",
+      "sample": 2,
+      "sourceRow": 428,
+      "missing": {},
+      "leaves": 23,
+      "height": 23,
+      "diameter": 4.2,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "control",
+      "sample": 3,
+      "sourceRow": 429,
+      "missing": {},
+      "leaves": 17,
+      "height": 26,
+      "diameter": 4.85,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "control",
+      "sample": 4,
+      "sourceRow": 430,
+      "missing": {
+        "diameter": "blank"
+      },
+      "leaves": 18,
+      "height": 23,
+      "diameter": null,
+      "flowers": 0,
+      "fruits": 2
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "control",
+      "sample": 5,
+      "sourceRow": 431,
+      "missing": {
+        "leaves": "blank",
+        "height": "blank",
+        "diameter": "blank",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "control",
+      "sample": 6,
+      "sourceRow": 432,
+      "missing": {
+        "leaves": "blank",
+        "height": "blank",
+        "diameter": "blank",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "control",
+      "sample": 7,
+      "sourceRow": 433,
+      "missing": {
+        "leaves": "blank",
+        "height": "blank",
+        "diameter": "blank",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 12,
+      "date": "2026-11-05",
+      "treatment": "control",
+      "sample": 8,
+      "sourceRow": 434,
+      "missing": {
+        "leaves": "blank",
+        "height": "blank",
+        "diameter": "blank",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "rojo",
+      "sample": 1,
+      "sourceRow": 436,
+      "missing": {},
+      "leaves": 30,
+      "height": 30,
+      "diameter": 5.07,
+      "flowers": 1,
+      "fruits": 0
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "rojo",
+      "sample": 2,
+      "sourceRow": 437,
+      "missing": {},
+      "leaves": 36,
+      "height": 25,
+      "diameter": 3.58,
+      "flowers": 0,
+      "fruits": 2
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "rojo",
+      "sample": 3,
+      "sourceRow": 438,
+      "missing": {},
+      "leaves": 22,
+      "height": 25,
+      "diameter": 5.12,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "rojo",
+      "sample": 4,
+      "sourceRow": 439,
+      "missing": {},
+      "leaves": 20,
+      "height": 25,
+      "diameter": 5.47,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "rojo",
+      "sample": 5,
+      "sourceRow": 440,
+      "missing": {},
+      "leaves": 7,
+      "height": 20,
+      "diameter": 4.7,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "rojo",
+      "sample": 6,
+      "sourceRow": 441,
+      "missing": {},
+      "leaves": 21,
+      "height": 23,
+      "diameter": 3.31,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "rojo",
+      "sample": 7,
+      "sourceRow": 442,
+      "missing": {},
+      "leaves": 70,
+      "height": 33,
+      "diameter": 6.33,
+      "flowers": 2,
+      "fruits": 5
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "rojo",
+      "sample": 8,
+      "sourceRow": 443,
+      "missing": {},
+      "leaves": 20,
+      "height": 22,
+      "diameter": 3.2,
+      "flowers": 1,
+      "fruits": 1
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "azul",
+      "sample": 1,
+      "sourceRow": 445,
+      "missing": {},
+      "leaves": 78,
+      "height": 30,
+      "diameter": 7.9,
+      "flowers": 2,
+      "fruits": 2
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "azul",
+      "sample": 2,
+      "sourceRow": 446,
+      "missing": {},
+      "leaves": 106,
+      "height": 45,
+      "diameter": 7.53,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "azul",
+      "sample": 3,
+      "sourceRow": 447,
+      "missing": {},
+      "leaves": 152,
+      "height": 60,
+      "diameter": 11.27,
+      "flowers": 6,
+      "fruits": 3
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "azul",
+      "sample": 4,
+      "sourceRow": 448,
+      "missing": {},
+      "leaves": 46,
+      "height": 30,
+      "diameter": 4.71,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "azul",
+      "sample": 5,
+      "sourceRow": 449,
+      "missing": {},
+      "leaves": 37,
+      "height": 26,
+      "diameter": 4.4,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "azul",
+      "sample": 6,
+      "sourceRow": 450,
+      "missing": {},
+      "leaves": 19,
+      "height": 20,
+      "diameter": 3.27,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "azul",
+      "sample": 7,
+      "sourceRow": 451,
+      "missing": {},
+      "leaves": 23,
+      "height": 20,
+      "diameter": 3.53,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "azul",
+      "sample": 8,
+      "sourceRow": 452,
+      "missing": {},
+      "leaves": 27,
+      "height": 20,
+      "diameter": 4.18,
+      "flowers": 0,
+      "fruits": 3
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "verde",
+      "sample": 1,
+      "sourceRow": 454,
+      "missing": {},
+      "leaves": 21,
+      "height": 20,
+      "diameter": 3.33,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "verde",
+      "sample": 2,
+      "sourceRow": 455,
+      "missing": {},
+      "leaves": 28,
+      "height": 22,
+      "diameter": 3.4,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "verde",
+      "sample": 3,
+      "sourceRow": 456,
+      "missing": {
+        "height": "blank"
+      },
+      "leaves": 80,
+      "height": null,
+      "diameter": 5.7,
+      "flowers": 1,
+      "fruits": 7
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "verde",
+      "sample": 4,
+      "sourceRow": 457,
+      "missing": {},
+      "leaves": 23,
+      "height": 20,
+      "diameter": 3.67,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "verde",
+      "sample": 5,
+      "sourceRow": 458,
+      "missing": {},
+      "leaves": 32,
+      "height": 23,
+      "diameter": 3.9,
+      "flowers": 0,
+      "fruits": 0
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "verde",
+      "sample": 6,
+      "sourceRow": 459,
+      "missing": {},
+      "leaves": 10,
+      "height": 20,
+      "diameter": 3.94,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "verde",
+      "sample": 7,
+      "sourceRow": 460,
+      "missing": {},
+      "leaves": 37,
+      "height": 25,
+      "diameter": 4.19,
+      "flowers": 1,
+      "fruits": 0
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "verde",
+      "sample": 8,
+      "sourceRow": 461,
+      "missing": {},
+      "leaves": 30,
+      "height": 28,
+      "diameter": 4,
+      "flowers": 0,
+      "fruits": 1
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "control",
+      "sample": 1,
+      "sourceRow": 463,
+      "missing": {},
+      "leaves": 27,
+      "height": 20,
+      "diameter": 3.43,
+      "flowers": 0,
+      "fruits": 2
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "control",
+      "sample": 2,
+      "sourceRow": 464,
+      "missing": {},
+      "leaves": 18,
+      "height": 18,
+      "diameter": 4.01,
+      "flowers": 0,
+      "fruits": 20
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "control",
+      "sample": 3,
+      "sourceRow": 465,
+      "missing": {},
+      "leaves": 32,
+      "height": 25,
+      "diameter": 4.95,
+      "flowers": 1,
+      "fruits": 1
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "control",
+      "sample": 4,
+      "sourceRow": 466,
+      "missing": {
+        "leaves": "blank",
+        "height": "blank",
+        "diameter": "blank",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "control",
+      "sample": 5,
+      "sourceRow": 467,
+      "missing": {
+        "leaves": "blank",
+        "height": "blank",
+        "diameter": "blank",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "control",
+      "sample": 6,
+      "sourceRow": 468,
+      "missing": {
+        "leaves": "blank",
+        "height": "blank",
+        "diameter": "blank",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "control",
+      "sample": 7,
+      "sourceRow": 469,
+      "missing": {
+        "leaves": "blank",
+        "height": "blank",
+        "diameter": "blank",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
+    },
+    {
+      "week": 13,
+      "date": "2026-11-12",
+      "treatment": "control",
+      "sample": 8,
+      "sourceRow": 470,
+      "missing": {
+        "leaves": "blank",
+        "height": "blank",
+        "diameter": "blank",
+        "flowers": "blank",
+        "fruits": "blank"
+      },
+      "leaves": null,
+      "height": null,
+      "diameter": null,
+      "flowers": null,
+      "fruits": null
     }
   ]
 }

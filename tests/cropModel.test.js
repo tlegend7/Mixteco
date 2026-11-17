@@ -39,3 +39,12 @@ test('every nonzero reproductive average remains visible and shared assets survi
   const first = models.create(records[0]), second = models.create(records[0])
   assert.equal(objectsOfKind(first, 'leaf')[0].geometry, objectsOfKind(second, 'leaf')[0].geometry)
 })
+
+test('missing measurements do not create invented geometry', t => {
+  const models = createCropModels()
+  t.after(models.dispose)
+  const record = records[0]
+  assert.equal(models.create({ ...record, height: null }).children.length, 0)
+  assert.equal(models.create({ ...record, diameter: null }).children.length, 0)
+  assert.equal(objectsOfKind(models.create({ ...record, leaves: null }), 'leaf').length, 0)
+})

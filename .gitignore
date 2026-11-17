@@ -1,6 +1,7 @@
 node_modules/
 dist/
 output/
+outputs/
 .playwright-cli/
 references/contact-sheet.png
 .vercel/

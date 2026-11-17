@@ -53,11 +53,13 @@ export function createCropModels() {
   }
   function create(record) {
     const plant = new THREE.Group()
+    // Missing dimensions do not describe a zero-sized plant or justify an invented model.
+    if (!Number.isFinite(record.height) || !Number.isFinite(record.diameter)) return plant
     const height = record.height * 0.055
     const radius = record.diameter * 0.006
     const stem = add(plant, stemGeometry, stemMaterial, new THREE.Vector3(0, height / 2, 0), 'stem')
     stem.scale.set(radius, height, radius)
-    const leaves = Math.max(2, Math.round(record.leaves / 2.7))
+    const leaves = Number.isFinite(record.leaves) ? Math.max(2, Math.round(record.leaves / 2.7)) : 0
     for (let j = 0; j < leaves; j++) {
       const angle = j * 2.399
       const level = 0.25 + j / leaves * 0.61

@@ -12,7 +12,9 @@ const selected = ref(treatments.map(t => t.id))
 const week = ref(10)
 const metricId = ref('height')
 const view = ref('frontal')
+const cameraRequest = ref(0)
 const focused = ref('azul')
+const sceneRef = ref(null)
 const metric = computed(() => metrics.find(m => m.id === metricId.value))
 const currentWeek = computed(() => experiment.value.biometry.weeks.find(w => w.week === week.value))
 const current = computed(() => recordsAt(experiment.value.biometry.records, week.value, selected.value))
@@ -36,6 +38,10 @@ function toggle(id) {
 function inspect(id) {
   focused.value = id
   if (!selected.value.includes(id)) selected.value = [...selected.value, id]
+}
+function setView(id) {
+  view.value = id
+  cameraRequest.value++
 }
 onMounted(load)
 </script>
@@ -89,9 +95,11 @@ onMounted(load)
           <section class="scene-panel panel" aria-labelledby="scene-title">
             <div class="section-heading"><div><p class="eyebrow">02 / EXPLORACIÓN ESPACIAL</p><h2 id="scene-title">El experimento, en perspectiva</h2></div><span class="small-tag green">Vista ilustrativa</span></div>
             <div class="scene-toolbar"><div class="view-tabs" role="group" aria-label="Perspectiva de cámara">
-              <button v-for="v in [{ id: 'frontal', label: 'Frontal' }, { id: 'lateral', label: 'Lateral' }, { id: 'superior', label: 'Superior' }]" :key="v.id" :class="{ active: view === v.id }" :aria-pressed="view === v.id" @click="view = v.id">{{ v.label }}</button>
-            </div><span class="scene-hint">{{ view === 'superior' ? 'Cubiertas ocultas' : 'Selecciona una parcela' }}</span></div>
-            <FieldScene :records="allCurrent" :selected="selected" :focused="focused" :view="view" @inspect="inspect" />
+              <button v-for="v in [{ id: 'frontal', label: 'Frontal' }, { id: 'lateral', label: 'Lateral' }, { id: 'superior', label: 'Superior' }]" :key="v.id" :class="{ active: view === v.id }" :aria-pressed="view === v.id" @click="setView(v.id)">{{ v.label }}</button>
+            </div><span class="camera-status" aria-live="polite">{{ view === 'superior' ? 'Superior · cubiertas ocultas' : view === 'libre' ? 'Exploración libre' : 'Cubiertas visibles' }}</span>
+              <div class="camera-actions" role="group" aria-label="Acercamiento y encuadre"><button @click="sceneRef?.zoomBy(1.2)" aria-label="Acercar escenario" title="Acercar">+</button><button @click="sceneRef?.zoomBy(1 / 1.2)" aria-label="Alejar escenario" title="Alejar">−</button><button class="reset-camera" @click="setView('frontal')" aria-label="Restablecer encuadre">↺ <span>Restablecer</span></button></div>
+            </div>
+            <FieldScene ref="sceneRef" :records="allCurrent" :selected="selected" :focused="focused" :view="view" :camera-request="cameraRequest" @inspect="inspect" @free-view="view = 'libre'" @reset="setView('frontal')" />
             <div class="plot-selectors" aria-label="Examinar tratamiento">
               <button v-for="t in treatments" :key="t.id" :aria-pressed="focused === t.id" :class="{ focused: focused === t.id }" @click="inspect(t.id)"><span class="treatment-dot" :style="{ background: t.color }"></span>{{ t.label }}</button>
             </div>
@@ -101,14 +109,13 @@ onMounted(load)
             </div>
             <div v-else class="empty">Selecciona una parcela para consultar su ficha.</div>
             <p class="scene-caption">Distribución esquemática. Las plantas representan promedios; su número y posición son ilustrativos. Sol y sombras sin modelado físico.</p>
+            <section class="timeline" aria-labelledby="timeline-title">
+              <div class="timeline-heading"><div><p class="eyebrow">03 / SEGUIMIENTO TEMPORAL</p><h2 id="timeline-title">Una semana a la vez</h2></div><div class="selected-date" aria-live="polite"><strong>Semana {{ week }}</strong><span>{{ dateLabel(currentWeek.date) }}</span></div></div>
+              <div class="week-buttons" role="group" aria-label="Seleccionar semana de observación"><button v-for="w in experiment.biometry.weeks" :key="w.week" :aria-pressed="week === w.week" :class="{ active: week === w.week }" @click="week = w.week"><span class="week-dot"></span><strong>Sem. {{ w.week }}</strong><small>{{ dateLabel(w.date, true) }}</small></button></div>
+              <label class="sr-only" for="week-range">Semana seleccionada</label><input id="week-range" class="week-range" type="range" min="1" max="10" step="1" v-model.number="week" :aria-valuetext="'Semana ' + week + ', ' + dateLabel(currentWeek.date)" />
+            </section>
           </section>
         </div>
-
-        <section class="timeline panel" aria-labelledby="timeline-title">
-          <div class="timeline-heading"><div><p class="eyebrow">03 / SEGUIMIENTO TEMPORAL</p><h2 id="timeline-title">Una semana a la vez</h2></div><div class="selected-date" aria-live="polite"><strong>Semana {{ week }}</strong><span>{{ dateLabel(currentWeek.date) }}</span></div></div>
-          <div class="week-buttons" role="group" aria-label="Seleccionar semana de observación"><button v-for="w in experiment.biometry.weeks" :key="w.week" :aria-pressed="week === w.week" :class="{ active: week === w.week }" @click="week = w.week"><span class="week-dot"></span><strong>Sem. {{ w.week }}</strong><small>{{ dateLabel(w.date, true) }}</small></button></div>
-          <label class="sr-only" for="week-range">Semana seleccionada</label><input id="week-range" class="week-range" type="range" min="1" max="10" step="1" v-model.number="week" :aria-valuetext="'Semana ' + week + ', ' + dateLabel(currentWeek.date)" />
-        </section>
 
         <section class="support-grid">
           <details class="panel supporting">

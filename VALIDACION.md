@@ -1,5 +1,27 @@
 # Implementación y comprobaciones
 
+## Revisión del dashboard y navegación libre
+
+Cambios:
+
+- `src/App.vue` y `src/assets/style.css`: cabecera e introducción reducidas, distribución 32/68, escenario principal con línea temporal integrada y paneles secundarios desplegables. El escenario aparece primero en móvil.
+- `src/components/FieldScene.vue`: OrbitControls, rueda, rotación, desplazamiento, teclado, gestos táctiles, restauración, límites de navegación y transiciones de 650 ms. El encuadre automático deja de actuar durante la navegación libre; un arrastre no selecciona parcelas, incluso si termina en el punto inicial.
+- `src/modules/cropModel.js`: hojas lanceoladas, ramificaciones, flores de cinco pétalos y frutos alargados. Instancias por tratamiento y geometrías compartidas reducen las llamadas de dibujo. Se liberan los búferes de instancia al cambiar de semana.
+- `tests/cropModel.test.js` y `tests/browser-review.js`: pruebas de órganos, conservación de observaciones y navegación real en navegador.
+
+Comprobaciones:
+
+- Cinco pruebas Node aprobadas. No se modificaron los archivos de datos de `public/data/`; el importador comprueba que los 40 registros siguen coincidiendo con el Excel local.
+- Comprobados rueda de zoom, persistencia sin ajuste automático, límites de acercamiento, rotación, desplazamiento derecho, vistas, clic frente a arrastre y restauración con R.
+- Comprobados movimiento reducido y eventos táctiles de uno y dos dedos mediante emulación de Chromium. No se probaron dispositivos físicos.
+- Verificadas muestras del control de 6 y 5 plantas, flores, ceros, filtros, selección vacía y recuperación, y tiempo mediante teclado.
+- Escritorio a 1366×768, 1440×900 y 1024×768: línea temporal y comparación principal dentro del área visible. Tableta y móvil a 768, 390 y 320 px: sin desbordamiento horizontal.
+- Capturas revisadas en `docs/screenshots/`. La compilación de producción finaliza correctamente; Vite advierte que el paquete de Three.js supera 500 kB sin comprimir (aproximadamente 136 kB con gzip).
+
+La publicación de esta revisión fue autorizada después de su implementación. El despliegue de producción se realiza mediante la integración existente de GitHub y Vercel al integrar la rama en `main`.
+
+## Registro de la implementación inicial
+
 ## Fases realizadas
 
 | Fase | Archivos principales | Resultado y comprobación |

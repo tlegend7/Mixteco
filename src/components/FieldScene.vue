@@ -1,94 +1,95 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import * as THREE from 'three'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { treatments } from '../modules/experiment'
+import { createCropModels } from '../modules/cropModel'
 
-const props = defineProps({ records: Array, selected: Array, focused: String, view: String })
-const emit = defineEmits(['inspect'])
+const props = defineProps({ records: Array, selected: Array, focused: String, view: String, cameraRequest: Number })
+const emit = defineEmits(['inspect', 'free-view', 'reset'])
 const host = ref(null)
 const failure = ref('')
-let renderer, scene, camera, observer, frame, field, roofs, plants, raycaster
-let plots = [], resources = []
-let aspect = 1
-const corners = [-7.65, 7.65].flatMap(x => [-0.4, 2.8].flatMap(y => [-2.9, 2.9].map(z => new THREE.Vector3(x, y, z))))
-const projected = new THREE.Vector3()
-const target = new THREE.Vector3(0, 0.6, 0)
+const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
+const center = new THREE.Vector3(0, 1.1, 0)
 const positions = {
   frontal: new THREE.Vector3(10, 11, 17),
   lateral: new THREE.Vector3(0, 3.8, 22),
   superior: new THREE.Vector3(0, 24, 0.01),
 }
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 const coords = [-5.1, -1.7, 1.7, 5.1]
+const corners = [-7.65, 7.65].flatMap(x => [-0.4, 2.85].flatMap(y => [-2.9, 2.9].map(z => new THREE.Vector3(x, y, z))))
+const projected = new THREE.Vector3()
+let renderer, scene, camera, controls, observer, frame, field, plants, raycaster, cropModels
+let transition = null, aspect = 1, frustumHeight = 8
+let plots = [], resources = []
+let gesture = null
+const pointers = new Set()
 function own(resource) { resources.push(resource); return resource }
-const material = (color, options = {}) => own(new THREE.MeshStandardMaterial({ color, roughness: 0.88, ...options }))
+const material = (color, options = {}) => own(new THREE.MeshStandardMaterial({ color, roughness: 0.9, ...options }))
 function mesh(geometry, mat, parent, position, treatment) {
-  const m = new THREE.Mesh(geometry, mat)
-  m.position.set(...position)
-  m.castShadow = true
-  m.receiveShadow = true
-  if (treatment) m.userData.treatment = treatment
-  parent.add(m)
-  return m
+  const object = new THREE.Mesh(geometry, mat)
+  object.position.set(...position)
+  object.castShadow = true
+  object.receiveShadow = true
+  if (treatment) object.userData.treatment = treatment
+  parent.add(object)
+  return object
 }
-let stemGeo, leafGeo, fruitGeo, flowerGeo, stemMat, leafMat, fruitMat, flowerMat
-
 function buildPlants() {
   if (!plants) return
+  disposeInstances()
   plants.clear()
-  props.records.forEach(r => {
-    const i = treatments.findIndex(t => t.id === r.treatment)
+  for (const record of props.records) {
+    const i = treatments.findIndex(t => t.id === record.treatment)
     const group = new THREE.Group()
-    group.visible = props.selected.includes(r.treatment)
+    group.userData.treatment = record.treatment
     plants.add(group)
-    // Six identical illustrative plants per area; no individual measurements are inferred.
-    for (let n = 0; n < 6; n++) {
-      const plant = new THREE.Group()
-      plant.position.set(coords[i] + (n % 2 ? 0.63 : -0.63), 0.16, Math.floor(n / 2) * 1.05 - 1.05)
-      group.add(plant)
-      const height = r.height * 0.055
-      const stem = mesh(stemGeo, stemMat, plant, [0, height / 2, 0], r.treatment)
-      stem.scale.set(r.diameter * 0.009, height, r.diameter * 0.009)
-      const count = Math.max(2, Math.round(r.leaves / 3))
-      for (let j = 0; j < count; j++) {
-        const angle = j * 2.399
-        const level = 0.22 + (j / count) * 0.75
-        const size = 0.16 + Math.min(r.leaves, 45) / 150
-        const leaf = mesh(leafGeo, leafMat, plant, [Math.sin(angle) * size * 0.55, height * level, Math.cos(angle) * size * 0.55], r.treatment)
-        leaf.scale.set(size * 0.44, size * 0.12, size)
-        leaf.rotation.set(-0.25, angle, Math.sin(angle) * 0.35)
+    const model = cropModels.create(record)
+    model.updateMatrixWorld(true)
+    const batches = new Map()
+    model.traverse(object => {
+      if (!object.isMesh) return
+      const key = object.geometry.uuid + ':' + object.material.uuid
+      if (!batches.has(key)) batches.set(key, [])
+      batches.get(key).push(object)
+    })
+    // Batch six identical illustrative plants, rather than drawing every leaf separately.
+    for (const objects of batches.values()) {
+      const batch = new THREE.InstancedMesh(objects[0].geometry, objects[0].material, objects.length * 6)
+      batch.userData.treatment = record.treatment
+      batch.castShadow = batch.receiveShadow = true
+      let instance = 0
+      const placement = new THREE.Matrix4(), transform = new THREE.Matrix4()
+      for (let n = 0; n < 6; n++) {
+        placement.makeTranslation(coords[i] + (n % 2 ? 0.63 : -0.63), 0.25, Math.floor(n / 2) * 1.05 - 1.05)
+        for (const object of objects) batch.setMatrixAt(instance++, transform.multiplyMatrices(placement, object.matrixWorld))
       }
-      // Fractional aggregate counts map to relative visual size, never individual counts.
-      if (r.flowers > 0) {
-        const flower = mesh(flowerGeo, flowerMat, plant, [0.16, height * 0.83, 0.04], r.treatment)
-        flower.scale.setScalar(0.07 + r.flowers * 0.055)
-      }
-      if (r.fruits > 0) {
-        const fruit = mesh(fruitGeo, fruitMat, plant, [-0.12, height * 0.61, 0.13], r.treatment)
-        fruit.scale.set(0.07 * r.fruits, 0.19 * r.fruits, 0.07 * r.fruits)
-        fruit.rotation.z = -0.3
-      }
+      batch.computeBoundingSphere()
+      group.add(batch)
     }
-  })
+  }
 }
-
+function disposeInstances() {
+  plants?.traverse(object => { if (object.isInstancedMesh) object.dispose() })
+}
 function updateSelection() {
   plots.forEach((plot, i) => {
-    const t = treatments[i]
-    plot.rim.material = props.focused === t.id && props.selected.includes(t.id) ? plot.activeMat : plot.baseMat
-    plot.roof.visible = props.view !== 'superior' && props.selected.includes(t.id)
-    plot.posts.visible = props.selected.includes(t.id)
+    const selected = props.selected.includes(treatments[i].id)
+    plot.rim.material = props.focused === treatments[i].id && selected ? plot.activeMat : plot.baseMat
+    plot.roof.visible = props.view !== 'superior' && selected
+    plot.posts.visible = selected
   })
-  if (plants) plants.children.forEach((g, i) => { g.visible = props.selected.includes(props.records[i].treatment) })
+  plants?.children.forEach(group => { group.visible = props.selected.includes(group.userData.treatment) })
 }
-function resize() {
-  if (!renderer || !host.value) return
-  const width = host.value.clientWidth, height = host.value.clientHeight
-  aspect = width / height
-  fitCamera()
-  renderer.setSize(width, height)
+function projection(height) {
+  frustumHeight = height
+  camera.left = -height * aspect / 2
+  camera.right = height * aspect / 2
+  camera.top = height / 2
+  camera.bottom = -height / 2
+  camera.updateProjectionMatrix()
 }
-function fitCamera() {
+function fitPreset() {
   camera.updateMatrixWorld()
   let halfWidth = 0, halfHeight = 0
   for (const corner of corners) {
@@ -96,19 +97,90 @@ function fitCamera() {
     halfWidth = Math.max(halfWidth, Math.abs(projected.x))
     halfHeight = Math.max(halfHeight, Math.abs(projected.y))
   }
-  // Keep the entire plot in frame throughout the transition, including intermediate angles.
-  const size = Math.max(8.7, 17.5 / aspect, halfHeight * 2.14, halfWidth * 2.14 / aspect)
-  camera.left = -size * aspect / 2
-  camera.right = size * aspect / 2
-  camera.top = size / 2
-  camera.bottom = -size / 2
+  projection(Math.max(5.7, halfHeight * 2.15, halfWidth * 2.15 / aspect))
+}
+function resize() {
+  if (!renderer || !host.value) return
+  const width = host.value.clientWidth, height = host.value.clientHeight
+  if (!width || !height) return
+  const oldAspect = aspect
+  aspect = width / height
+  // Resize the viewport without resetting zoom, target or camera orientation.
+  projection(frustumHeight * Math.max(1, oldAspect) / Math.max(1, aspect))
+  renderer.setSize(width, height)
+  if (props.view !== 'libre' && !transition) fitPreset()
+}
+function clearInertia() {
+  controls.enableDamping = false
+  controls.update()
+  controls.enableDamping = !motion.matches
+}
+function requestPreset() {
+  if (!controls || !positions[props.view]) return
+  clearInertia()
+  transition = {
+    started: performance.now(), position: camera.position.clone(),
+    target: controls.target.clone(), zoom: camera.zoom, destination: positions[props.view],
+  }
+}
+function stopTransition() {
+  if (!transition) return
+  transition = null
+  clearInertia()
+}
+function freeView() {
+  if (!controls) return
+  stopTransition()
+  if (props.view !== 'libre') emit('free-view')
+}
+function zoomBy(factor) {
+  if (!controls || failure.value) return
+  freeView()
+  camera.zoom = THREE.MathUtils.clamp(camera.zoom * factor, controls.minZoom, controls.maxZoom)
   camera.updateProjectionMatrix()
+  controls.update()
+}
+function keyCamera(event) {
+  if (event.key.startsWith('Arrow')) freeView()
+  if (['+', '=', '-'].includes(event.key)) {
+    event.preventDefault()
+    zoomBy(event.key === '-' ? 1 / 1.2 : 1.2)
+  }
+  if (event.key.toLowerCase() === 'r') { event.preventDefault(); emit('reset') }
+}
+function beginPick(event) {
+  pointers.add(event.pointerId)
+  if (pointers.size > 1) {
+    if (gesture) gesture.moved = true
+    freeView()
+  } else {
+    gesture = { id: event.pointerId, x: event.clientX, y: event.clientY, moved: false, button: event.button }
+  }
+}
+function movePick(event) {
+  if (gesture && Math.hypot(event.clientX - gesture.x, event.clientY - gesture.y) > 5) {
+    gesture.moved = true
+    freeView()
+  }
+}
+function endPick(event) {
+  if (gesture?.id === event.pointerId && !gesture.moved && gesture.button === 0 && pointers.size === 1) pick(event)
+  pointers.delete(event.pointerId)
+  if (!pointers.size) gesture = null
+}
+function cancelPick(event) {
+  pointers.delete(event.pointerId)
+  gesture = null
 }
 function pick(event) {
   if (!renderer || failure.value) return
   const rect = renderer.domElement.getBoundingClientRect()
   raycaster.setFromCamera(new THREE.Vector2((event.clientX - rect.left) / rect.width * 2 - 1, -(event.clientY - rect.top) / rect.height * 2 + 1), camera)
-  const hit = raycaster.intersectObjects(field.children, true).find(h => h.object.userData.treatment)
+  const hit = raycaster.intersectObjects(field.children, true).find(hit => {
+    if (!hit.object.userData.treatment) return false
+    for (let object = hit.object; object; object = object.parent) if (!object.visible) return false
+    return true
+  })
   if (hit) emit('inspect', hit.object.userData.treatment)
 }
 function handleContextLoss(event) {
@@ -116,11 +188,76 @@ function handleContextLoss(event) {
   failure.value = 'Se perdió la conexión gráfica. Recarga la página para recuperar el escenario. Los datos siguen disponibles.'
   cancelAnimationFrame(frame)
 }
+function buildField() {
+  field = new THREE.Group()
+  scene.add(field)
+  mesh(own(new THREE.BoxGeometry(15.3, 0.25, 5.8)), material('#c6ceb4'), field, [0, -0.24, 0]).castShadow = false
+  const soilMat = material('#785b42'), ridgeMat = material('#92704e')
+  const postMat = material('#7f8a71', { metalness: 0.18, roughness: 0.65 })
+  const woodMat = material('#b99c72')
+  const bedGeo = own(new THREE.BoxGeometry(2.82, 0.22, 3.8))
+  const rimGeo = own(new THREE.BoxGeometry(3.04, 0.12, 4.03))
+  const ridgeGeo = own(new THREE.CylinderGeometry(0.35, 0.4, 3.5, 8))
+  const postGeo = own(new THREE.CylinderGeometry(0.025, 0.035, 2.65, 6))
+  const footGeo = own(new THREE.BoxGeometry(0.14, 0.12, 0.14))
+  const roofGeo = own(new THREE.BoxGeometry(2.98, 0.012, 3.98))
+  const beamGeo = own(new THREE.BoxGeometry(3, 0.045, 0.045))
+  const longBeamGeo = own(new THREE.BoxGeometry(0.045, 0.045, 4))
+  const endRail = own(new THREE.BoxGeometry(3, 0.15, 0.07))
+  const sideRail = own(new THREE.BoxGeometry(0.07, 0.15, 3.98))
+  const netPoints = []
+  for (let i = 0; i <= 20; i++) {
+    const x = -1.48 + i * 0.148
+    netPoints.push(x, 2.74, -1.98, x, 2.74, 1.98)
+  }
+  for (let i = 0; i <= 26; i++) {
+    const z = -1.98 + i * 3.96 / 26
+    netPoints.push(-1.48, 2.74, z, 1.48, 2.74, z)
+  }
+  const netGeo = own(new THREE.BufferGeometry())
+  netGeo.setAttribute('position', new THREE.Float32BufferAttribute(netPoints, 3))
+  treatments.forEach((t, i) => {
+    const baseMat = material('#c7b99a'), activeMat = material(t.color)
+    const rim = mesh(rimGeo, baseMat, field, [coords[i], -0.01, 0], t.id)
+    mesh(bedGeo, soilMat, field, [coords[i], 0.01, 0], t.id)
+    for (const dx of [-0.63, 0.63]) {
+      const ridge = mesh(ridgeGeo, ridgeMat, field, [coords[i] + dx, 0.12, 0], t.id)
+      ridge.rotation.x = Math.PI / 2
+      ridge.scale.z = 0.33
+    }
+    for (const dz of [-1.97, 1.97]) mesh(endRail, woodMat, field, [coords[i], 0.12, dz], t.id)
+    for (const dx of [-1.47, 1.47]) mesh(sideRail, woodMat, field, [coords[i] + dx, 0.12, 0], t.id)
+    const roof = new THREE.Group(), posts = new THREE.Group()
+    roof.position.x = coords[i]
+    field.add(roof, posts)
+    if (t.id !== 'control') {
+      const roofMat = material(t.color, { transparent: true, opacity: 0.18, side: THREE.DoubleSide, depthWrite: false })
+      mesh(roofGeo, roofMat, roof, [0, 2.73, 0], t.id).castShadow = false
+      const net = new THREE.LineSegments(netGeo, own(new THREE.LineBasicMaterial({ color: t.color, transparent: true, opacity: 0.48 })))
+      net.userData.treatment = t.id
+      roof.add(net)
+      for (const dx of [-1.47, 1.47]) {
+        for (const dz of [-1.97, 1.97]) {
+          mesh(postGeo, postMat, posts, [coords[i] + dx, 1.39, dz], t.id)
+          mesh(footGeo, postMat, posts, [coords[i] + dx, 0.1, dz], t.id)
+        }
+        mesh(longBeamGeo, postMat, roof, [dx, 2.75, 0], t.id)
+      }
+      for (const dz of [-1.97, 1.97]) mesh(beamGeo, postMat, roof, [0, 2.75, dz], t.id)
+    }
+    plots.push({ rim, roof, posts, baseMat, activeMat })
+  })
+  cropModels = createCropModels()
+  plants = new THREE.Group()
+  field.add(plants)
+  buildPlants()
+  updateSelection()
+}
 onMounted(() => {
   try {
     scene = new THREE.Scene()
-    scene.background = new THREE.Color('#edf1e7')
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false })
+    scene.background = new THREE.Color('#e9eee1')
+    renderer = new THREE.WebGLRenderer({ antialias: true })
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75))
     renderer.shadowMap.enabled = true
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
@@ -130,78 +267,52 @@ onMounted(() => {
     host.value.appendChild(renderer.domElement)
     camera = new THREE.OrthographicCamera(-9, 9, 5, -5, 0.1, 100)
     camera.position.copy(positions.frontal)
+    controls = new OrbitControls(camera, renderer.domElement)
+    controls.target.copy(center)
+    controls.cursor.copy(center)
+    controls.maxTargetRadius = 3
+    controls.minPolarAngle = 0.0001
+    controls.maxPolarAngle = Math.PI / 2 - 0.12
+    controls.minZoom = 0.65
+    controls.maxZoom = 3.2
+    controls.screenSpacePanning = false
+    controls.enableDamping = !motion.matches
+    controls.dampingFactor = 0.12
+    controls.rotateSpeed = 0.6
+    controls.panSpeed = 0.65
+    controls.listenToKeyEvents(host.value)
+    controls.addEventListener('start', stopTransition)
+    controls.update()
     raycaster = new THREE.Raycaster()
-    scene.add(new THREE.HemisphereLight('#ffffff', '#afb795', 2.8))
-    const sun = new THREE.DirectionalLight('#fff0ce', 3.2)
+    scene.add(new THREE.HemisphereLight('#fffdf4', '#87966a', 2.1))
+    const sun = new THREE.DirectionalLight('#fff4df', 2.5)
     sun.position.set(-6, 12, 8)
     sun.castShadow = true
     sun.shadow.mapSize.set(1024, 1024)
     Object.assign(sun.shadow.camera, { left: -11, right: 11, top: 10, bottom: -10 })
-    sun.shadow.bias = -0.001
+    sun.shadow.normalBias = 0.035
+    sun.shadow.bias = -0.0003
     scene.add(sun)
-    field = new THREE.Group()
-    scene.add(field)
-    const ground = mesh(own(new THREE.BoxGeometry(15.3, 0.25, 5.8)), material('#c7cfb5'), field, [0, -0.25, 0])
-    ground.castShadow = false
-    const soilMat = material('#7f6952')
-    const postMat = material('#a3aa94', { metalness: 0.18 })
-    const bedGeo = own(new THREE.BoxGeometry(2.82, 0.22, 3.8))
-    const rimGeo = own(new THREE.BoxGeometry(3.03, 0.15, 4.01))
-    const postGeo = own(new THREE.CylinderGeometry(0.028, 0.028, 2.55, 6))
-    const roofGeo = own(new THREE.BoxGeometry(2.98, 0.035, 3.98))
-    const beamGeo = own(new THREE.BoxGeometry(3, 0.035, 0.035))
-    const longBeamGeo = own(new THREE.BoxGeometry(0.035, 0.035, 4))
-    const rowGeo = own(new THREE.BoxGeometry(0.62, 0.07, 3.5))
-    const rowMat = material('#947554')
-    roofs = new THREE.Group()
-    field.add(roofs)
-    treatments.forEach((t, i) => {
-      const baseMat = material('#b9c1a9')
-      const activeMat = material(t.color)
-      const rim = mesh(rimGeo, baseMat, field, [coords[i], -0.02, 0], t.id)
-      mesh(bedGeo, soilMat, field, [coords[i], 0.01, 0], t.id)
-      for (const dx of [-0.63, 0.63]) mesh(rowGeo, rowMat, field, [coords[i] + dx, 0.13, 0], t.id)
-      const roof = new THREE.Group(), posts = new THREE.Group()
-      roofs.add(roof)
-      field.add(posts)
-      if (t.id !== 'control') {
-        const roofMat = material(t.color, { transparent: true, opacity: 0.28, side: THREE.DoubleSide, depthWrite: false })
-        const covering = mesh(roofGeo, roofMat, roof, [coords[i], 2.62, 0], t.id)
-        covering.castShadow = false
-        for (const dx of [-1.47, 1.47]) {
-          for (const dz of [-1.97, 1.97]) mesh(postGeo, postMat, posts, [coords[i] + dx, 1.32, dz], t.id)
-          mesh(longBeamGeo, postMat, roof, [coords[i] + dx, 2.64, 0], t.id)
-        }
-        for (const dz of [-1.97, 1.97]) mesh(beamGeo, postMat, roof, [coords[i], 2.64, dz], t.id)
-        // Parallel threads suggest a net without inventing the mesh's shade percentage.
-        const threadGeo = own(new THREE.BoxGeometry(0.012, 0.012, 3.94))
-        const threadMat = material(t.color, { transparent: true, opacity: 0.4 })
-        for (let j = 0; j < 11; j++) mesh(threadGeo, threadMat, roof, [coords[i] - 1.4 + j * 0.28, 2.65, 0], t.id).castShadow = false
-      }
-      plots.push({ rim, roof, posts, baseMat, activeMat })
-    })
-    stemGeo = own(new THREE.CylinderGeometry(0.7, 1, 1, 7))
-    leafGeo = own(new THREE.SphereGeometry(1, 8, 5))
-    fruitGeo = own(new THREE.SphereGeometry(1, 8, 6))
-    flowerGeo = own(new THREE.SphereGeometry(1, 5, 3))
-    stemMat = material('#4c7838')
-    leafMat = material('#3e7940')
-    fruitMat = material('#24552c')
-    flowerMat = material('#fff4cd')
-    plants = new THREE.Group()
-    field.add(plants)
-    buildPlants()
-    updateSelection()
+    buildField()
     resize()
+    fitPreset()
     observer = new ResizeObserver(resize)
     observer.observe(host.value)
-    let previous = 0
-    const animate = time => {
-      const dt = previous ? Math.min((time - previous) / 1000, 0.05) : 1 / 60
-      previous = time
-      camera.position.lerp(positions[props.view], reduceMotion ? 1 : 1 - Math.exp(-6 * dt))
-      camera.lookAt(target)
-      fitCamera()
+    function animate(time) {
+      controls.enableDamping = !motion.matches
+      if (transition) {
+        const progress = motion.matches ? 1 : Math.min((time - transition.started) / 650, 1)
+        const eased = progress * progress * (3 - 2 * progress)
+        camera.position.lerpVectors(transition.position, transition.destination, eased)
+        controls.target.lerpVectors(transition.target, center, eased)
+        camera.zoom = THREE.MathUtils.lerp(transition.zoom, 1, eased)
+        camera.updateProjectionMatrix()
+        controls.update()
+        fitPreset()
+        if (progress === 1) transition = null
+      } else {
+        controls.update()
+      }
       renderer.render(scene, camera)
       frame = requestAnimationFrame(animate)
     }
@@ -212,14 +323,20 @@ onMounted(() => {
 })
 watch(() => props.records, () => { buildPlants(); updateSelection() })
 watch(() => [props.view, props.selected, props.focused], updateSelection, { deep: true })
+watch(() => props.cameraRequest, requestPreset)
+defineExpose({ zoomBy })
 onBeforeUnmount(() => {
   cancelAnimationFrame(frame)
   observer?.disconnect()
+  controls?.removeEventListener('start', stopTransition)
+  controls?.dispose()
+  disposeInstances()
   if (renderer) {
     renderer.domElement.removeEventListener('webglcontextlost', handleContextLoss)
     renderer.dispose()
   }
-  resources.forEach(r => r.dispose())
+  cropModels?.dispose()
+  resources.forEach(resource => resource.dispose())
   resources = []
   plots = []
 })
@@ -228,8 +345,11 @@ onBeforeUnmount(() => {
 <template>
   <div class="field-wrap">
     <div class="field-overlay"><span class="sun-icon" aria-hidden="true">☀</span><span>UVG · Campus Sur<small>Montaje esquemático</small></span></div>
-    <div ref="host" class="field-canvas" role="img" :aria-label="'Cultivo ilustrativo en vista ' + view + '. Usa los botones inferiores para examinar cada tratamiento.'" @click="pick"></div>
+    <div ref="host" class="field-canvas" role="group" tabindex="0" :aria-label="'Cultivo ilustrativo en vista ' + view" aria-describedby="camera-help"
+      @pointerdown.capture="beginPick" @pointermove.capture="movePick" @pointerup.capture="endPick" @pointercancel.capture="cancelPick"
+      @wheel.capture="freeView" @keydown.capture="keyCamera" @contextmenu.prevent></div>
     <div v-if="failure" class="scene-failure" role="status">{{ failure }}</div>
-    <span class="scene-scale">MODELO DE PROMEDIOS · {{ view.toUpperCase() }}</span>
+    <p id="camera-help" class="mouse-help"><span class="desktop-help">Arrastra: girar · Rueda: zoom · Arrastre derecho: desplazar</span><span class="touch-help">Un dedo: girar · Dos dedos: zoom y desplazamiento</span><span class="sr-only">. Con foco en el escenario, flechas para desplazar, + y − para zoom, R para restablecer. Usa los botones de tratamiento para seleccionar con teclado.</span></p>
+    <span class="scene-scale">PROMEDIOS · {{ view.toUpperCase() }}</span>
   </div>
 </template>

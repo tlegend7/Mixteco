@@ -5,7 +5,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { treatments } from '../modules/experiment'
 import { createCropModels } from '../modules/cropModel'
 
-const props = defineProps({ records: Array, selected: Array, focused: String, view: String, cameraRequest: Number })
+const props = defineProps({ records: Array, selected: Array, focused: String, inspection: Boolean, view: String, cameraRequest: Number })
 const emit = defineEmits(['inspect', 'free-view', 'reset'])
 const host = ref(null)
 const failure = ref('')
@@ -78,6 +78,10 @@ function updateSelection() {
     plot.rim.material = props.focused === treatments[i].id && selected ? plot.activeMat : plot.baseMat
     plot.roof.visible = props.view !== 'superior' && selected
     plot.posts.visible = selected
+    const inspecting = props.inspection && props.focused === treatments[i].id
+    for (const object of plot.roof.children) {
+      if (object.material?.transparent) object.material.opacity = object.isMesh ? (inspecting ? 0.1 : 0.18) : (inspecting ? 0.32 : 0.48)
+    }
   })
   plants?.children.forEach(group => { group.visible = props.selected.includes(group.userData.treatment) })
 }
@@ -89,15 +93,31 @@ function projection(height) {
   camera.bottom = -height / 2
   camera.updateProjectionMatrix()
 }
-function fitPreset() {
-  camera.updateMatrixWorld()
+function frameHeight(probe) {
+  probe.updateMatrixWorld()
+  const plotX = coords[treatments.findIndex(t => t.id === props.focused)]
+  const bounds = props.inspection
+    ? [-1.55, 1.55].flatMap(x => [-0.15, 2.85].flatMap(y => [-2.05, 2.05].map(z => new THREE.Vector3(plotX + x, y, z))))
+    : corners
   let halfWidth = 0, halfHeight = 0
-  for (const corner of corners) {
-    projected.copy(corner).applyMatrix4(camera.matrixWorldInverse)
+  for (const corner of bounds) {
+    projected.copy(corner).applyMatrix4(probe.matrixWorldInverse)
     halfWidth = Math.max(halfWidth, Math.abs(projected.x))
     halfHeight = Math.max(halfHeight, Math.abs(projected.y))
   }
-  projection(Math.max(5.7, halfHeight * 2.15, halfWidth * 2.15 / aspect))
+  return Math.max(props.inspection ? 3.6 : 5.7, halfHeight * 2.15, halfWidth * 2.15 / aspect)
+}
+function fitPreset() {
+  projection(frameHeight(camera))
+}
+function focusCenter() {
+  return props.inspection
+    ? new THREE.Vector3(coords[treatments.findIndex(t => t.id === props.focused)], center.y, 0)
+    : center.clone()
+}
+function navigationBounds() {
+  controls.cursor.copy(focusCenter())
+  controls.maxTargetRadius = props.inspection ? 0.85 : 3
 }
 function resize() {
   if (!renderer || !host.value) return
@@ -116,16 +136,24 @@ function clearInertia() {
   controls.enableDamping = !motion.matches
 }
 function requestPreset() {
-  if (!controls || !positions[props.view]) return
+  if (!controls) return
   clearInertia()
+  const toTarget = focusCenter()
+  // Orthographic framing approaches the plot without moving the camera into its structure.
+  const destination = (positions[props.view] ?? positions.frontal).clone().sub(center).add(toTarget)
+  const probe = camera.clone()
+  probe.position.copy(destination)
+  probe.lookAt(toTarget)
   transition = {
     started: performance.now(), position: camera.position.clone(),
-    target: controls.target.clone(), zoom: camera.zoom, destination: positions[props.view],
+    target: controls.target.clone(), zoom: camera.zoom, destination, toTarget,
+    height: frustumHeight, toHeight: frameHeight(probe),
   }
 }
 function stopTransition() {
   if (!transition) return
   transition = null
+  navigationBounds()
   clearInertia()
 }
 function freeView() {
@@ -304,12 +332,15 @@ onMounted(() => {
         const progress = motion.matches ? 1 : Math.min((time - transition.started) / 650, 1)
         const eased = progress * progress * (3 - 2 * progress)
         camera.position.lerpVectors(transition.position, transition.destination, eased)
-        controls.target.lerpVectors(transition.target, center, eased)
+        controls.target.lerpVectors(transition.target, transition.toTarget, eased)
+        controls.cursor.copy(controls.target)
         camera.zoom = THREE.MathUtils.lerp(transition.zoom, 1, eased)
-        camera.updateProjectionMatrix()
+        projection(THREE.MathUtils.lerp(transition.height, transition.toHeight, eased))
         controls.update()
-        fitPreset()
-        if (progress === 1) transition = null
+        if (progress === 1) {
+          transition = null
+          navigationBounds()
+        }
       } else {
         controls.update()
       }
@@ -322,7 +353,7 @@ onMounted(() => {
   }
 })
 watch(() => props.records, () => { buildPlants(); updateSelection() })
-watch(() => [props.view, props.selected, props.focused], updateSelection, { deep: true })
+watch(() => [props.view, props.selected, props.focused, props.inspection], updateSelection, { deep: true })
 watch(() => props.cameraRequest, requestPreset)
 defineExpose({ zoomBy })
 onBeforeUnmount(() => {

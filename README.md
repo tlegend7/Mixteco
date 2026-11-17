@@ -39,11 +39,23 @@ El cuestionario es anterior al Excel: sus referencias a ausencia de flores, frut
 - Tablas de valores y procedencia, lecturas ambientales y descarga de JSON.
 - Diseño adaptable, preferencia de movimiento reducido, estados de carga/error y aviso si WebGL no está disponible.
 
+## Exploración y reproducción
+
+- Seleccionar una parcela, una barra o un botón de tratamiento abre **Explorar tratamiento**. El encuadre se acerca al área elegida y conserva rotación, zoom, desplazamiento y las tres perspectivas. **Vista general** recupera el conjunto, respetando los filtros activos. Se puede cambiar de tratamiento directamente.
+- El acercamiento modifica el encuadre ortográfico, manteniendo la cámara fuera de las estructuras. El centro de navegación se limita a 0.85 unidades ilustrativas alrededor del tratamiento durante la inspección. Las semanas y variables no provocan nuevos encuadres.
+- **Reproducir evolución** avanza por las observaciones, cada 2 segundos o 3.2 segundos con movimiento reducido. Continúa desde la semana actual; desde la última vuelve a la primera. Se detiene al llegar a la semana 10.
+- **Pausar** conserva la semana actual. **Reiniciar** vuelve a la primera y pausa. Elegir una semana con botones, deslizador o puntos del gráfico también pausa. Cambiar la preferencia de movimiento reducido pausa la reproducción. Al cerrar la vista se libera el temporizador.
+- Los puntos de la gráfica muestran tratamiento, semana, fecha, variable, valor y unidad. Se consultan con mouse, tacto o teclado: Tab entra al gráfico, flechas cambian de punto, Enter/espacio seleccionan la semana y Escape cierra la ficha. **Consultar punto** ofrece un selector nativo, incluidos los puntos coincidentes.
+- **Comparar con control** calcula tratamiento menos control en unidades originales y como porcentaje del control, aunque este esté oculto por el filtro. Si el control es cero, muestra **No definido**. No se guardan valores calculados como nuevas mediciones.
+- El resumen identifica la mayor altura entre los tratamientos seleccionados en la semana actual, incluyendo empates. Es descriptivo: no atribuye causalidad ni significancia estadística.
+
+Las hojas tienen una curvatura ligera, los frutos una silueta suavemente curvada y las flores mayor contraste para la inspección cercana. Se conservan geometrías compartidas, instancias y la escala de altura de los datos originales.
+
 La altura visual es proporcional al dato (0.055 unidades por cm). El diámetro se amplifica para ser legible. Las hojas lanceoladas se distribuyen alrededor del tallo, simplificando su cantidad a aproximadamente un elemento por 2.7 hojas promedio, con un mínimo ilustrativo de dos. Flores de cinco pétalos y frutos alargados se muestran únicamente si su promedio es mayor que cero; su tamaño visual varía con ese promedio. No son reconstrucciones individuales ni conteos reales. No se interpolan mediciones.
 
 Las geometrías y materiales se comparten entre semanas. Las seis plantas ilustrativas de cada tratamiento se renderizan con instancias agrupadas por geometría y material, y sus búferes se liberan al cambiar de semana. Las mallas de sarán utilizan dos capas visuales, una cubierta transparente y una cuadrícula, sin atribuirles un porcentaje de sombra.
 
-El encuadre automático solo actúa al iniciar, redimensionar una perspectiva predefinida o solicitar una vista. No se aplica durante la navegación libre. El zoom se limita entre 0.65× y 3.2×; el centro de navegación permanece dentro de un radio de tres unidades ilustrativas y la cámara se mantiene por encima del terreno.
+El encuadre automático solo actúa al iniciar, redimensionar una perspectiva predefinida o solicitar una vista. No se aplica durante la navegación libre. El zoom se limita entre 0.65× y 3.2×; en vista general el centro de navegación permanece dentro de un radio de tres unidades ilustrativas y la cámara se mantiene por encima del terreno.
 
 El montaje real descrito tiene cinco camellones y 300 plantas iniciales. La distribución de colores y el porcentaje de sombra no están confirmados. La disposición de las cuatro áreas, sol y sombras son esquemáticos. No hay simulación de radiación ni predicción fenológica.
 
@@ -63,19 +75,24 @@ El montaje real descrito tiene cinco camellones y 300 plantas iniciales. La dist
 
 `npm test` comprueba integridad, filtrado, valores particulares y rechazo de registros inválidos. Ejecutar también `python scripts/import_data.py --check` y `npm run build`.
 
-Las cinco pruebas incluyen presencia de órganos vegetativos y reproductivos, evolución de la representación y reutilización de recursos. Para repetir las comprobaciones de navegador, iniciar el servidor local y ejecutar:
+Las diez pruebas incluyen integridad, modelos compartidos, diferencias respecto al control, empates y reproducción con reloj simulado (pausa, final, limpieza y movimiento reducido). Para repetir las comprobaciones de navegador, iniciar el servidor local y ejecutar:
 
 ```sh
 npx --yes --package @playwright/cli playwright-cli -s=mixteco open http://127.0.0.1:5173/
 npx --yes --package @playwright/cli playwright-cli -s=mixteco run-code --filename tests/browser-review.js
+npx --yes --package @playwright/cli playwright-cli -s=mixteco run-code --filename tests/browser-phase2.js
 ```
 
 El guion comprueba zoom persistente y sus límites, rotación, desplazamiento, clic frente a arrastre, restauración, movimiento reducido, teclado, gestos táctiles emulados, filtros y seis anchos de pantalla. Las capturas de la revisión se conservan en `docs/screenshots/`.
+
+El segundo guion verifica inspección, cambio de tratamiento, regreso a general, reproducción completa de las semanas 1–10, pausa manual, diferencias respecto al control y fichas con mouse, teclado, tacto y selector. Las comprobaciones de tacto utilizan emulación de Chromium; no equivalen a probar dispositivos físicos.
 
 Para la revisión manual: recorrer semanas 1 y 10; seleccionar cada variable; desactivar y reactivar tratamientos; comprobar flores/frutos en semana 10; revisar las tres cámaras y selección por parcela; usar teclado y pantalla móvil. En el control revisar n=6 y n=5 en semanas 9 y 10.
 
 ## Vercel
 
 Importar el repositorio en Vercel, seleccionar el directorio de esta aplicación, framework Vite, comando de compilación `npm run build` y salida `dist`. No requiere variables de entorno. Solo se publican los archivos generados en `dist`; los documentos originales permanecen fuera de esa salida.
+
+`vercel.json` desactiva los despliegues automáticos únicamente para `feat/treatment-exploration-playback`, de modo que esta fase pueda revisarse en un PR sin publicarse. No cambia la configuración de las demás ramas.
 
 La fuente tipográfica opcional procede de Google Fonts; si no está disponible se utiliza la tipografía del sistema. Referencias técnicas: [Vue](https://vuejs.org/guide/quick-start.html), [Vite](https://vite.dev/guide/) y [Three.js](https://threejs.org/docs/).

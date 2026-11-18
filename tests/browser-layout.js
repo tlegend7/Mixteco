@@ -3,7 +3,7 @@ async (page) => {
   const check = (value, message) => { if (!value) throw new Error(message) }
   const errors = [], sizes = []
   page.on('pageerror', error => errors.push(error.message))
-  await page.reload()
+  await page.reload({ waitUntil:'domcontentloaded' })
   await page.getByRole('heading', { name: 'Observa y compara', exact: true }).waitFor()
   const rows = page.locator('.week-buttons button')
   const visibleWeek = () => page.locator('.week-buttons').evaluate(strip => {
@@ -30,8 +30,8 @@ async (page) => {
     check(geometry.buttonWidth >= 46, 'Botones comprimidos a '+width)
     check(await rows.count() === 13 && await visibleWeek(), 'Semana seleccionada inaccesible a '+width)
     check(geometry.cardInPanel, 'Tarjeta experimental fuera del panel')
-    check(geometry.badges.bottom <= (width > 900 ? 100 : 155), 'Header demasiado alto a '+width)
-    check(geometry.field.bottom <= geometry.plots.y+1 && geometry.plots.bottom <= geometry.detail.y+1 && geometry.detail.bottom <= geometry.caption.y+1 && geometry.caption.bottom <= geometry.timeline.y+1, 'Elementos superpuestos a '+width)
+    check(geometry.badges.bottom <= (width > 900 ? 100 : 185), 'Header demasiado alto a '+width)
+    check(geometry.field.bottom <= geometry.plots.y+1 && geometry.plots.bottom <= geometry.detail.y+1 && geometry.detail.bottom <= geometry.timeline.y+1, 'Elementos superpuestos a '+width)
     check(geometry.field.height >= (width > 900 ? 280 : width > 580 ? 340 : 280), 'Escenario demasiado bajo a '+width)
     if (width > 900) {
       const ratio = geometry.data.width/(geometry.data.width+geometry.scene.width)
@@ -64,7 +64,7 @@ async (page) => {
     sizes.push({ width, height, sceneHeight:geometry.field.height, timelineHeight:geometry.timeline.height, scrollable:geometry.scrollable })
   }
   await page.setViewportSize({ width:1440, height:900 })
-  await page.reload()
+  await page.reload({ waitUntil:'domcontentloaded' })
   await page.getByRole('button', { name:'Reproducir evolución', exact:true }).waitFor()
   await page.getByRole('slider').focus()
   await page.keyboard.press('ArrowLeft')

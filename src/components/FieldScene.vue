@@ -4,11 +4,14 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { treatments } from '../modules/experiment'
 import { createCropModels } from '../modules/cropModel'
+import { fieldBounds, zoomLimits, constrainNavigation } from '../modules/navigation'
 
-const props = defineProps({ records: Array, selected: Array, focused: String, inspection: Boolean, view: String, cameraRequest: Number })
+const props = defineProps({ records: Array, selected: Array, focused: String, inspection: Boolean, view: String, coversVisible: Boolean, expanded: Boolean, cameraRequest: Number })
 const emit = defineEmits(['inspect', 'free-view', 'reset'])
 const host = ref(null)
 const failure = ref('')
+const pointFocus = ref('')
+const zoomLevel = ref(1)
 const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
 const center = new THREE.Vector3(0, 1.1, 0)
 const positions = {
@@ -23,6 +26,8 @@ let renderer, scene, camera, controls, observer, frame, field, plants, raycaster
 let transition = null, aspect = 1, frustumHeight = 8
 let plots = [], resources = []
 let gesture = null
+let pointTarget = null
+let pointAnchor = null
 const pointers = new Set()
 function own(resource) { resources.push(resource); return resource }
 const material = (color, options = {}) => own(new THREE.MeshStandardMaterial({ color, roughness: 0.9, ...options }))
@@ -57,6 +62,7 @@ function buildPlants() {
     for (const objects of batches.values()) {
       const batch = new THREE.InstancedMesh(objects[0].geometry, objects[0].material, objects.length * 6)
       batch.userData.treatment = record.treatment
+      batch.userData.kind = objects[0].userData.kind
       batch.castShadow = batch.receiveShadow = true
       let instance = 0
       const placement = new THREE.Matrix4(), transform = new THREE.Matrix4()
@@ -68,6 +74,27 @@ function buildPlants() {
       group.add(batch)
     }
   }
+  followPoint()
+}
+function followPoint() {
+  if (!pointTarget || !pointAnchor || !camera) return
+  const record = props.records.find(r => r.treatment === pointAnchor.treatment)
+  if (!Number.isFinite(record?.height)) {
+    pointFocus.value = 'Sin altura disponible para representar esta planta · usa Centrar todo'
+    return
+  }
+  const missingFlower = ['petal','pollen','stamen','anther'].includes(pointAnchor.kind) && !(record.flowers > 0)
+  const missingFruit = ['pepper','calyx'].includes(pointAnchor.kind) && !(record.fruits > 0)
+  const next = pointAnchor.base.clone()
+  next.y += record.height * .055 * pointAnchor.level
+  if (!missingFlower && !missingFruit) { next.x += pointAnchor.dx; next.z += pointAnchor.dz; pointFocus.value = pointAnchor.label }
+  else pointFocus.value = 'Sin estructura reproductiva medida para esta semana · enfoque en el tallo ilustrativo'
+  next.clamp(fieldBounds.min, fieldBounds.max)
+  const delta = next.clone().sub(pointTarget)
+  controls.target.add(delta)
+  camera.position.add(delta)
+  pointTarget.copy(next)
+  controls.update()
 }
 function disposeInstances() {
   plants?.traverse(object => { if (object.isInstancedMesh) object.dispose() })
@@ -76,7 +103,7 @@ function updateSelection() {
   plots.forEach((plot, i) => {
     const selected = props.selected.includes(treatments[i].id)
     plot.rim.material = props.focused === treatments[i].id && selected ? plot.activeMat : plot.baseMat
-    plot.roof.visible = props.view !== 'superior' && selected
+    plot.roof.visible = props.coversVisible && props.view !== 'superior' && selected
     plot.posts.visible = selected
     const inspecting = props.inspection && props.focused === treatments[i].id
     for (const object of plot.roof.children) {
@@ -115,9 +142,14 @@ function focusCenter() {
     ? new THREE.Vector3(coords[treatments.findIndex(t => t.id === props.focused)], center.y, 0)
     : center.clone()
 }
-function navigationBounds() {
-  controls.cursor.copy(focusCenter())
-  controls.maxTargetRadius = props.inspection ? 0.85 : 3
+function limitNavigation() {
+  const bounds = fieldBounds.clone()
+  if (props.inspection && !pointTarget) {
+    const x = coords[treatments.findIndex(t => t.id === props.focused)]
+    bounds.min.x = x - 1.5
+    bounds.max.x = x + 1.5
+  }
+  constrainNavigation(camera, controls, bounds)
 }
 function resize() {
   if (!renderer || !host.value) return
@@ -125,10 +157,10 @@ function resize() {
   if (!width || !height) return
   const oldAspect = aspect
   aspect = width / height
-  // Resize the viewport without resetting zoom, target or camera orientation.
+  // Keep the inspected point, zoom and orientation across fullscreen and resize.
   projection(frustumHeight * Math.max(1, oldAspect) / Math.max(1, aspect))
   renderer.setSize(width, height)
-  if (props.view !== 'libre' && !transition) fitPreset()
+  if (props.view !== 'libre' && !transition && !pointTarget) fitPreset()
 }
 function clearInertia() {
   controls.enableDamping = false
@@ -137,6 +169,9 @@ function clearInertia() {
 }
 function requestPreset() {
   if (!controls) return
+  pointTarget = null
+  pointAnchor = null
+  pointFocus.value = ''
   clearInertia()
   const toTarget = focusCenter()
   // Orthographic framing approaches the plot without moving the camera into its structure.
@@ -153,13 +188,56 @@ function requestPreset() {
 function stopTransition() {
   if (!transition) return
   transition = null
-  navigationBounds()
   clearInertia()
 }
 function freeView() {
   if (!controls) return
   stopTransition()
   if (props.view !== 'libre') emit('free-view')
+}
+function releaseCamera() {
+  freeView()
+  pointTarget = null
+  pointAnchor = null
+  pointFocus.value = ''
+}
+function focusAt(point, label, treatment = props.focused, kind = 'plant', span = .6) {
+  if (!controls) return
+  freeView()
+  clearInertia()
+  pointTarget = point.clone().clamp(fieldBounds.min, fieldBounds.max)
+  const x = coords[treatments.findIndex(t => t.id === treatment)]
+  const bases = [-.63,.63].flatMap(dx => [-1.05,0,1.05].map(z => new THREE.Vector3(x+dx,.25,z)))
+  const base = bases.sort((a,b) => Math.hypot(a.x-point.x,a.z-point.z)-Math.hypot(b.x-point.x,b.z-point.z))[0]
+  const record = props.records.find(r => r.treatment === treatment)
+  pointAnchor = { treatment, kind, label, base, level:(pointTarget.y-.25)/Math.max(.01,record.height*.055), dx:pointTarget.x-base.x, dz:pointTarget.z-base.z }
+  const offset = camera.position.clone().sub(controls.target)
+  controls.target.copy(pointTarget)
+  camera.position.copy(pointTarget).add(offset)
+  camera.zoom = Math.min(zoomLimits.max, Math.max(camera.zoom, frustumHeight / span))
+  camera.updateProjectionMatrix()
+  controls.update()
+  limitNavigation()
+  pointFocus.value = label
+}
+function focusPlant() {
+  if (!props.selected.includes(props.focused)) return
+  const record = props.records.find(r => r.treatment === props.focused)
+  if (!Number.isFinite(record?.height)) return
+  const x = coords[treatments.findIndex(t => t.id === props.focused)] - .63
+  focusAt(new THREE.Vector3(x, .25 + record.height * .055 * .75, 1.05), 'Planta ilustrativa · doble clic en una estructura para enfocarla')
+}
+function focusStructure(kind) {
+  const record = props.records.find(r => r.treatment === props.focused)
+  if (!props.selected.includes(props.focused) || !Number.isFinite(record?.height) || !(record[kind] > 0)) return
+  const x = coords[treatments.findIndex(t => t.id === props.focused)] - .63
+  if (kind === 'flowers') focusAt(new THREE.Vector3(x+.13,.25+record.height*.055*.83,1.11),'Flor ilustrativa · detalle de pétalos y estambres',props.focused,'petal',.42)
+  if (kind === 'fruits') {
+    const size=.75+Math.min(record.fruits,3)*.28
+    const point=new THREE.Vector3(0,-.15*size,0).applyAxisAngle(new THREE.Vector3(0,0,1),-.2)
+    point.add(new THREE.Vector3(x-.18,.25+record.height*.055*.72,1.29))
+    focusAt(point,'Fruto ilustrativo · tamaño no equivalente a una medición individual',props.focused,'pepper',.5)
+  }
 }
 function zoomBy(factor) {
   if (!controls || failure.value) return
@@ -200,16 +278,25 @@ function cancelPick(event) {
   pointers.delete(event.pointerId)
   gesture = null
 }
-function pick(event) {
+function intersections(event, objects) {
   if (!renderer || failure.value) return
   const rect = renderer.domElement.getBoundingClientRect()
   raycaster.setFromCamera(new THREE.Vector2((event.clientX - rect.left) / rect.width * 2 - 1, -(event.clientY - rect.top) / rect.height * 2 + 1), camera)
-  const hit = raycaster.intersectObjects(field.children, true).find(hit => {
-    if (!hit.object.userData.treatment) return false
+  return raycaster.intersectObjects(objects, true).filter(hit => {
+    if (!hit.object.userData.treatment || !props.selected.includes(hit.object.userData.treatment)) return false
     for (let object = hit.object; object; object = object.parent) if (!object.visible) return false
     return true
   })
+}
+function pick(event) {
+  const hit = intersections(event, field.children)?.[0]
   if (hit) emit('inspect', hit.object.userData.treatment)
+}
+function inspectPoint(event) {
+  const hit = intersections(event, plants.children)?.[0]
+  if (!hit) return
+  const names = { petal: 'Pétalo', pollen: 'Centro floral', pepper: 'Fruto', calyx: 'Cáliz', leaf: 'Hoja', vein: 'Nervadura', stem: 'Tallo o rama' }
+  focusAt(hit.point, (names[hit.object.userData.kind] ?? 'Planta') + ' · representación ilustrativa', hit.object.userData.treatment, hit.object.userData.kind)
 }
 function handleContextLoss(event) {
   event.preventDefault()
@@ -298,12 +385,13 @@ onMounted(() => {
     controls = new OrbitControls(camera, renderer.domElement)
     controls.target.copy(center)
     controls.cursor.copy(center)
-    controls.maxTargetRadius = 3
-    controls.minPolarAngle = 0.0001
+    controls.maxTargetRadius = Infinity
+    controls.minPolarAngle = 0.025
     controls.maxPolarAngle = Math.PI / 2 - 0.12
-    controls.minZoom = 0.65
-    controls.maxZoom = 3.2
-    controls.screenSpacePanning = false
+    controls.minZoom = zoomLimits.min
+    controls.maxZoom = zoomLimits.max
+    controls.zoomToCursor = true
+    controls.screenSpacePanning = true
     controls.enableDamping = !motion.matches
     controls.dampingFactor = 0.12
     controls.rotateSpeed = 0.6
@@ -339,11 +427,12 @@ onMounted(() => {
         controls.update()
         if (progress === 1) {
           transition = null
-          navigationBounds()
         }
       } else {
         controls.update()
       }
+      limitNavigation()
+      zoomLevel.value = Math.round(camera.zoom * 10) / 10
       renderer.render(scene, camera)
       frame = requestAnimationFrame(animate)
     }
@@ -353,9 +442,11 @@ onMounted(() => {
   }
 })
 watch(() => props.records, () => { buildPlants(); updateSelection() })
-watch(() => [props.view, props.selected, props.focused, props.inspection], updateSelection, { deep: true })
+watch(() => [props.view, props.selected, props.focused, props.inspection, props.coversVisible], updateSelection, { deep: true })
 watch(() => props.cameraRequest, requestPreset)
-defineExpose({ zoomBy })
+defineExpose({ zoomBy, releaseCamera, focusPlant, focusStructure,
+  getCameraState: () => camera && ({ position:camera.position.toArray(), target:controls.target.toArray(), quaternion:camera.quaternion.toArray(), zoom:camera.zoom, frustumHeight, aspect, fieldPosition:field.position.toArray(), fieldScale:field.scale.toArray() }),
+})
 onBeforeUnmount(() => {
   cancelAnimationFrame(frame)
   observer?.disconnect()
@@ -378,9 +469,10 @@ onBeforeUnmount(() => {
     <div class="field-overlay"><span class="sun-icon" aria-hidden="true">☀</span><span>UVG · Campus Sur<small>Montaje esquemático</small></span></div>
     <div ref="host" class="field-canvas" role="group" tabindex="0" :aria-label="'Cultivo ilustrativo en vista ' + view" aria-describedby="camera-help"
       @pointerdown.capture="beginPick" @pointermove.capture="movePick" @pointerup.capture="endPick" @pointercancel.capture="cancelPick"
-      @wheel.capture="freeView" @keydown.capture="keyCamera" @contextmenu.prevent></div>
+      @wheel.capture="freeView" @keydown.capture="keyCamera" @dblclick="inspectPoint" @contextmenu.prevent></div>
     <div v-if="failure" class="scene-failure" role="status">{{ failure }}</div>
-    <p id="camera-help" class="mouse-help"><span class="desktop-help">Arrastra: girar · Rueda: zoom · Arrastre derecho: desplazar</span><span class="touch-help">Un dedo: girar · Dos dedos: zoom y desplazamiento</span><span class="sr-only">. Con foco en el escenario, flechas para desplazar, + y − para zoom, R para restablecer. Usa los botones de tratamiento para seleccionar con teclado.</span></p>
-    <span class="scene-scale">PROMEDIOS · {{ view.toUpperCase() }}</span>
+    <p id="camera-help" class="mouse-help"><span class="desktop-help">Arrastra: girar · Rueda: zoom al cursor · Doble clic: enfocar estructura</span><span class="touch-help">Un dedo: girar · Dos dedos: zoom y desplazamiento · Acercar a planta: inspección</span><span class="sr-only">. Con foco en el escenario, flechas para desplazar, + y − para zoom, R para centrar todo. Usa los botones de tratamiento para seleccionar con teclado.</span></p>
+    <p v-if="pointFocus" class="point-focus" role="status">{{ pointFocus }}</p>
+    <span class="scene-scale">PROMEDIOS · {{ view.toUpperCase() }} · Zoom {{ zoomLevel }}×</span>
   </div>
 </template>

@@ -5,7 +5,7 @@ async (page) => {
   page.on('pageerror', error => errors.push(error.message))
   page.setDefaultTimeout(6000)
   await page.setViewportSize({ width: 1440, height: 900 })
-  await page.reload()
+  await page.reload({ waitUntil:'domcontentloaded' })
   await page.getByRole('button', { name: 'Reproducir evolución', exact: true }).waitFor()
   await page.locator('.week-buttons button').nth(9).click()
   const canvas = page.locator('canvas')

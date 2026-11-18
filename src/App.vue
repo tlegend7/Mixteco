@@ -3,6 +3,7 @@ import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { loadExperiment } from './services/data'
 import { treatments, metrics, format, formatSigned, dateLabel, recordsAt, differenceFromControl, weeklyMaximum } from './modules/experiment'
 import { usePlayback } from './modules/usePlayback'
+import { useViewerFullscreen } from './modules/useViewerFullscreen'
 import TemporalChart from './components/TemporalChart.vue'
 import FieldScene from './components/FieldScene.vue'
 
@@ -17,6 +18,9 @@ const cameraRequest = ref(0)
 const focused = ref('azul')
 const inspection = ref(false)
 const sceneRef = ref(null)
+const viewer = ref(null)
+const coversVisible = ref(true)
+const { expanded, notice: fullscreenNotice, toggle: toggleFullscreen } = useViewerFullscreen(viewer)
 const weekButtons = ref(null)
 const weeks = computed(() => experiment.value?.biometry.weeks ?? [])
 const { playing, selectWeek, restart, toggle: togglePlayback } = usePlayback(week, weeks)
@@ -69,6 +73,11 @@ function showGeneral() {
   inspection.value = false
   setView('frontal')
 }
+function releaseCamera() {
+  inspection.value = false
+  view.value = 'libre'
+  sceneRef.value?.releaseCamera()
+}
 function setView(id) {
   view.value = id
   cameraRequest.value++
@@ -83,6 +92,7 @@ function revealSelectedWeek() {
   else if (selected.right > bounds.left + strip.clientWidth) strip.scrollLeft += selected.right - bounds.left - strip.clientWidth
 }
 watch([week, weekButtons], revealSelectedWeek, { flush: 'post' })
+watch(expanded, revealSelectedWeek, { flush: 'post' })
 onMounted(() => window.addEventListener('resize', revealSelectedWeek))
 onBeforeUnmount(() => window.removeEventListener('resize', revealSelectedWeek))
 onMounted(load)
@@ -92,6 +102,7 @@ onMounted(load)
   <div class="app-shell">
     <main id="main">
       <header class="intro">
+        <a class="utp-logo" href="https://utp.ac.pa" target="_blank" rel="noopener noreferrer"><img src="/images/utp-oficial.png" alt="Universidad Tecnológica de Panamá" width="44" height="44" /></a>
         <h1>Crecimiento del chile jalapeño bajo sarán</h1>
         <p>Explora su desarrollo y compara los registros bajo distintas condiciones de sombra.</p>
       </header>
@@ -137,16 +148,25 @@ onMounted(load)
             <div class="chart-heading"><h3>Evolución temporal</h3><span>{{ metric.unit }}</span></div>
             <TemporalChart :records="experiment.biometry.records" :weeks="weeks" :selected="selected" :week="week" :metric="metric" @select-week="selectWeek" />
             <div class="sample-note"><span class="sample-symbol">n</span><p><strong>{{ evaluated }} mediciones de {{ metric.label.toLowerCase() }}</strong> en los tratamientos seleccionados esta semana.<br>Promedios de los valores disponibles; los vacíos y N/A no cuentan como cero.</p></div>
+            <p class="scene-caption">Plantas y distribución ilustrativas según los promedios disponibles. Sin altura o diámetro no se dibuja la planta. La ausencia de flores o frutos en el modelo no confirma su ausencia si faltan datos.</p>
           </section>
 
-          <section class="scene-panel panel" aria-labelledby="scene-title">
+          <section ref="viewer" :class="['scene-panel', 'panel', { 'is-expanded': expanded }]" aria-labelledby="scene-title" :role="expanded ? 'dialog' : 'region'" :aria-modal="expanded ? true : undefined">
             <div class="section-heading"><div><p class="eyebrow">02 / EXPLORACIÓN ESPACIAL</p><h2 id="scene-title">{{ inspection ? 'Explorar · ' + focusTreatment.label : 'El experimento, en perspectiva' }}</h2></div><button v-if="inspection" class="general-view" aria-label="Volver a vista general" @click="showGeneral">← Vista general</button><span v-else class="small-tag green">Vista general · Ilustrativa</span></div>
             <div class="scene-toolbar"><div class="view-tabs" role="group" aria-label="Perspectiva de cámara">
               <button v-for="v in [{ id: 'frontal', label: 'Frontal' }, { id: 'lateral', label: 'Lateral' }, { id: 'superior', label: 'Superior' }]" :key="v.id" :class="{ active: view === v.id }" :aria-pressed="view === v.id" @click="setView(v.id)">{{ v.label }}</button>
-            </div><span class="camera-status" aria-live="polite">{{ view === 'superior' ? 'Superior · cubiertas ocultas' : view === 'libre' ? 'Exploración libre' : 'Cubiertas visibles' }}</span>
-              <div class="camera-actions" role="group" aria-label="Acercamiento y encuadre"><button @click="sceneRef?.zoomBy(1.2)" aria-label="Acercar escenario" title="Acercar">+</button><button @click="sceneRef?.zoomBy(1 / 1.2)" aria-label="Alejar escenario" title="Alejar">−</button><button class="reset-camera" @click="setView('frontal')" aria-label="Restablecer encuadre">↺ <span>Restablecer</span></button></div>
+            </div><span class="camera-status" aria-live="polite">{{ view === 'superior' ? 'Superior · cubiertas ocultas' : view === 'libre' ? 'Exploración libre' : 'Vista de parcela' }}</span>
+              <div class="camera-actions" role="group" aria-label="Acercamiento y encuadre"><button @click="sceneRef?.zoomBy(1.2)" aria-label="Acercar escenario" title="Acercar">+</button><button @click="sceneRef?.zoomBy(1 / 1.2)" aria-label="Alejar escenario" title="Alejar">−</button><button class="reset-camera" @click="showGeneral" aria-label="Centrar todo" title="Centrar todo">↺ <span>Centrar todo</span></button></div>
             </div>
-            <FieldScene ref="sceneRef" :records="allCurrent" :selected="selected" :focused="focused" :inspection="inspection" :view="view" :camera-request="cameraRequest" @inspect="inspect" @free-view="view = 'libre'" @reset="setView('frontal')" />
+            <div class="exploration-tools" role="group" aria-label="Exploración del visor">
+              <button :aria-pressed="view === 'libre' && !inspection" @click="releaseCamera">Liberar cámara</button>
+              <button :aria-pressed="coversVisible" :disabled="view === 'superior'" @click="coversVisible = !coversVisible">{{ coversVisible ? 'Ocultar cubiertas' : 'Mostrar cubiertas' }}</button>
+              <button @click="sceneRef?.focusPlant()" :disabled="!selected.includes(focused)">Acercar a planta</button>
+              <select aria-label="Enfocar estructura" :disabled="!selected.includes(focused)" @change="sceneRef?.focusStructure($event.target.value); $event.target.value = ''"><option value="">Detalle…</option><option value="flowers" :disabled="!(focusRecord.flowers > 0)">Enfocar flor</option><option value="fruits" :disabled="!(focusRecord.fruits > 0)">Enfocar fruto</option></select>
+              <button data-fullscreen-toggle class="fullscreen-toggle" :aria-label="expanded ? 'Salir de pantalla completa' : 'Pantalla completa'" @click="toggleFullscreen"><span aria-hidden="true">{{ expanded ? '⤢' : '⛶' }}</span> {{ expanded ? 'Salir' : 'Pantalla completa' }}</button>
+            </div>
+            <p v-if="fullscreenNotice" class="viewer-notice" role="status">{{ fullscreenNotice }}</p>
+            <FieldScene ref="sceneRef" :records="allCurrent" :selected="selected" :focused="focused" :inspection="inspection" :view="view" :covers-visible="coversVisible" :expanded="expanded" :camera-request="cameraRequest" @inspect="inspect" @free-view="view = 'libre'" @reset="showGeneral" />
             <div class="plot-selectors" aria-label="Examinar tratamiento">
               <button v-for="t in treatments" :key="t.id" :aria-pressed="focused === t.id" :class="{ focused: focused === t.id }" @click="inspect(t.id)"><span class="treatment-dot" :style="{ background: t.color }"></span>{{ t.label }}</button>
             </div>
@@ -155,7 +175,6 @@ onMounted(load)
               <dl class="detail-metrics"><div v-for="m in metrics" :key="m.id"><dt>{{ m.label }} · n={{ focusRecord.sampleCounts[m.id] }}</dt><dd :class="{ 'missing-value': focusRecord[m.id] === null }">{{ format(focusRecord[m.id]) }}<small v-if="focusRecord[m.id] !== null">{{ m.unit }}</small></dd></div></dl>
             </div>
             <div v-else class="empty">Selecciona una parcela para consultar su ficha.</div>
-            <p class="scene-caption">Plantas y distribución ilustrativas según los promedios disponibles. Sin altura o diámetro no se dibuja la planta. La ausencia de flores o frutos en el modelo no confirma su ausencia si faltan datos.</p>
             <section class="timeline" aria-labelledby="timeline-title">
               <div class="timeline-heading"><div class="playback-controls"><h2 id="timeline-title" class="sr-only">Evolución temporal</h2><button :aria-label="playing ? 'Pausar evolución' : 'Reproducir evolución'" :aria-pressed="playing" @click="togglePlayback">{{ playing ? 'Ⅱ Pausar' : '▷ Reproducir evolución' }}</button><button aria-label="Reiniciar evolución" title="Volver a la primera semana y pausar" @click="restart">↺</button></div><div class="selected-date" aria-live="polite"><strong>Semana {{ week }}</strong><span>{{ dateLabel(currentWeek.date) }}</span></div></div>
               <div ref="weekButtons" class="week-buttons" role="group" aria-label="Seleccionar semana de observación"><button v-for="w in weeks" :key="w.week" :aria-pressed="week === w.week" :class="{ active: week === w.week }" @click="selectWeek(w.week)"><span class="week-dot"></span><strong>Sem. {{ w.week }}</strong><small>{{ dateLabel(w.date, true) }}</small></button></div>

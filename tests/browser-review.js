@@ -8,9 +8,9 @@ async (page) => {
   const canvas = page.locator('canvas')
   const picture = () => canvas.screenshot()
   const focus = () => page.locator('.plant-detail h3').innerText()
-  const reset = async () => { await page.getByRole('button', { name: 'Restablecer encuadre' }).click(); await settle() }
+  const reset = async () => { await page.getByRole('button', { name: 'Centrar todo' }).click(); await settle() }
   await page.setViewportSize({ width: 1366, height: 768 })
-  await page.reload()
+  await page.reload({ waitUntil:'domcontentloaded' })
   await page.getByRole('heading', { name: 'Observa y compara', exact: true }).waitFor()
   check(await page.locator('.scene-failure').count() === 0, 'WebGL no inició')
 
@@ -69,11 +69,11 @@ async (page) => {
   await page.mouse.up()
   check((await page.locator('.camera-status').innerText()).includes('libre'), 'Rotar no devuelve las cubiertas')
   await reset()
-  await page.getByRole('button', { name: 'Acercar escenario' }).click({ clickCount: 12 })
+  await page.getByRole('button', { name: 'Acercar escenario' }).click({ clickCount: 24 })
   const maxZoom = await picture()
   await page.getByRole('button', { name: 'Acercar escenario' }).click({ clickCount: 3 })
   check(maxZoom.equals(await picture()), 'Falta límite superior de zoom')
-  await page.getByRole('button', { name: 'Alejar escenario' }).click({ clickCount: 20 })
+  await page.getByRole('button', { name: 'Alejar escenario' }).click({ clickCount: 26 })
   const minZoom = await picture()
   await page.getByRole('button', { name: 'Alejar escenario' }).click({ clickCount: 3 })
   check(minZoom.equals(await picture()), 'Falta límite inferior de zoom')

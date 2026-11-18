@@ -35,7 +35,7 @@ El cuestionario es anterior al Excel: sus referencias a ausencia de flores, frut
 - Escenario con seis plantas ilustrativas por área, sarán en tres colores y control descubierto.
 - Distribución compacta de aproximadamente 32 % para datos y 68 % para el escenario; línea temporal integrada debajo del cultivo. En móvil el escenario se presenta primero.
 - Cámara libre con OrbitControls: arrastre izquierdo para girar, rueda para zoom, arrastre derecho para desplazar. Un dedo gira; dos dedos permiten zoom y desplazamiento.
-- Cámaras frontal/isométrica, lateral y superior, con transiciones. La vista superior oculta las cubiertas; la exploración libre vuelve a mostrarlas. Pulsar nuevamente una perspectiva recupera su encuadre.
+- Cámaras frontal/isométrica, lateral y superior, con transiciones. La vista superior oculta las cubiertas; en las demás vistas se respeta el control Mostrar/Ocultar cubiertas. Pulsar nuevamente una perspectiva recupera su encuadre.
 - Botones de zoom y restauración. Con foco en el escenario, flechas para desplazar, +/− para zoom y R para restablecer. Se respeta movimiento reducido.
 - Selección por clic en parcela y por botones de tratamiento con teclado.
 - Tablas de valores y procedencia, lecturas ambientales y descarga de JSON.
@@ -44,20 +44,22 @@ El cuestionario es anterior al Excel: sus referencias a ausencia de flores, frut
 ## Exploración y reproducción
 
 - Seleccionar una parcela, una barra o un botón de tratamiento abre **Explorar tratamiento**. El encuadre se acerca al área elegida y conserva rotación, zoom, desplazamiento y las tres perspectivas. **Vista general** recupera el conjunto, respetando los filtros activos. Se puede cambiar de tratamiento directamente.
-- El acercamiento modifica el encuadre ortográfico, manteniendo la cámara fuera de las estructuras. El centro de navegación se limita a 0.85 unidades ilustrativas alrededor del tratamiento durante la inspección. Las semanas y variables no provocan nuevos encuadres.
+- El acercamiento modifica la cámara ortográfica, manteniéndola fuera de las estructuras. En inspección, el objetivo se limita al ancho de la parcela; **Liberar cámara** conserva la selección analítica y permite recorrer el volumen del campo. **Centrar todo** recupera la orientación y el encuadre general. Las semanas y variables no reinician la cámara.
 - **Reproducir evolución** avanza por las observaciones, cada 2 segundos o 3.2 segundos con movimiento reducido. Continúa desde la semana actual; desde la última vuelve a la primera. Se detiene al llegar a la última semana disponible (13 en esta fuente).
 - **Pausar** conserva la semana actual. **Reiniciar** vuelve a la primera y pausa. Elegir una semana con botones, deslizador o puntos del gráfico también pausa. Cambiar la preferencia de movimiento reducido pausa la reproducción. Al cerrar la vista se libera el temporizador.
 - Los puntos de la gráfica muestran tratamiento, semana, fecha, variable, valor y unidad. Se consultan con mouse, tacto o teclado: Tab entra al gráfico, flechas cambian de punto, Enter/espacio seleccionan la semana y Escape cierra la ficha. **Consultar punto** ofrece un selector nativo, incluidos los puntos coincidentes.
 - **Comparar con control** calcula tratamiento menos control en unidades originales y como porcentaje del control, aunque este esté oculto por el filtro. Si el control es cero, muestra **No definido**; si falta alguna media, muestra **Sin datos**. No se guardan valores calculados como nuevas mediciones.
 - El resumen identifica la mayor altura entre los tratamientos seleccionados en la semana actual, incluyendo empates. Es descriptivo: no atribuye causalidad ni significancia estadística.
 
-Las hojas tienen una curvatura ligera, los frutos una silueta suavemente curvada y las flores mayor contraste para la inspección cercana. Se conservan geometrías compartidas, instancias y la escala de altura de los datos originales.
+Las hojas tienen curvatura y nervadura central; los frutos, silueta curvada y variación de color por vértice; las flores, cinco pétalos con volumen, estambres y anteras. Las ramificaciones incluyen uniones. Se conservan geometrías compartidas, instancias y la escala de altura de los datos originales. Estos detalles son ilustrativos, no mediciones individuales ni texturas hiperrealistas.
 
 La altura visual es proporcional al dato (0.055 unidades por cm). El diámetro se amplifica para ser legible. Las hojas lanceoladas se distribuyen alrededor del tallo, simplificando su cantidad a aproximadamente un elemento por 2.7 hojas promedio, con un mínimo ilustrativo de dos. Flores de cinco pétalos y frutos alargados se muestran únicamente si su promedio es mayor que cero; su tamaño visual varía con ese promedio. No son reconstrucciones individuales ni conteos reales. No se interpolan mediciones.
 
 Las geometrías y materiales se comparten entre semanas. Las seis plantas ilustrativas de cada tratamiento se renderizan con instancias agrupadas por geometría y material, y sus búferes se liberan al cambiar de semana. Las mallas de sarán utilizan dos capas visuales, una cubierta transparente y una cuadrícula, sin atribuirles un porcentaje de sombra.
 
-El encuadre automático solo actúa al iniciar, redimensionar una perspectiva predefinida o solicitar una vista. No se aplica durante la navegación libre. El zoom se limita entre 0.65× y 3.2×; en vista general el centro de navegación permanece dentro de un radio de tres unidades ilustrativas y la cámara se mantiene por encima del terreno.
+El encuadre automático solo actúa al iniciar, redimensionar una perspectiva predefinida o solicitar una vista. No se aplica durante la navegación libre. El zoom se limita entre 0.65× y 40×; la rueda acerca hacia el cursor. **Acercar a planta**, el selector **Detalle** y el doble clic por raycasting permiten enfocar estructuras. El objetivo se restringe al volumen de 15.3 × 5.8 unidades ilustrativas del campo y a alturas entre 0.25 y 2.85; la cámara mantiene un ángulo por encima del suelo. La navegación mueve la cámara, sin transformar el grupo agrícola.
+
+**Pantalla completa** amplía el mismo visor mediante Fullscreen API. Los controles de cámara siguen disponibles y la misma línea temporal pasa a una barra flotante con áreas seguras. **Salir** o Escape recuperan el dashboard conservando semana, filtros, selección, zoom y navegación. Si la API no existe o rechaza la solicitud, se usa un visor fijo dentro de la ventana con aviso y foco de teclado contenido. El logo local procede de [la página oficial de identidad visual de la UTP](https://utp.ac.pa/logos-para-medios-digitales); no se alteró el PNG.
 
 El montaje real descrito tiene cinco camellones y 300 plantas iniciales. La distribución de colores y el porcentaje de sombra no están confirmados. La disposición de las cuatro áreas, sol y sombras son esquemáticos. No hay simulación de radiación ni predicción fenológica.
 
@@ -77,12 +79,14 @@ El montaje real descrito tiene cinco camellones y 300 plantas iniciales. La dist
 
 `npm test` comprueba integridad, filtrado, valores particulares y rechazo de registros inválidos. Ejecutar también `python scripts/import_data.py "ruta/datos_new_normalizado.xlsx" --check` y `npm run build`.
 
-Las doce pruebas incluyen integridad y recálculo de todas las medias, ausentes y ceros, denominadores por variable, modelos compartidos, diferencias respecto al control, empates y reproducción con reloj simulado (pausa, final, limpieza y movimiento reducido). Para repetir las comprobaciones de navegador, iniciar el servidor local y ejecutar:
+Las quince pruebas incluyen integridad y recálculo de todas las medias, ausentes y ceros, denominadores por variable, modelos compartidos, diferencias respecto al control, empates, límites geométricos de cámara y reproducción con reloj simulado (pausa, final, limpieza y movimiento reducido). Para repetir las comprobaciones de navegador, iniciar el servidor local y ejecutar:
 
 ```sh
 npx --yes --package @playwright/cli playwright-cli -s=mixteco open http://127.0.0.1:5173/
 npx --yes --package @playwright/cli playwright-cli -s=mixteco run-code --filename tests/browser-review.js
 npx --yes --package @playwright/cli playwright-cli -s=mixteco run-code --filename tests/browser-phase2.js
+npx --yes --package @playwright/cli playwright-cli -s=mixteco run-code --filename tests/browser-layout.js
+npx --yes --package @playwright/cli playwright-cli -s=mixteco run-code --filename tests/browser-viewer.js
 ```
 
 El guion comprueba zoom persistente y sus límites, rotación, desplazamiento, clic frente a arrastre, restauración, movimiento reducido, teclado, gestos táctiles emulados, filtros y seis anchos de pantalla. Las capturas de la revisión se conservan en `docs/screenshots/`.
@@ -95,6 +99,6 @@ Para la revisión manual: recorrer semanas 1, 10, 12 y 13; seleccionar cada vari
 
 Importar el repositorio en Vercel, seleccionar el directorio de esta aplicación, framework Vite, comando de compilación `npm run build` y salida `dist`. No requiere variables de entorno. Solo se publican los archivos generados en `dist`; los documentos originales permanecen fuera de esa salida.
 
-`vercel.json` desactiva los despliegues automáticos únicamente para `feat/treatment-exploration-playback`, de modo que esta fase pueda revisarse en un PR sin publicarse. No cambia la configuración de las demás ramas.
+`vercel.json` desactiva los despliegues automáticos de `feat/treatment-exploration-playback` y `feat/advanced-field-viewer`, para revisar esas ramas mediante PR sin publicar. La rama avanzada requiere autorización antes de merge y despliegue.
 
 La fuente tipográfica opcional procede de Google Fonts; si no está disponible se utiliza la tipografía del sistema. Referencias técnicas: [Vue](https://vuejs.org/guide/quick-start.html), [Vite](https://vite.dev/guide/) y [Three.js](https://threejs.org/docs/).
